@@ -1,4 +1,0 @@
-presentations
-=============
-
-Apresentações variadas.
