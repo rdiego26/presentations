@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="pt-br">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Javascript</title>
+
+        <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+
+		<meta name="description" content="Curso sobre Javascript ministrado na Bematech.">
+		<meta name="author" content="Diego Ramos">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section data-state="soothe" id="page1">
+
+                    <h2>Mongo DB</h2>
+                    <img src="mongoDB-logo.png">
+                    <h2>Uma rápida apresentação</h2>
+
+				</section>
+
+
+                <section data-state="soothe" id="page2">
+
+                    <h2>Mongo ?</h2>
+
+                    <h3>Pode parecer pejorativo mas "Mongo" vem de "Humongous", "Gigantesco".</h3>
+
+                </section>
+
+
+				<section data-state="soothe" id="page3">
+					<h1>História</h1>
+
+                    <ul>
+                        <li>Foi criado pelos fundadores da <a href="http://www.google.com.br/doubleclick/" target="_blank">Doubleclick</a> ;</li>
+                        <li>A ideia inicial era fazer um produto semelhante ao <a href="https://developers.google.com/appengine/docs/whatisgoogleappengine" target="_blank">Google App Engine</a> ;</li>
+                    </ul>
+
+				</section>
+
+
+                <section data-state="soothe" id="page4">
+
+                    <h1>Grandes players utilizando</h1>
+
+                    <ul>
+                        <li class="fragment">GitHub;</li>
+                        <li class="fragment">Foursquare;</li>
+                        <li class="fragment">EA Games;</li>
+                        <li class="fragment">EasyTaxi;</li>
+                        <li class="fragment">Globo.com;</li>
+                        <li class="fragment">IG;</li>
+                        <li class="fragment">eBay;</li>
+                        <li class="fragment">The New York Times;</li>
+                        <li class="fragment">Lojas Americanas  ;)</li>
+                    </ul>
+
+                </section>
+
+
+                <section data-state="soothe" id="page5">
+                    <h1>Alguns conceitos...</h1>
+
+                    <ul>
+                        <li>Nunca, mas nunca está relacionado ao ódio ao modelo SQL, pelo contrário, podem até trabalhar em conjunto;</li>
+                        <li>O termo NoSQL e Não Relacional também é bastante utilizado;</li>
+                        <li>Orientado a documento e não a registro;</li>
+                    </ul>
+
+                </section>
+
+
+                <section data-state="soothe" id="page6">
+
+                    <h1>Nomenclatura</h1>
+
+                    <h3>Relacional vs NoSQL</h3>
+
+                    <ul>
+                        <li>Tabela ->  Coleção</li>
+                        <li>Registro -> Documento</li>
+                        <li>Índice -> Índice</li>
+                        <li>Join -> Documento embarcado</li>
+                        <li>Foreign Key -> Referência</li>
+                    </ul>
+
+                </section>
+
+
+                <section data-state="soothe" id="page7">
+
+                    <h1>Recursos Like a Boss</h1>
+
+                    <ul>
+                        <li><a href="http://docs.mongodb.org/manual/tutorial/search-for-text/" target="_blank">Full Text Search</a></li>
+                        <li><a href="http://docs.mongodb.org/manual/applications/geospatial-indexes/" target="_blank">Índices Espaciais (geográficos)</a> - GeoJSON</li>
+                        <li><a href="http://docs.mongodb.org/manual/core/sharding/" target="_blank">Sharding</a> - Clusterização</li>
+                        <li><a href="http://docs.mongodb.org/manual/replication/" target="_blank">Replica Set</a> - Alta Disponibilidade</li>
+                    </ul>
+
+                </section>
+
+
+
+                <section data-state="soothe" id="page8">
+
+                    <h1>Considere uso do MongoDB, quando..</h1>
+
+                    <ul>
+                        <li>Está usando muito cache em sua aplicação;</li>
+                        <li>Precisa de processamento em tempo real;</li>
+                        <li>Gosta de desenvolvimento ágil;</li>
+                        <li>Sua aplicação é "beta perpétua";</li>
+                        <li>Usa muito "join" na sua aplicação relacional;</li>
+                    </ul>
+
+                </section>
+
+
+                <section data-state="soothe" id="page9">
+
+                    <h1>Será que é rápido mesmo? - Benchmarks</h1>
+
+                    <ul>
+                        <li><a href="http://www.moredevs.ro/mysql-vs-mongodb-performance-benchmark/" target="_blank">MySQL vs MongoDB</a></li>
+                        <li><a href="http://www.badrit.com/blog/2013/11/18/redis-vs-mongodb-performance" target="_blank">Redis vs MongoDB</a></li>
+                        <li><a href="http://byterot.blogspot.com.br/2012/11/nosql-benchmark-redis-mongodb-ravendb-cassandra-sqlserver.html" target="_blank">NoSQL benchamark: Redis, MongoDB, RavenDB, Cassandra, SQLServer</a></li>
+                    </ul>
+
+                </section>
+
+
+                <section id="page10">
+                    <h1>THE END</h1>
+                    <h3>Questions or let's code ? :)</h3>
+                </section>
+
+
+				<!-- Example of nested vertical slides -->
+				<section data-state="blackout" id="page11">
+					<section id="page11-1">
+						<h2>CRUD Operations</h2>
+                        <p>O console pode ser uma ótima ferramenta de aprendizado. :)</p>
+                        <pre>
+                            <code contenteditable>
+                                ramos@e9:~$ mongo
+                                MongoDB shell version: 2.0.6
+                                connecting to: test
+                                >
+                            </code>
+                        </pre>
+					</section>
+					<section id="page11-2">
+						<h2>Insert</h2>
+
+                        <pre>
+                            <code contenteditable>
+                                > db.workshop.insert({
+                                    company: 'E-novasys',
+                                    website: 'http://enovasys.net.br/'
+                                })
+                            </code>
+                        </pre>
+
+                        <pre>
+                            <code contenteditable>
+                                > db.workshop.insert({
+                                    company:'otherCompany',
+                                    technologies: ['NoSQL', 'Oracle']
+                                })
+                            </code>
+                        </pre>
+					</section>
+					<section id="page11-3">
+						<h2>Consultando um registro</h2>
+                        <pre>
+                            <code contenteditable>
+                                > db.workshop.findOne()
+                                {
+                                "_id" : ObjectId("52aa872c7eea1e900f218d5c"),
+                                "company" : "E-novasys",
+                                "website" : "http://enovasys.net.br/"
+                                }
+                            </code>
+                        </pre>
+                    </section>
+					<section id="page11-4">
+						<h2>Consultando um registro - filtro</h2>
+                        <pre>
+                            <code contenteditable>
+                                > db.workshop.find({company:'E-novasys'}).pretty()
+                                {
+                                "_id" : ObjectId("52aa872c7eea1e900f218d5c"),
+                                "company" : "E-novasys",
+                                "website" : "http://enovasys.net.br/"
+                                }
+                            </code>
+                        </pre>
+                        <span>pretty() é para formatar melhor a saída</span>
+					</section>
+                    <section id="page11-5">
+                        <h2>Checando existência de campo - filtro</h2>
+                        <pre>
+                            <code contenteditable>
+                                > db.workshop.find( {technologies: {$exists: true} } )
+                                { "_id" : ObjectId("52aa8cf4c7b09b7b3ff24969"), "company" : "otherCompany", "technologies" : [ "NoSQL", "Oracle", "Linux" ] }
+                            </code>
+                        </pre>
+                    </section>
+                    <section id="page11-6">
+                        <h2>Quantidade de registros</h2>
+                        <pre>
+                            <code contenteditable>
+                                > db.workshop.count()
+                                2
+                            </code>
+                        </pre>
+                    </section>
+                    <section id="page11-7">
+                        <h2>Atualizando registro</h2>
+                        <pre>
+                            <code contenteditable>
+                                > db.workshop.update({ company:'E-novasys' }, {$set: { technologies:['Oracle', 'Linux'] } } )
+                            </code>
+                        </pre>
+                        <span>Caso o campo não exista, o mongoDB irá inserir no documento</span>
+                    </section>
+                    <section id="page11-8">
+                        <h2>Removendo registro</h2>
+                        <pre>
+                            <code contenteditable>
+                                > db.workshop.remove({company:'otherCompany'})
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section id="page11-9">
+                        <h2>Comandos úteis</h2>
+                        <ul>
+                            <li>Mostrar coleções do banco atual: <strong>show collections</strong> </li>
+                            <li>Mostrar bancos de dados do servidor: <strong>show dbs</strong> </li>
+                            <li>Trocar de banco: <strong>use outroBanco</strong> </li>
+                        </ul>
+                    </section>
+				</section>
+
+
+                <section id="page12">
+                    <h2>Links Úteis</h2>
+                    <ul>
+                        <li><a href="http://docs.mongodb.org/manual/reference/operator/" target="_blank">Operadores MongoDB</a></li>
+                        <li><a href="http://docs.mongodb.org/manual/reference/limits/" target="_blank">Limitações MongoDB</a></li>
+                        <li><a href="http://www.mongodb.org/downloads" target="_blank">MongoDB Download</a></li>
+                        <li><a href="https://github.com/hakimel/reveal.js" target="_blank">Reveal JS ( Utilizado para a apresentação )</a></li>
+                        <li><a href="http://mongoosejs.com/" target="_blank">Mongoose</a></li>
+                    </ul>
+                </section>
+
+
+                <section id="page13">
+                    <h1>Obrigado!</h1>
+                </section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
