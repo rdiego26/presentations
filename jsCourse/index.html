@@ -185,14 +185,14 @@
                                 </code>
                         </pre>
 
-                        <small>Durante o curso iremos ver que tudo em Javascript são objetos.</small>
+                        <small>Durante o curso iremos ver que <strong>praticamente</strong> tudo em Javascript são objetos.</small>
                     </section>
 
                     <!-- Funções de 1a. classe -->
                     <section>
                         <h3>Funções de 1a. classe</h3>
 
-                        <p>Como uma linguagem <a href="http://pt.wikipedia.org/wiki/Programa%C3%A7%C3%A3o_funcional" target="_blank">funcional</a> que javascript as funções são tratadas como de 1a. classe.</p>
+                        <p>Como uma linguagem <a href="http://pt.wikipedia.org/wiki/Programa%C3%A7%C3%A3o_funcional" target="_blank">funcional</a> que javascript é as funções são tratadas como de 1a. classe.</p>
 
                         <p>Podemos passar funções por parâmetros ou valores de entradas para outras funções, retornar funções como retorno de funções, resumindo uma função é tratada como um tipo básico.</p>
 
@@ -210,15 +210,27 @@
                     <!-- Escopo e <i>hoisting</i> -->
                     <section>
                         <h3>Escopo e <i>hoisting</i></h3>
-                        <p>Em Javascript temos escopo somente a nível de função, <strong>somente funções geram escopo</strong>.</p>
+                        <p>Em Javascript temos dois tipos de escopo <strong>função</strong> e <strong>global</strong> porém <strong>somente funções geram escopo</strong>.</p>
+
+                        <ul>
+                            <li>Variável declarada dentro de função, com "var", é local</li>
+                            <li>Variável declarada dentro de função, sem "var", é global</li>
+                            <li>Função declarada dentro de função é local</li>
+                            <li>Variáveis declaradas dentro de bloco <i>if</i>, <i>while</i>, <i>for</i> etc <strong>não são locais ao bloco</strong>, e sim `a função. </li>
+                        </ul>
+                    </section>
+
+                    <!-- Continuação sobre escopo de função -->
+                    <section>
+                        <h3>Escopo de função</h3>
 
                         <pre>
                             <code data-trim contenteditable>
                                 var _nome = 'Fulano';
                                 if(true) {
-                                var _nome = 'Ciclano';
-                                console.log('_nome: ' + _nome);
-                                ~> _nome: Ciclano
+                                    var _nome = 'Ciclano';
+                                    console.log('_nome: ' + _nome);
+                                    ~> _nome: Ciclano
                                 }
                                 console.log('_nome: ' + _nome);
                                 ~> _nome: Ciclano
@@ -229,9 +241,9 @@
 
                     </section>
 
-                    <!-- Continuação sobre escopo -->
+                    <!-- Continuação sobre escopo de função -->
                     <section>
-                        <h3>Continuação sobre escopo</h3>
+                        <h3>Continuação sobre escopo de função</h3>
 
                         <p>Isolando o escopo com <abbr title="Immediately-invoked function expression">IIFE</abbr>, para termos o resultado esperado.</p>
 
@@ -250,7 +262,36 @@
                             </code>
                         </pre>
 
-                        <p>Agora sim. =)</p>
+                        <figure>
+                            <img src="img/happy-cute-meme-face-6.png" alt="Happy Meme" height="100">
+                            <!-- <img src="img/happy-cute-meme-face-6.png" alt="Happy Meme" width="304" height="228"> -->
+                            <figcaption>Agora sim. :)</figcaption>
+                        </figure>
+
+                    </section>
+
+                    <!-- Escopo global -->
+                    <section>
+                        <h3>Escopo global</i></h3>
+
+                         <p>Variáveis globais são sempre penduradas em <i>window</i>. Uma boa prática de programação é evitar ao máximo "sujar" o escopo global.</p>
+
+                        <p>Entre os mais fatais problemas com escopos globais é você ter a "sorte" de sobreescrever algum lib que você esteja usando no seu projeto. =(</p>
+
+                        <pre>
+                            <code data-trim contenteditable>
+                                var _nome = 'Fulano';
+                                if(true) {
+                                (function() {
+                                var _nome = 'Ciclano';
+                                console.log('_nome: ' + _nome);
+                                })();
+                                ~> _nome: Ciclano
+                                }
+                                console.log('_nome: ' + _nome);
+                                ~> _nome: Fulano
+                            </code>
+                        </pre>
 
                     </section>
 
@@ -350,6 +391,8 @@
                             <li>Null</li>
                             <li>Undefined</li>
                         </ul>
+
+                        <p> <strong>Todos os tipos primitivos - com exceção de <i>null</i> e <i>undefined</i> - são tratados como objetos. </strong> </p>
 
                     </section>
 
@@ -542,6 +585,127 @@
 
                 </section>
                 <!-- Funções - END -->
+
+                <!-- Estrutura de dados - INIT -->
+                <section>
+
+                    <section>
+                        <h4>Estrutura de dados</h4>
+
+                        <ol>
+                            <li>Arrays</li>
+                            <li>Objetos</li>
+                        </ol>
+                    </section>
+
+
+                    <!-- Arrays -->
+                    <section>
+                        <h4>Arrays</h4>
+
+                        <p>Arrays são listas de valores indexada por zero.</p>
+                        <p>Existem basicamente duas maneiras de criar <i>arrays</i> em Javascript: </p>
+                        <ol>
+                            <li>var _dados = [];</li>
+                            <li>var _dados = new Array();</li>
+                        </ol>
+
+                    </section>
+
+
+                    <!-- Arrays - Continuação -->
+                    <section>
+                        <h4>Arrays - Continuação</h4>
+
+                        <pre>
+                            <code>
+                                var _dados = [];
+                            </code>
+                        </pre>
+
+                        <p>O código acima cria um objeto com a propriedade <i>length</i>, a qual é exclusiva de <i>Arrays</i>.</p>
+                    </section>
+
+
+                    <!-- Arrays - Continuação -->
+                    <section>
+                        <h4>Arrays - Continuação</h4>
+
+                        <pre>
+                            <code>
+                                var _dados = new Array();
+                            </code>
+                        </pre>
+
+                        <p>O código acima cria um objeto com a propriedade <i>length</i>, a qual é exclusiva de <i>Arrays</i>.</p>
+                    </section>
+
+
+                    <!-- Arrays - Continuação -->
+                    <section>
+                        <h4>Arrays - Continuação</h4>
+
+                        <img src="img/joao-kleber-para-ai.jpg" alt="João Kleber">
+
+                    </section>
+
+                    <!-- Arrays - Continuação -->
+                    <section>
+                        <h4>Arrays - Continuação</h4>
+
+                        <h5>Afinal qual a diferença em usar um e outro modo ?</h5>
+                        <p>Usar a maneira literal e o construtor não existem muita diferenças entre as duas maneiras, um ponto interessante a ser levantado é uma otimização específica no Chrome quando usamos o construtor.</p>
+                        <br><br>
+                        <small>Existem algumas nuances sobre Arrays que veremos mais a frente em bugs/pegadinhas.</small>
+
+                    </section>
+
+                    <!-- Objetos -->
+                    <section>
+                        <h3>Objetos</h3>
+
+                        <p>Objetos são usados constantemente durante o desenvolvimento com JS. Ele nos permite representar o mundo real.</p>
+                        <p>Um objeto tem propriedades associadas a ele, uma propriedade é uma variável associada ao objeto.</p>
+
+                    </section>
+
+                    <!-- Objetos - Continuação -->
+                    <section>
+                        <h3>Objetos - Continuação</h3>
+
+                        <p>As propriedades podem ser acessar por <i>ponto</i> ou <i>conchetes</i>: </p>
+                        <pre>
+                            <code>
+                                var empresa = {'nome':'Bematech S/A', 'site':'http://bematech.com.br/'}
+                                empresa.nome
+                                ~> Bematech S/A
+                                empresa['nome']
+                                ~> Bematech S/A
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Objetos - Continuação -->
+                    <section>
+                        <h3>Objetos - Continuação</h3>
+
+                        <p>Os colchetes podem ser usados para acessar campos dinamicamente: </p>
+                        <pre>
+                            <code>
+                                var empresa = {'nome':'Bematech S/A', 'site':'http://bematech.com.br/'}
+                                var campo = 'nome'
+                                empresa[campo]
+                                ~> Bematech S/A
+                            </code>
+                        </pre>
+
+                    </section>
+
+
+                </section>
+                <!-- Estrutura de dados - END -->
+
 
                 <section>
                     <h1>THE END</h1>
