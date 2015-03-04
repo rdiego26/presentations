@@ -702,10 +702,122 @@
 
                     </section>
 
-
                 </section>
                 <!-- Estrutura de dados - END -->
 
+
+                <!-- Assincronismo - INIT -->
+                <section>
+
+                    <section>
+                        <h4>Assincronismo</h4>
+
+                        <p>Acredito que esse é um dos pontos principais da linguagem. O Javascript roda em uma única thread, por isso é preciso evitar ao máximo que um código Javascript bloqueie a thread.</p>
+                        <p>Por isso, operações demoradas como requisições HTTP e acesso de disco ou a um banco de dados normalmente são executadas de maneira assíncrona.</p>
+                    </section>
+
+                    <!-- Assincronismo - Continuação -->
+                    <section>
+                        <h4>Assincronismo - Continuação</h4>
+
+
+                        <p>
+                            Um ponto importante a ser dito é que o código Javascript sempre é processado por uma única thread, mas isso não quer dizer que o <i>engine</i>
+                            da linguagem e sua aplicação só usem uma thread.
+                        </p>
+
+                        <p> Um exemplo seria, uma aplicação JS solicitar um acesso a banco de dados, pode-se sem problemas usar outra thread para
+                            esse acesso. Mas o código que solicita o acesso e callback que trata o resultado executam na thread única dedicada ao código JS.
+                        </p>
+
+                        <p>
+                            Essa thread única é rodada em um <i>event loop</i>, esse assunto pode render bastante material por si só, um resumo está <a href="http://pt.stackoverflow.com/questions/16950/como-programa%C3%A7%C3%A3o-ass%C3%ADncrona-funciona-em-javascript" target="_blank"> nesse link</a>.
+                        </p>
+
+                    </section>
+
+                </section>
+                <!-- Assincronismo - END -->
+
+                <!-- Strict Mode - INIT -->
+                <section>
+
+                    <section>
+                        <h4>Stric mode (ou onde os "sobrinhos" não tem vez )</h4>
+
+                        <p>Neste modo o Javascript roda em um modo mais "rigoroso", neste modo a <i>engine</i> lança erros antes silenciados, efetua diversas verificações para que possam evitar <i>bugs</i> futuros e até mesmo nos probibe o uso de certas partes da linguagem consideradas problemáticas.</p>
+
+                        <p>O stric mode é largamente utilizado em uma infinidade e códigos desde bibliotecas `a frameworks, eles nos força a escrever uma código melhor e nos ajuda a pegar <i>bugs</i> mais rapidamente.</p>
+
+                        <p>A seguir vamos ver maneiras de ativar o modo <i>strict</i> . </p>
+                    </section>
+
+                    <!-- strict mode continuação ( Habilitando nível de arquvivo ) -->
+                    <section>
+                        <h4>Stric mode - Habilitando a nível de arquivo</h4>
+
+                        <p>Uma forma é a nível de arquivo, apenas colocando a string "use strict;" ou "use strict;" </p>
+
+                        <p>Nenhum código pode ser colocado antes da declaração (apenas whitespace e comentários são permitidos, do contrário o modo não é ativado). </p>
+
+                        <pre>
+                            <code>
+                                // código "strict"
+                                "use strict";
+                                var _pessoaDeBem = "Olá!";
+
+                                // código "não strict"
+                                var _flamenguista = "Tiro, porrada e bomba!";
+                                "use strict";
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- strict mode continuação ( Habilitando nível de função ) -->
+                    <section>
+                        <h4>Stric mode - Habilitando a nível de função</h4>
+
+                        <p>Você pode querer que apenas uma função rode em modo <i>strict</i> e todo código externo a ela rode normalmente.</p>
+
+                        <p></p>
+
+                        <pre>
+                            <code>
+                                function saudacao() {
+                                "use strict";
+                                var _saudacao = 'Olá!';
+                                with (_saudacao) { console.log(_saudacao); } //Gera erro pois with não é permitido em modo strict :)
+                                }
+
+                                function saudacaoDeSobrinho() {
+                                var _saudacao = 'E ae meRmão!';
+                                with (_saudacao) { console.log(_saudacao); }
+                                }
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- strict mode continuação -->
+                    <section>
+                        <h4>Strict mode -  Continuação</h4>
+
+                        <p> Ok, ok...mas o que muda ?</p>
+
+                        <ul>
+                            <li>Remoção do <i>with</i> </li>
+                            <li>Declaração implícita de variáveis globais ( variável sem <i>var</i> ) </li>
+                            <li>Restrição de nomes ( palavras reservadas )</li>
+                            <li>Parâmetros e propriedades duplicadas</li>
+                        </ul>
+
+                        Existem algumas outras mudanças que ocorreram e temos um <a href="http://dmitrysoshnikov.com/ecmascript/es5-chapter-2-strict-mode/" target="_blank"> ótimo post do Dmitry Soshnikov</a> .
+
+                    </section>
+
+                </section>
+                <!-- Strict Mode - INIT -->
 
                 <section>
                     <h1>THE END</h1>
@@ -717,10 +829,13 @@
                 <section>
                     <h2>Links Úteis</h2>
                     <ul>
-                        <li><a href="http://docs.mongodb.org/manual/reference/operator/" target="_blank">Operadores MongoDB</a></li>
-                        <li><a href="http://docs.mongodb.org/manual/reference/limits/" target="_blank">Limitações MongoDB</a></li>
-                        <li><a href="http://www.mongodb.org/downloads" target="_blank">MongoDB Download</a></li>
+                        <li><a href="http://esprima.org/demo/validate.html/" target="_blank">Syntax Validor ( inclusive para strict mode )</a></li>
                         <li><a href="https://github.com/hakimel/reveal.js" target="_blank">Reveal JS ( Utilizado para a apresentação )</a></li>
+                        <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=579119" target="_blank">Incidente com a Amazon por não usar strict mode</a></li>
+                        <li><a href="http://dmitrysoshnikov.com/ecmascript/es5-chapter-2-strict-mode/" target="_blank">strict mode em mais detalhes por Dmitry Soshnikov</a></li>
+
+
+
                         <li><a href="http://mongoosejs.com/" target="_blank">Mongoose</a></li>
                     </ul>
                 </section>
