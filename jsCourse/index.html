@@ -961,7 +961,7 @@
                 <!-- Bugs, erros, exceções - INIT -->
 
 
-                <!-- AJAX -->
+                <!-- AJAX - INIT -->
                 <section>
 
                     <section>
@@ -980,8 +980,7 @@
                                 if (xhr.readyState === 4) {
 
                                     if (xhr.status === 200) {
-                                        var _resp = JSON.parse(xhr.responseText);
-                                        console.log('_resp: ' + JSON.stringify( _resp) ) ;
+                                        console.log(xhr.responseText);
                                     } else {
                                         console.error(xhr.statusText);
                                     }
@@ -992,7 +991,7 @@
                                 xhr.onerror = function (e) {
                                     console.error(xhr.statusText);
                                 };
-                                xhr.send(null);
+                                xhr.send();
                             </code>
                         </pre>
 
@@ -1009,11 +1008,89 @@
                             <li> <a href="http://api.jquery.com/jquery.ajax/" target="_blank">Jquery</a> </li>
                         </ul>
 
-                        <span>Um site interessante para busca de bibliotecas especializadas é o <a href="http://microjs.com/" target="_blank">Micro.js</a>  </span>
+                        <br><br><br>
+                        <small>Um site interessante para busca de bibliotecas especializadas é o <a href="http://microjs.com/" target="_blank">Micro.js</a>  </small>
+
+                    </section>
+
+                    <!-- Callbacks -->
+                    <section>
+                        <h4>Callbacks</h4>
+
+                        <p>Callbacks nada mais são do que funções onde são tratado os eventos de sucesso e erro de um processamento assíncrono.</p>
+
+                        <pre>
+                            <code>
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '/project',
+                                    data: { name: 'Super Volcano Lair' },
+                                    dataType: 'json',
+                                    success: function(data){
+                                        // Do some nice stuff here
+                                    },
+                                    error: function(xhr, type){
+                                        alert('Y U NO WORK?')
+                                    }
+                                });
+                            </code>
+                        </pre>
+                    </section>
+
+                    <!-- Promises -->
+                    <section>
+                        <h2>Promises</h2>
+
+                        <p>Promises é uma maneira onde se evitam diversos problemas de design de requisições ( um bastante difundido é o <a href="http://nodebr.com/como-evitar-o-inferno-de-callbacks/" target="_blank">"callback hell"</a> )é uma outra maneira de se fazer ajax, só que o código fica de uma maneira mais limpa. Essa é uma feature ainda <strong>experimental</strong> da especificação ECMAScript 6.</p>
+
+                        <pre>
+                            <code>
+                                var promessa = new Promise(function(resolve, reject) {
+                                    // Do the usual XHR stuff
+                                    var req = new XMLHttpRequest();
+                                    req.open('GET', 'https://api.github.com/users/rdiego26/repos');
+
+                                    req.onload = function() {
+                                        // This is called even on 404 etc
+                                        // so check the status
+                                        if (req.status == 200) {
+                                            // Resolve the promise with the response text
+                                            resolve(req.response);
+                                        }
+                                        else {
+                                        // Otherwise reject with the status text
+                                        // which will hopefully be a meaningful error
+                                        reject(Error(req.statusText));
+                                        }
+                                    };
+
+                                    // Handle network errors
+                                    req.onerror = function() {
+                                        reject(Error("Network Error"));
+                                    };
+
+                                    // Make the request
+                                    req.send();
+
+                                });
+
+                                promessa.then(function(response) {
+                                    console.log('Success!' + response);
+                                }, function(error){
+                                    console.log('Error! ' + error );
+                                });
+
+
+
+                            </code>
+                        </pre>
 
                     </section>
 
                 </section>
+                <!-- AJAX - END -->
+
+
 
                 <section>
                     <h1>THE END</h1>
