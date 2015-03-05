@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns="http://www.w3.org/1999/html">
 
 	<head>
 		<meta charset="utf-8">
@@ -818,6 +818,147 @@
 
                 </section>
                 <!-- Strict Mode - INIT -->
+
+
+                <!-- "Bugs", erros, exceções - INIT -->
+               <section>
+
+                   <section>
+                        <h2>"Bugs", erros, exceções</h2>
+
+                        <p>Nessa parte veremos algumas coisas estranhas no design da linguagem, tratamento e handling de exceções.</p>
+
+                    </section>
+
+                   <!-- Arrays - usar construtor ou literal ? -->
+                   <section>
+                       <h5>Arrays - usar construtor ou literal ? </h5>
+
+                       <p>Essa parte gera muita dúvida tem uma coisa interessante a ser vista quando usamos o <strong>construtor</strong> do <i>Array</i>. </p>
+
+                       <pre>
+                           <code>
+                               var _data = []; //Isso cria um array vazio
+                               var _arr = new Array(); // Isso cria um array vazio
+                               var _arrInit = new Array(8); // Isso cria um array com 8 posições undefined
+                               var _arrWithValue = new Array(1, 2); // Isso cria um array com duas posições já setadas
+                           </code>
+                       </pre>
+
+                       <p> Isso pode gerar uma pequena confusão, por isso o uso da declaração literal é mais usada. </p>
+
+                       <img src="img/Antonio-Fagundes-É-Uma-Cilada-Bino-Stenio-Garcia.jpeg" height="150" class="fragment">
+                   </section>
+
+                   <!-- isfinite null is true -->
+                   <section>
+                        <h4>isfinite null is true</h4>
+
+                       <p>Temos uma função nativa para verificar se um número é finito que é a <i>isfinite</i>, abaixo alguns usos dela: </p>
+
+                       <pre>
+                           <code>
+                               isFinite(42); // true
+                               isFinite(1/0); // false
+                               isFinite(0/0); // NaN is not finite -> false
+                               isFinite('42'); // true
+                               isFinite('hi'); // false
+                               isFinite(); // false
+                               isFinite(undefined); // false
+
+                               isFinite(null); // true
+                           </code>
+                       </pre>
+
+                       <p>null is true?! oO</p>
+                   </section>
+
+                   <!-- Type casting de boolean -->
+                   <section>
+                       <h4>Type casting de boolean</h4>
+
+                       <pre>
+                           <code>
+                               'true' == true  // returns false
+                           </code>
+                       </pre>
+
+                       <img src="img/pauad-meme-generator-excuse-me-wtf-is-this-shit-8eddbc.jpg" height="230" class="fragment">
+
+                   </section>
+
+                   <!-- Try catch -->
+                   <section>
+                       <h4>Capturando exceções</h4>
+
+                       <p>Nada novo nesse aqui, usamos o <i>try catch</i>: </p>
+
+                       <pre>
+                           <code>
+                               try {
+                                    throw new Error('Erro!');
+                               } catch(e) {
+                                    console.log('Erro: ' + e.message);
+                               }
+                           </code>
+                       </pre>
+                   </section>
+
+                   <!-- Tipos de erros -->
+                   <section>
+                       <h2>Tipos de erros</h2>
+
+                       <p>Oficialmente ( pode-se criar customizadas ) temos os seguintes tipos de erros: </p>
+
+                       <ul>
+                           <li>
+                               <strong>EvalError</strong>: Usado quando a função eval() é usada incorretamente
+                           </li>
+                           <li>
+                               <strong>RangeError</strong>: Usado quando uma variável numérica exced uma faixa de valores permitida
+                           </li>
+                           <li>
+                               <strong>ReferenceError</strong>: Usado quando é feita uma referência inválida `a uma objeto
+                           </li>
+                           <li>
+                               <strong>SyntaxError</strong>: Usado quando um erro de sintaxe é encontrado
+                           </li>
+                           <li>
+                               <strong>URIError</strong>: Usada quando as funções encodeURI() e decodeURI() são usadas de uma maneira incorreta.
+                           </li>
+                       </ul>
+
+                   </section>
+
+                   <!-- Customizando erros -->
+                   <section>
+                       <h3>Customizando erros</h3>
+
+                       <p>Temos o construtor <i>Error</i>: </p>
+
+                       <pre>
+                           <code>
+                               var launchCustomError = function() {
+                                   var error = new Error('Babou!');
+                                   error.name = 'CustomError';
+                                   throw error;
+                               };
+
+                               try {
+                                launchCustomError();
+                               }
+                               catch(e) {
+                                console.log(e.name + ' - ' + e.message); //CustomError - Babou!
+                               }
+                           </code>
+                       </pre>
+
+                       <strong>Quando não definimos o name, o default é "Error".</strong>
+                   </section>
+
+               </section>
+
+                <!-- Bugs, erros, exceções - INIT -->
 
                 <section>
                     <h1>THE END</h1>
