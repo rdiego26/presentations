@@ -960,6 +960,61 @@
 
                 <!-- Bugs, erros, exceções - INIT -->
 
+
+                <!-- AJAX -->
+                <section>
+
+                    <section>
+                        <h5>Ajax</h5>
+
+                        <p>Ajax é o que dá vida as aplicações web / mobile. O conceito de ajax é amplamente divulgado e simples, em resumo são requisições a recursos externos `a aplicação.</p>
+                        <p>Um exemplo de ajax com javascript puro seria: </p>
+
+                        <pre>
+                            <code>
+                                var xhr = new XMLHttpRequest();
+                                xhr.open("GET", "https://api.github.com/users/rdiego26/repos", true);
+
+                                xhr.onload = function (e) {
+
+                                if (xhr.readyState === 4) {
+
+                                    if (xhr.status === 200) {
+                                        var _resp = JSON.parse(xhr.responseText);
+                                        console.log('_resp: ' + JSON.stringify( _resp) ) ;
+                                    } else {
+                                        console.error(xhr.statusText);
+                                    }
+
+                                }
+
+                                };
+                                xhr.onerror = function (e) {
+                                    console.error(xhr.statusText);
+                                };
+                                xhr.send(null);
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Ajax - Continuação -->
+                    <section>
+                        <h5>Ajax - Continuação</h5>
+
+                        <p>Existem diversas bibliotecas javascript que facilitam (deixam menos verboso) o uso de ajax, alguns exemplos: </p>
+
+                        <ul>
+                            <li> <a href="http://zeptojs.com/#ajax" target="_blank">Zepto</a> </li>
+                            <li> <a href="http://api.jquery.com/jquery.ajax/" target="_blank">Jquery</a> </li>
+                        </ul>
+
+                        <span>Um site interessante para busca de bibliotecas especializadas é o <a href="http://microjs.com/" target="_blank">Micro.js</a>  </span>
+
+                    </section>
+
+                </section>
+
                 <section>
                     <h1>THE END</h1>
                     <h3>Questions or let's code ? :)</h3>
