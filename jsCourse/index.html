@@ -1090,7 +1090,225 @@
                 </section>
                 <!-- AJAX - END -->
 
+                <!-- HTML 5 - INIT -->
+                <section>
 
+                    <section>
+                        <h4>HTML 5</h4>
+
+                        <p>A nova versão do HTML 5 traz muitas novidades e melhorias, entre as mais importantes os tipos de inputs.</p>
+                        <p>Veremos alguns tipos mais usados e os novos.</p>
+
+                        <br><br>
+
+                        <picture>
+                            <img src="img/HTML5_Badge_512.png" alt="HTML 5 logo." width="230">
+                            <figcaption>HTML 5 logo</figcaption>
+                        </picture>
+
+                    </section>
+
+                    <!-- Password -->
+                    <section>
+                        <h4>Password</h4>
+
+                        <p>O nome já diz, esse tipo mascara o valor digitado.</p>
+                        <small>As tags foram removidas para a não renderização.</small>
+
+                        <br>
+
+                        <pre>
+                            <code>
+                               label for="senha" Senha
+                                input id="senha" name="senha" type="password" required="true" maxlength="10" pattern="[A-Za-z]{10}
+                               /label
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Email -->
+                    <section>
+                        <h4>Email</h4>
+
+                        <p>Esse input foi muito solicitado pela comunidade, com ele podemos validar um e-mail sem javascript e sem o uso do pattern.</p>
+
+                        <br>
+
+                        <pre>
+                            <code>
+                                label for="email" Email
+                                input id="email" name="email" type="email" autocomplete="on" required="true" maxlength="10"
+                                /label
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Tel -->
+                    <section>
+                        <h4>Tel</h4>
+
+                        <p>Esse input foi criado para trabalhar com telefones, porém, como existem diversos padrões de telefones não há uma validação, apenas através do atributo pattern.O uso dele é apenas para semântica.</p>
+
+                        <br>
+
+                        <pre>
+                            <code>
+                                label for="phone" Telefone
+                                input id="phone" name="phone" type="tel" autocomplete="on" required="true"
+                                /label
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Url -->
+                    <section>
+                        <h4>Url</h4>
+
+                        <p>Esse tipo valida URLs.</p>
+
+                        <br>
+
+                        <pre>
+                            <code>
+                                label for="url" URL
+                                input id="url" name="url" type="url" autocomplete="on"
+                                /label
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Number -->
+                    <section>
+                        <h4>Number</h4>
+
+                        <p>Esse tipo trabalha com strings que no envio serão transformados em números, o input também disponibilizará setas para incrementar e decrementar o valor do campo.</p>
+
+                        <br>
+
+                        <pre>
+                            <code>
+                                label for="num" Número
+                                input id="num" name="num" type="number" max="30" min="2" step="2"
+                                /label
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Range -->
+                    <section>
+                        <h4>Range</h4>
+
+                        <p>Esse tipo quanto ao valor retornado trabalha igualmente o <i>Number</i> mas visualmente é mostrado um slider.</p>
+
+                        <br>
+
+                        <pre>
+                            <code>
+                                label for="num" Número
+                                input id="num" name="num" type="range" max="30" min="2" step="2"
+                                /label
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Date -->
+                    <section>
+                        <h4>Date</h4>
+
+                        <p>Em alguns navegadores é disponibilizado um datepicker ( Chrome, Firefox ).</p>
+
+                        <br>
+
+                        <pre>
+                            <code>
+                                label for="data" Data
+                                input id="data" name="data" type="date"
+                                /label
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Datetime -->
+                    <section>
+                        <h4>Datetime / Datetime-local</h4>
+
+                        <p>Esses tipos não são suportados por todos os navegadores ainda, por isso são pouco utilizados, mas basicamente eles disponibilizam um date picker com data.</p>
+
+                        <br>
+
+                        <pre>
+                            <code>
+                                label for="data" Data
+                                input id="data" name="data" type="datetime-local"
+                                /label
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- month, week, time -->
+                    <section>
+                        <h4>month, week e time</h4>
+
+                        <p>Respectivamente mês, semana e tempo ( hora e data ). O suporte a esses tipos ainda está baixo, portanto não são muito usados.</p>
+
+                        <br>
+
+                        <pre>
+                            <code>
+                                label for="mes" Mês
+                                    input id="mes" name="mes" type="month"
+                                /label
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Search -->
+                    <section>
+                        <h4>Search</h4>
+
+                        <p>Bom suporte, inclusive alguns browsers estilizando o mesmo ( lupa dentro do input ) e também tem uma boa semântica.</p>
+
+                        <br>
+
+                        <pre>
+                            <code>
+                                label for="busca" Termo
+                                    input id="busca" name="busca" type="search"
+                                /label
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Color -->
+                    <section>
+                        <h4>Color</h4>
+
+                        <p>Ótimo suporte, implementa um colorpicker, o valor da cor retorna é em hexadecimal.</p>
+
+                        <br>
+
+                        <pre>
+                            <code>
+                                label for="cor" Cor
+                                    input id="cor" name="cor" type="color"
+                                /label
+                            </code>
+                        </pre>
+
+                    </section>
+
+                </section>
+                <!-- HTML 5 - END -->
 
                 <section>
                     <h1>THE END</h1>
@@ -1106,7 +1324,8 @@
                         <li><a href="https://github.com/hakimel/reveal.js" target="_blank">Reveal JS ( Utilizado para a apresentação )</a></li>
                         <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=579119" target="_blank">Incidente com a Amazon por não usar strict mode</a></li>
                         <li><a href="http://dmitrysoshnikov.com/ecmascript/es5-chapter-2-strict-mode/" target="_blank">strict mode em mais detalhes por Dmitry Soshnikov</a></li>
-
+                        <li><a href="http://www.html5rocks.com/en/tutorials/es6/promises/" target="_blank">Promises (HTML 5 Rocks)</a></li>
+                        <li><a href="http://www.uxdesign.blog.br/front-end/entendo-a-estrutura-e-a-semantica-do-html5/" target="_blank">Estrutura Semântica HTML 5</a> </li>
 
 
                         <li><a href="http://mongoosejs.com/" target="_blank">Mongoose</a></li>
