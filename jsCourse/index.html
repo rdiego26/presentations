@@ -1430,11 +1430,158 @@
                 <!-- CSS 3 - END -->
 
 
+                <!-- Apache Cordova - INIT -->
+                <section>
+
+                    <section>
+                        <h4>Apache Cordova</h4>
+
+                        <p>Existe uma grande confusão quanto ao Cordova, ele não é um framework e sim uma plataforma para nossos builds. Ele é um set de APIs para acesso nativo as funcionalidades dos dispositivos.</p>
+
+                        <p>O cordova internamente é utilizado por diversos frameworks de mercado, como phonegap e ionic.</p>
+
+                        <p>Com o Apache Cordova podemos fazer diversas coisas entre: </p>
+
+                        <ul>
+                            <li>Gerenciar as plataformas ( Android, IOS ... ) de um projeto</li>
+                            <li>Adicionar plugins de terceiros ou oficiais para os mais diversos fins</li>
+                            <li>Uso de sua <a href="http://cordova.apache.org/docs/en/4.0.0/cordova_plugins_pluginapis.md.html#Plugin%20APIs" target="_blank">API</a> para acessar recursos nativos do aparelho</li>
+                        </ul>
+
+                        <img src="img/Apache_Cordova1.png" alt="Apache Cordova Logo" height="130">
+
+                    </section>
+
+                    <!-- Instalação -->
+                    <section>
+                        <h4>Apache Cordova - Instalação</h4>
+
+                        <p>Você precisa apenas do nodeJS instalado com isso você pode instalar o mesmo com o comando:</p>
+
+                        <pre>
+                            <code>
+                                npm install -g cordova
+                            </code>
+                        </pre>
+
+                        <small>O "-g" é para instalar o cordova de maneira global em sua máquina.</small>
+
+                    </section>
+
+                    <!-- Criando um projeto -->
+                    <section>
+                        <h4>Apache Cordova - Criando um projeto</h4>
+
+                        <p>Para criar um projeto no cordova use o comando abaixo: </p>
+
+                        <pre>
+                            <code>
+                                $ cordova create hello br.com.bematech.hello HelloWorld
+                            </code>
+                        </pre>
+
+                        <p>Onde: </p>
+
+                        <ul>
+                            <li><strong>hello</strong>: Nome do diretório que será gerado para conter o projeto</li>
+                            <li><strong>br.com.bematech.hello</strong>: Identificador do projeto, "pacote"</li>
+                            <li><strong>HelloWorld</strong>: Nome com o qual a aplicação será instalado, este é opcional</li>
+                        </ul>
+
+                    </section>
+
+                    <!-- Gerenciamento plataformas -->
+                    <section>
+                        <h4>Apache Cordova - Gerenciando plataformas</h4>
+
+                        <p>Para o uso das plataformas você deve ter o ambiente da mesma instalado ( normalmente o SDK da plataforma ), feito isso, para adicionar a plataforma ao projeto:</p>
+
+                        <pre>
+                            <code>
+                                $ cd pasta-projeto
+                                $ cordova platform add NOME-PLATAFORMA
+                                $ cordova platforms ls //lista plataformas utilizadas no projeto
+                            </code>
+                        </pre>
+
+                        <p>Onde: </p>
+
+                        <ul>
+                            <li>NOME-PLATAFORMA: pode ser ios, firefoxos, android, blackberry10, wp8, windows ...</li>
+                        </ul>
+
+                    </section>
+
+                    <!-- Build -->
+                    <section>
+                        <h4>Apache Cordova - Build</h4>
+
+                        <p>O processo de build é muito simples:</p>
+
+                        <pre>
+                            <code>
+                                $ cd pasta-projeto
+                                $ cordova build // fará build para todas plataformas instaladas
+                                $ cordova build android // limitando o build
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Rodando o projeto - Emulador -->
+                    <section>
+                        <h4>Apache Cordova - Testando o projeto no emulador</h4>
+
+                        <p>Para rodarmos o projeto criado no emulador:</p>
+
+                        <pre>
+                            <code>
+                                $ cd pasta-projeto
+                                $ cordova emulate android //Invoca o emulador do android e executa o app
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Rodando o projeto - Device -->
+                    <section>
+                        <h4>Apache Cordova - Testando o projeto no device</h4>
+
+                        <p>Para rodarmos o projeto criado diretamente no device:</p>
+
+                        <pre>
+                            <code>
+                                $ cd pasta-projeto
+                                $ cordova run android //Não esqueça de colocar o device em modo debug
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Adicionando plugins no projeto -->
+                    <section>
+                        <h4>Apache Cordova - Adicionando plugins ao projeto</h4>
+
+                        <p>Podemos adicionar plugins diretamente do <a href="http://plugins.cordova.io/#/" target="_blank">repositório</a> do Cordova: </p>
+
+                        <pre>
+                            <code>
+                                $ cd pasta-projeto
+                                $ cordova plugin search bar code
+                                $ cordova plugin add com.phonegap.plugins.barcodescanner //Adicionando ao projeto
+                                $ cordova plugin ls //Lista plugins instalados no projeto
+                            </code>
+                        </pre>
+
+                    </section>
+
+                </section>
+                <!-- Apache Cordova - END -->
+
                 <section>
                     <h1>THE END</h1>
                     <h3>Questions or let's code ? :)</h3>
                 </section>
-
 
 
                 <section>
