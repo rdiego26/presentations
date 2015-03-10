@@ -1429,7 +1429,6 @@
                 </section>
                 <!-- CSS 3 - END -->
 
-
                 <!-- Apache Cordova - INIT -->
                 <section>
 
@@ -1578,12 +1577,127 @@
                 </section>
                 <!-- Apache Cordova - END -->
 
+                <!-- Phonegap - INIT -->
+                <section>
+
+                    <section>
+                        <h4>Phonegap</h4>
+
+                        <p>O phonegap inicialmente foi criado e mantido até outubro de 2012 pela Apache Software Foundation sob o nome de Apache Cordova quando foi liberado sob a licença Apache 2.</p>
+                        <p>Tem uma ótima comunidade, diversos plugins de alta qualidade ( outros nem tanto ) e sua utilização é bem simples.</p>
+
+                        <img src="img/phonegap.png" alt="Phonegap Logo" height="200">
+                    </section>
+
+                    <!-- Instalação -->
+                    <section>
+                        <h4>Phonegap - Instalação</h4>
+
+                        <p>Você precisa apenas do nodeJS instalado com isso você pode instalar o mesmo com o comando:</p>
+
+                        <pre>
+                            <code>
+                                npm install -g phonegap
+                            </code>
+                        </pre>
+
+                        <small>O "-g" é para instalar o phonegap de maneira global em sua máquina.</small>
+
+                    </section>
+
+                    <!-- Criando um projeto -->
+                    <section>
+                        <h4>Phonegap - Criando um projeto</h4>
+
+                        <p>Para criar um projeto no phonegap use o comando abaixo: </p>
+
+                        <pre>
+                            <code>
+                                $ phonegap create my-app
+                                $ cd my-app
+                            </code>
+                        </pre>
+
+                        <p>O comando acima cria um projeto chamado "Hello World" com o id com.phonegap.helloworld .</p>
+
+                    </section>
+
+                    <!-- Gerenciamento plataformas -->
+                    <section>
+                        <h4>Phonegap - Gerenciando plataformas</h4>
+
+                        <p>Intermanente o cordova é usado, basicamente é um wrapper, muitos devs usam diretamente o cordova para tal mas para conhecimento, segue abaixo: </p>
+
+                        <pre>
+                            <code>
+                                $ phonegap platform add NOME-PLATAFORMA
+                            </code>
+                        </pre>
+
+                        <p>Onde: </p>
+
+                        <ul>
+                            <li>NOME-PLATAFORMA: pode ser ios, firefoxos, android, blackberry10, wp8, windows ...</li>
+                        </ul>
+
+                    </section>
+
+                    <!-- Build -->
+                    <section>
+                        <h4>Phonegap - Build</h4>
+
+                        <p>O processo de build é muito simples:</p>
+
+                        <pre>
+                            <code>
+                                $ cd pasta-projeto
+                                $ phonegap build // fará build para todas plataformas instaladas
+                                $ phonegap build android // limitando o build
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Rodando o projeto - Emulador -->
+                    <section>
+                        <h4>Phonegap - Testando o projeto no emulador</h4>
+
+                        <p>Para rodarmos o projeto criado no emulador:</p>
+
+                        <pre>
+                            <code>
+                                $ cd pasta-projeto
+                                $ phonegap emulate android //Invoca o emulador do android e executa o app
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Rodando o projeto - Device -->
+                    <section>
+                        <h4>Apache Cordova - Testando o projeto no device</h4>
+
+                        <p>Para rodarmos o projeto criado diretamente no device:</p>
+
+                        <pre>
+                            <code>
+                                $ cd pasta-projeto
+                                $ cordova run android //Não esqueça de colocar o device em modo debug
+                            </code>
+                        </pre>
+
+                    </section>
+
+                </section>
+                <!-- Phonegap - END -->
+
+                <!-- The end ? -->
                 <section>
                     <h1>THE END</h1>
                     <h3>Questions or let's code ? :)</h3>
                 </section>
 
-
+                <!-- Links Úteis -->
                 <section>
                     <h2>Links Úteis</h2>
                     <ul>
@@ -1594,8 +1708,8 @@
                         <li><a href="http://www.html5rocks.com/en/tutorials/es6/promises/" target="_blank">Promises (HTML 5 Rocks)</a></li>
                         <li><a href="http://www.uxdesign.blog.br/front-end/entendo-a-estrutura-e-a-semantica-do-html5/" target="_blank">Estrutura Semântica HTML 5</a> </li>
                         <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_CSS_animations" target="_blank">Usando animações</a> </li>
+                        <li><a href="https://github.com/rdiego26/presentations/tree/master/jsCourse" target="_blank">Link do curso</a> </li>
 
-                        <li><a href="http://mongoosejs.com/" target="_blank">Mongoose</a></li>
                     </ul>
                 </section>
 
