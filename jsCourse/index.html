@@ -1315,9 +1315,116 @@
                 <section>
 
                     <section>
-                        <h4>Animações com CSS 3</h4>
+                        <h4>Animações com CSS</h4>
+
+                        <p>As animações com CSS disponibilizam maneiras de animar mudanças de valor CSS de elementos.</p>
+
+                        <img src="img/css3-markup.jpg" height="200">
 
                     </section>
+
+                    <!--  Animações com CSS -->
+                    <section>
+                        <h4>Animações com CSS</h4>
+
+                        <p>Alguns pontos interessantes a serem vistos: </p>
+
+                        <ul>
+                            <li>São mais fáceis de usar para animações simples, você pode criar mesmo sem saber Javascript.</li>
+                            <li>As animações funcionam muito bem mesmo sob uma carga considerável do sistema. O motor de renderização pode usar frame-skipping e outras técnicas para manter o desempenho o melhor possível.</li>
+                            <li>Deixar que o navegador controle a animação permite otimizações em tempo de execução, como ajuste da frequência de atualização dos frames.</li>
+                        </ul>
+
+                    </section>
+
+                    <!--  Animações com CSS -->
+                    <section>
+                        <h4>Animações com CSS</h4>
+
+                        <span>A configuração de uma animação consistem nas seguintes sub-propriedades de <i>animation</i> :</span>
+                        <br><br>
+
+                        <small><strong>animation-delay</strong>: Configura o delay entre o tempo de carregamento e o início da animação</small>
+                        <small><strong>animation-direction</strong>: Indica se a animação irá recomeçar em uma direção alternativa ou não a cada rodada de execução</small>
+                        <small><strong>animation-duration</strong>: Configura a duração do tempo que deve ter uma animação para completar um ciclo.</small>
+                        <small><strong>animation-iteration-count</strong>: Configura o número de vezes que a animação irá se repetir; você pode definir <i>infinite</i> para a animação repetir-se indefinitamente.</small>
+                        <small><strong>animation-name</strong>: O nome definido aqui, é selecionado pela propriedade @keyframes .</small>
+                        <small><strong>animation-play-state</strong>: Essa propriedade serve para informar se a animação está rodando ou pausada.</small>
+                        <small><strong>animation-timing-function</strong>: Configura como as transições da animação irão ocorrer, através de keyframes.</small>
+                        <small><strong>animation-fill-mode</strong>: Configura que valores são aplicados pela animação antes e depois de se executar.</small>
+
+                    </section>
+
+                    <!--  Exemplos de Animações com CSS - Deslizando texto na tela -->
+                    <section>
+
+                        <h4>Exemplos de animações com CSS - Deslizando texto na tela</h4>
+
+                        <pre>
+                            <code>
+                                h1 {
+                                    animation-duration: 3s;
+                                    animation-name: slidein;
+                                }
+
+                                @keyframes slidein {
+                                    from {
+                                        margin-left: 100%;
+                                        width: 300%
+                                    }
+
+                                    to {
+                                        margin-left: 0%;
+                                        width: 100%;
+                                    }
+                                }
+                            </code>
+                        </pre>
+
+                        <a href="https://developer.mozilla.org/samples/cssref/animations/cssanim1.html" target="_blank">Exemplo on line</a>
+
+                    </section>
+
+                    <!--  Exemplos de Animações com CSS - Deslizando mais rápido o texto na tela -->
+                    <section>
+
+                        <h4>Exemplos de animações com CSS - Deslizando mais rápido texto na tela</h4>
+
+                        <p>Vamos colocar mais um efeito na animação</p>
+
+                        <pre>
+                            <code>
+                                75% {
+                                    font-size: 300%;
+                                    margin-left: 25%;
+                                    width: 150%;
+                                }
+                            </code>
+                        </pre>
+
+                        <a href="https://developer.mozilla.org/samples/cssref/animations/cssanim2.html" target="_blank">Exemplo on line</a>
+
+                    </section>
+
+                    <!--  Exemplos de Animações com CSS - Loop infinito -->
+                    <section>
+
+                        <h4>Exemplos de animações com CSS - Looping infinito</h4>
+
+                        <pre>
+                            <code>
+                                h1 {
+                                    animation-duration: 3s;
+                                    animation-name: slidein;
+                                    animation-iteration-count: infinite;
+                                }
+                            </code>
+                        </pre>
+
+                        <a href="https://developer.mozilla.org/samples/cssref/animations/cssanim3.html" target="_blank">Exemplo on line</a>
+
+                    </section>
+
 
                 </section>
                 <!-- CSS 3 - END -->
@@ -1339,7 +1446,7 @@
                         <li><a href="http://dmitrysoshnikov.com/ecmascript/es5-chapter-2-strict-mode/" target="_blank">strict mode em mais detalhes por Dmitry Soshnikov</a></li>
                         <li><a href="http://www.html5rocks.com/en/tutorials/es6/promises/" target="_blank">Promises (HTML 5 Rocks)</a></li>
                         <li><a href="http://www.uxdesign.blog.br/front-end/entendo-a-estrutura-e-a-semantica-do-html5/" target="_blank">Estrutura Semântica HTML 5</a> </li>
-
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_CSS_animations" target="_blank">Usando animações</a> </li>
 
                         <li><a href="http://mongoosejs.com/" target="_blank">Mongoose</a></li>
                     </ul>
