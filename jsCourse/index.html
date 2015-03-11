@@ -1691,6 +1691,120 @@
                 </section>
                 <!-- Phonegap - END -->
 
+                <!-- Ionic - INIT -->
+                <section>
+
+                    <section>
+                        <h4>Ionic</h4>
+
+                        <p>O inonic revolucionou de maneira significativa o desenvolvimento híbrido pois já trouxe alguns elementos do HTML 5, um ótimo exemplo são os elementos javascript.</p>
+                        <p>Ele utiliza o AngularJS como framework para o JS, isso já lhe força a usar as convenções do framework mas lógico que existem muitas vantagens nisso também, como o MVC, por exemplo.</p>
+                        <p>Ele é focado em performance, não usa jQuery, manipulação mínima de DOM entre outros.</p>
+
+                        <img src="img/ionic-html5-native-framework.jpg" alt="Ionic Framework Logo" height="200">
+                    </section>
+
+                    <!-- Instalação -->
+                    <section>
+                        <h4>Ionic - Instalação</h4>
+
+                        <p>Você precisa apenas do nodeJS e o cordova instalado com isso você pode instalar o mesmo com o comando:</p>
+
+                        <pre>
+                            <code>
+                                npm install -g cordova ionic
+                            </code>
+                        </pre>
+
+                        <small>O "-g" é para instalar o cordova e o ionic de maneira global em sua máquina.</small>
+
+                    </section>
+
+                    <!-- Criando um projeto -->
+                    <section>
+                        <h4>Ionic - Criando um projeto</h4>
+
+                        <p>O ionic disponibiliza diversos templates de projeto, alguns dos mais usados são <i>blank</i>, <i>tabs</i> e <i>sidemenu</i> : </p>
+
+                        <pre>
+                            <code>
+                                $ ionic start myApp sidemenu
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Gerenciamento plataformas -->
+                    <section>
+                        <h4>Ionic - Gerenciando plataformas</h4>
+
+                        <p>Para o uso das plataformas você deve ter o ambiente da mesma instalado ( normalmente o SDK da plataforma ), feito isso, para adicionar a plataforma ao projeto:</p>
+
+                        <pre>
+                            <code>
+                                $ cd pasta-projeto
+                                $ ionic platform add NOME-PLATAFORMA
+                                $ ionic platforms ls //lista plataformas utilizadas no projeto
+                            </code>
+                        </pre>
+
+                        <p>Onde: </p>
+
+                        <ul>
+                            <li>NOME-PLATAFORMA: pode ser ios, firefoxos, android, blackberry10, wp8, windows ...</li>
+                        </ul>
+
+                    </section>
+
+                    <!-- Build -->
+                    <section>
+                        <h4>Ionic - Build</h4>
+
+                        <p>O processo de build é muito simples:</p>
+
+                        <pre>
+                            <code>
+                                $ cd pasta-projeto
+                                $ ionic build // fará build para todas plataformas instaladas
+                                $ ionic build android // limitando o build
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Rodando o projeto - Emulador -->
+                    <section>
+                        <h4>Ionic - Testando o projeto no emulador</h4>
+
+                        <p>Para rodarmos o projeto criado no emulador:</p>
+
+                        <pre>
+                            <code>
+                                $ cd pasta-projeto
+                                $ ionic emulate android //Invoca o emulador do android e executa o app
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Rodando o projeto - Device -->
+                    <section>
+                        <h4>Ionic - Testando o projeto no device</h4>
+
+                        <p>Para rodarmos o projeto criado diretamente no device:</p>
+
+                        <pre>
+                            <code>
+                                $ cd pasta-projeto
+                                $ ionic run android //Não esqueça de colocar o device em modo debug
+                            </code>
+                        </pre>
+
+                    </section>
+
+                </section>
+                <!-- Ionic - END -->
+
                 <!-- The end ? -->
                 <section>
                     <h1>THE END</h1>
