@@ -137,6 +137,7 @@
 
                 </section>
 
+
                 <!-- Características - INIT -->
                 <section>
 
@@ -819,7 +820,6 @@
                 </section>
                 <!-- Strict Mode - INIT -->
 
-
                 <!-- "Bugs", erros, exceções - INIT -->
                <section>
 
@@ -957,7 +957,6 @@
                    </section>
 
                </section>
-
                 <!-- Bugs, erros, exceções - INIT -->
 
 
@@ -1089,6 +1088,7 @@
 
                 </section>
                 <!-- AJAX - END -->
+
 
                 <!-- HTML 5 - INIT -->
                 <section>
@@ -1428,6 +1428,7 @@
 
                 </section>
                 <!-- CSS 3 - END -->
+
 
                 <!-- Apache Cordova - INIT -->
                 <section>
@@ -1805,6 +1806,157 @@
                 </section>
                 <!-- Ionic - END -->
 
+
+                <!-- Testes - INIT -->
+                <section>
+
+                    <section>
+                        <h4>Testes</h4>
+
+                        <p>Sabemos que testes são uma etapa importante e constante de nosso trabalho, separei dois frameworks de testes para vermos:</p>
+
+                        <ul>
+                            <li> <a href="http://mochajs.org/" alt="Mocha JS" target="_blank">Mocha</a> </li>
+                            <li> <a href="http://qunitjs.com/" alt="QUnit JS" target="_blank">QUnit</a> </li>
+                        </ul>
+
+                    </section>
+
+                    <!-- Mocha -->
+                    <section>
+
+                        <h4>Mocha</h4>
+
+                        <p>Projeto open source que visa tornar os testes simples de serem executados e criados. Ele pode ser usado com o NodeJS e /ou browser</p>
+                        <p>Você pode ter testes síncronos e assíncronos.</p>
+
+                        <img src="img/mocha-logo.png" alt="Logo Mocha">
+
+                    </section>
+
+                    <!-- Mocha - Instalação -->
+                    <section>
+                        <h4>Mocha - Instalação</h4>
+
+                        <p>Ele utiliza como convenção pasta <i>test</i> como container dos testes mas você pode indicar outro path / arquivo sem problemas no momento de execução.</p>
+                        <p>Para instalar o mesmo, você pode usar o npm sem problemas: </p>
+
+                        <pre>
+                            <code>
+                                $ npm install -g mocha
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Mocha - 1, 2, 3... mocha! -->
+                    <section>
+                        <h4>1, 2, 3...Mocha!</h4>
+
+                        <pre>
+                            <code>
+                                $ $EDITOR test/test.js
+
+                                var assert = require("assert");
+
+                                describe('Array', function(){
+                                    describe('Comparing two arrays', function() {
+                                        it('should return false when values is not equals', function() {
+                                            var _arr1 = [1, 2, 3],
+                                                _arr2 = [2, 2];
+
+                                            assert.equal(true, _arr1[1] === _arr2[1] );
+                                        });
+                                    });
+                                });
+
+                                $ mocha //roda testes
+                                ✔ 1 test complete (6ms)
+                            </code>
+                        </pre>
+
+                        <img src="img/happy-guy-thumbs-up.gif" alt="Happy meme" height="120">
+                    </section>
+
+                    <!-- Mocha - Testes assíncronos! -->
+                    <section>
+                        <h4>Mocha - Testes assíncronos</h4>
+
+                        <pre>
+                            <code>
+                                $ $EDITOR test/test.js
+
+                                describe('Github API', function() {
+                                    describe('#getRepos()', function() {
+                                        it('should list repos without error', function(done) {
+                                            var _gitHub = new GitHubAPI();
+                                            _github.getRepos(function(err) {
+                                                if (err) throw err;
+                                                done();
+                                            });
+                                        });
+                                    });
+                                });
+
+                                $ mocha // roda os testes
+                                ✔ 1 test complete (56ms)
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Mocha - Hooks -->
+                    <section>
+                        <h4>Mocha - Hooks</h4>
+
+                        <p>Hooks são métodos onde você pode setar pré-condições e resetar seus testes.</p>
+
+                        <pre>
+                            <code>
+                                describe('hooks', function() {
+                                    before(function() {
+                                        // runs before all tests in this block
+                                    })
+                                    after(function(){
+                                        // runs after all tests in this block
+                                    })
+                                    beforeEach(function(){
+                                        // runs before each test in this block
+                                    })
+                                    afterEach(function(){
+                                        // runs after each test in this block
+                                    })
+                                    // test cases
+                                })
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- QUnit -->
+                    <section>
+                        <h4>QUnit</h4>
+
+                        <p>O QUnit é uma lib criada pelo pessoal do Jquery, os testes rodam direto no browser.</p>
+                        <p>O projeto atualmente não tem tido muita manutenção mas é bem estável.</p>
+
+                        <img src="img/qunit-logo.png" height="200">
+
+                    </section>
+
+                    <!-- QUnit - Let's go! -->
+                    <section>
+                        <h4>QUnit - Let's go!</h4>
+
+                        <p>Para testes com o QUnit você irá precisar criar um HTML e CSS bem básicos, incluir seus JSs e incluir a lib em si.</p>
+                        <a href="qunitTest/qunitTest.html" target="_blank">Exemplo</a>
+
+                    </section>
+
+
+                </section>
+                <!-- Testes - END -->
+
                 <!-- The end ? -->
                 <section>
                     <h1>THE END</h1>
@@ -1823,7 +1975,6 @@
                         <li><a href="http://www.uxdesign.blog.br/front-end/entendo-a-estrutura-e-a-semantica-do-html5/" target="_blank">Estrutura Semântica HTML 5</a> </li>
                         <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_CSS_animations" target="_blank">Usando animações</a> </li>
                         <li><a href="https://github.com/rdiego26/presentations/tree/master/jsCourse" target="_blank">Link do curso</a> </li>
-
                     </ul>
                 </section>
 
