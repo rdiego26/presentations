@@ -1,0 +1,6 @@
+
+<% for(var i=0, len = data.followers.length; i < len; i++) {%>
+<li> <%= data.followers[i] %>
+    <span> <a href="<% data.followers[i].html_url %>}}" target="_blank"><%= data.followers[i].login%></a> </span>
+</li>
+<% } %>
