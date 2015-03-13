@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Javascript - um curso rápido</title>
+		<title>Conhecendo o Grunt</title>
 
         <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
 
@@ -53,6 +53,7 @@
                         <small>Criado por <a href="http://github.com/rdiego26" target="_blank">Diego Ramos</a></small>
                     </section>
 
+                    <!-- O que é ? -->
                     <section>
                         <h1>O que é ?</h1>
 
@@ -61,19 +62,35 @@
                         <p>Você cria tarefas em javascript e roda as mesmas em NodeJS.</p>
                     </section>
 
+                    <!-- Como ele funciona ? -->
                     <section>
-                        <h2>Como ele funciona ?</h2>
+                        <h2>Como ele funciona ? ( Sim é só isso )</h2>
 
                         <p>
                             Você descreve as tarefas que deseja automatizar em um arquivo chamado <strong>Gruntfile.js</strong> e chama o comando <i>grunt</i> para de fato rodar as tarefas.
                         </p>
 
-                        <p>O <strong>Gruntfile.js</strong> deve estar na raiz do seu projeto.</p>
+                        <p>
+                            O <strong>Gruntfile.js</strong> deve estar na raiz do seu projeto.
+                        </p>
 
-                        <p></p>
-
+                        <img src="img/happy-guy-thumbs-up.gif" alt="Happy Guy Meme" height="200">
                     </section>
 
+                    <!-- Porque usar ? -->
+                    <section>
+                        <h1>Porque usar ?</h1>
+
+                        <p>Automatização é algo que deve-se sempre buscar, isso possibilita a incrementar e melhorar sempre seus processos e ter garantia de que as coisas não quebrem ou algo seja esquecido.</p>
+
+                        <p>E o mais importante é evitar ouvir de seu chefe ...</p>
+
+                        <p class="fragment">
+                            <img  src="img/pauad-meme-generator-excuse-me-wtf-is-this-shit-8eddbc.jpg" alt="WTF meme" height="250">
+                        </p>
+                    </section>
+
+                    <!-- No que ele pode me ajudar -->
                     <section>
                         <h2>No que ele pode me ajudar</h2>
 
@@ -87,6 +104,25 @@
                             <li class="fragment">Obfuscação</li>
                             <li class="fragment">...</li>
                         </ul>
+                    </section>
+
+                    <!-- Gruntfile -->
+                    <section>
+                        <h4>Gruntfile - Análise de uso real</h4>
+
+                        <p>Meu <a href="https://github.com/rdiego26/diegoramos.mePureHtml/blob/master/Gruntfile.js" target="_blank">Gruntfile.js</a>  atual para o <a href="http://diegoramos.me" target="_blank">diegoramos.me</a> </p>
+
+                        <p>Passos feitos no Gruntfile:</p>
+
+                        <ol>
+                            <li>Copia conteúdo para a pasta build (cria caso não exista)</li>
+                            <li>Lint do JS</li>
+                            <li>Minifica JS</li>
+                            <li>Minifica CSS</li>
+                            <li>Minifica HTML</li>
+                        </ol>
+
+
                     </section>
 
                 </section>
@@ -103,6 +139,8 @@
                 <section>
                     <h2>Links Úteis</h2>
                     <ul>
+                        <li><a href="http://addyosmani.com/blog/making-maven-grunt/" target="_blank">Making Maven Grunt</a> </li>
+
                         <li><a href="https://github.com/hakimel/reveal.js" target="_blank">Reveal JS ( Utilizado para a apresentação )</a></li>
 
                         <li><a href="http://gruntjs.com/getting-started" target="_blank">Getting Started</a> </li>
