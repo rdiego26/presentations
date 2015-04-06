@@ -80,7 +80,6 @@
                             <li>Funções</li>
                             <li>Estrutura de dados</li>
                             <li>Padrões de Objeto</li>
-                            <li>Assincronismo</li>
                             <li>strict mode</li>
                             <li>WTF Javascript</li>
                         </ul>
@@ -99,6 +98,7 @@
                         <ol>
                             <li>Tipificação dinâmica e fraca (<i>loose typing</i>)</li>
                             <li>Objetos dinâmicos</li>
+                            <li>Assíncrona ( e um pouco de Ajax )</li>
                             <li>Funções de 1a. classe</li>
                             <li>Escopo e <i>hoisting</i></li>
                             <li>Orientada a objetos (utilizando protótipos)</li>
@@ -138,6 +138,141 @@
                                 </code>
                         </pre>
 
+                    </section>
+
+                    <!-- Assíncrona -->
+                    <section>
+
+                        <h3>Assíncrona</h3>
+
+                        <p>Javascript por natureza é assíncrona:</p>
+
+                        <pre>
+                            <code>
+                                var _funcaoRapida = function() {  for(var i = 0, len = 5; i < len; i++) { console.log('i: ' + i);  }  }
+                                var _funcaoDemorada = function() {  setTimeout(function() { console.log('Função demorada terminou!'); }, 3000);  }
+                                _funcaoDemorada();
+                                _funcaoRapida();
+                                i: 0
+                                i: 1
+                                i: 2
+                                i: 3
+                                i: 4
+                                Função demorada terminou!
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Ajax -->
+                    <section>
+
+                        <h3>Ajax</h3>
+
+                        <p>Ajax dá vida as aplicações e limpeza as roupas atuais, não tem como negar. Temos necessidades cada vez mais interativas e dinâmicas.</p>
+                        <p>Hoje temos basicamente duas formas de fazermos Ajax:</p>
+
+                        <ol>
+                            <li>Callback</li>
+                            <li>Promise</li>
+                        </ol>
+
+                    </section>
+
+                    <!-- Callback -->
+                    <section>
+
+                        <h3>Callback</h3>
+
+                        <p>Callbacks são basicamente funções passadas como parâmetro para outra. :)</p>
+
+                        <pre>
+                            <code>
+                                var pegaRepos = function(cb) {
+
+                                    var xhr = new XMLHttpRequest();
+                                    xhr.open("GET", "https://api.github.com/users/rdiego26/repos", true);
+
+                                    xhr.onload = function (e) {
+
+                                        if (xhr.readyState === 4) {
+
+                                            if (xhr.status === 200) {
+                                                if (cb && typeof(cb) === "function") { cb(xhr.responseText); }
+                                                else throw("cb is not a function");
+
+                                            } else {
+                                                throw(xhr.statusText);
+                                            }
+
+                                        }
+
+                                    };
+                                    xhr.onerror = function (e) {
+                                        throw(e);
+                                    };
+                                    xhr.send();
+                                    console.log('Obtendo repositórios públicos...');
+
+                                }
+
+                                var printaRepos = function(_repos) {
+                                    _repos = JSON.parse(_repos);
+
+                                    for(var i = 0, len = _repos.length || 0; i < len; i++) {
+                                        console.log('Repo: ' + _repos[i].html_url );
+                                    }
+
+                                }
+
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Promise -->
+                    <section>
+                        <h3>Promise</h3>
+
+                        <p>"Uma forma mais bonita de se escrever callbacks". Ele tem um design de implementação que evitar alguns problemas que temos com <i>callback</i> o mais difundido é o <a href="http://nodebr.com/como-evitar-o-inferno-de-callbacks/" target="_blank">"callback hell"</a>. </p>
+                        <pre>
+                            <code>
+                                var promessa = new Promise(function(resolve, reject) {
+                                // Do the usual XHR stuff
+                                var req = new XMLHttpRequest();
+                                req.open('GET', 'https://api.github.com/users/rdiego26/repos');
+
+                                req.onload = function() {
+                                // This is called even on 404 etc
+                                // so check the status
+                                if (req.status == 200) {
+                                // Resolve the promise with the response text
+                                resolve(req.response);
+                                }
+                                else {
+                                // Otherwise reject with the status text
+                                // which will hopefully be a meaningful error
+                                reject(Error(req.statusText));
+                                }
+                                };
+
+                                // Handle network errors
+                                req.onerror = function() {
+                                reject(Error("Network Error"));
+                                };
+
+                                // Make the request
+                                req.send();
+
+                                });
+
+                                promessa.then(function(response) {
+                                console.log('Success!' + response);
+                                }, function(error){
+                                console.log('Error! ' + error );
+                                });
+                            </code>
+                        </pre>
                     </section>
 
                     <!-- Funções de 1a. classe -->
@@ -320,6 +455,80 @@
                                 };
                             </code>
                         </pre>
+
+                    </section>
+
+                    <!-- Orientada a objetos (herança) -->
+                    <section>
+                        <h3>Orientada a objetos (herança)</h3>
+
+                        <p>Tudo é objeto em Javascript certo ? Logo tudo extende de <i>Object</i>. </p>
+                        <pre>
+                            <code>
+                                var Pessoa = function(_nome) { this.nome = _nome; }
+                                var pessoa = new Pessoa('Fulano');
+                                pessoa; //Pessoa {nome: "Fulano"}
+
+                                Object.prototype.novaPropriedade = 'valor';
+                                pessoa; //Pessoa {nome: "Fulano", novaPropriedade: "valor"}
+
+                                Number.novaPropriedade; //"valor"
+                            </code>
+                        </pre>
+
+                        <p>Bom, parece que é verdade então. :)</p>
+
+                    </section>
+
+                    <!-- Orientada a objetos (herança por protótipo) -->
+                    <section>
+                        <h3>Orientada a objetos (herança por protótipo)</h3>
+
+                        <p>Vamos ver com objetos customizados:</p>
+                        <pre>
+                            <code>
+                                var Linguagem = function(nome, versao, data) {
+                                    this.nome = nome;
+                                    this.versao = versao;
+                                    this.dataCriacao = data;
+                                };
+
+                                var javascript = new Linguagem("Javascript", "1.5", "1980-01-01");
+                                console.log(javascript);        // Linguagem
+                                console.log(javascript.dataCriacao); //"1980-01-01"
+
+                                var Framework = function(nomeFramework, nome, versao) {
+                                    this.nome = nome;
+                                    this.versao = versao;
+                                    this.nomeFramework = nomeFramework;
+                                };
+
+                                // Cria herança com Linguagem
+                                Framework.prototype = new Linguagem();
+
+                                // Corrige o ponteiro do constructor para Framework (está apontando para Linguagem)
+                                Framework.prototype.constructor = Framework;
+
+                                Framework.prototype.feitoEm = function() {
+                                    return this.nomeFramework + " é feito em " + this.nome;
+                                };
+
+                                var django = new Framework("Django", "Python", "2.7");
+                                django.dataCriacao = "2005-01-01";
+
+                                console.log(django);                      // Framework
+                                console.log(django.feitoEm());            // Django é feito em Python
+                                console.log(django.dataCriacao);            // Herdado de Linguagem
+
+                                var angularJS = new Framework("AngularJS", "Javascript", "2.0");
+
+                                console.log(angularJS);                      // Framework
+                                console.log(angularJS.feitoEm());            // AngularJS é feito em Javascript
+
+                            </code>
+                        </pre>
+
+                        <p>A preferência sempre é do objeto e depois o protótipo em casos de propriedades com mesmo nome.</p>
 
                     </section>
 
@@ -604,10 +813,9 @@
                         <h4>Arrays - Continuação</h4>
 
                         <h5>Afinal qual a diferença em usar um e outro modo ?</h5>
-                        <p>Usar a maneira literal e o construtor não existem muita diferenças entre as duas maneiras, um ponto interessante a ser levantado é uma otimização específica no Chrome quando usamos o construtor.</p>
+                        <p>Usar tanto a maneira literal como o construtor lhe permite obter o mesmo resultado, reza a lenda que existe uma otimização específica no Chrome quando usamos o construtor(vi referências a isso mas não encontreo o link, ainda).</p>
                         <br><br>
                         <small>Existem algumas nuances sobre Arrays que veremos mais a frente em WTF Javascript.</small>
-
                     </section>
 
                     <!-- Arrays - Enumeração -->
@@ -775,44 +983,11 @@
                 <!-- Padrões de Objeto - END -->
 
 
-                <!-- Assincronismo - INIT -->
-                <section>
-
-                    <section>
-                        <h4>Assincronismo</h4>
-
-                        <p>Acredito que esse é um dos pontos principais da linguagem. O Javascript roda em uma única thread, por isso é preciso evitar ao máximo que um código Javascript bloqueie a thread.</p>
-                        <p>Por isso, operações demoradas como requisições HTTP e acesso de disco ou a um banco de dados normalmente são executadas de maneira assíncrona.</p>
-                    </section>
-
-                    <!-- Assincronismo - Continuação -->
-                    <section>
-                        <h4>Assincronismo - Continuação</h4>
-
-
-                        <p>
-                            Um ponto importante a ser dito é que o código Javascript sempre é processado por uma única thread, mas isso não quer dizer que o <i>engine</i>
-                            da linguagem e sua aplicação só usem uma thread.
-                        </p>
-
-                        <p> Um exemplo seria, uma aplicação JS solicitar um acesso a banco de dados, pode-se sem problemas usar outra thread para
-                            esse acesso. Mas o código que solicita o acesso e callback que trata o resultado executam na thread única dedicada ao código JS.
-                        </p>
-
-                        <p>
-                            Essa thread única é rodada em um <i>event loop</i>, esse assunto pode render bastante material por si só, um resumo está <a href="http://pt.stackoverflow.com/questions/16950/como-programa%C3%A7%C3%A3o-ass%C3%ADncrona-funciona-em-javascript" target="_blank"> nesse link</a>.
-                        </p>
-
-                    </section>
-
-                </section>
-                <!-- Assincronismo - END -->
-
                 <!-- Strict Mode - INIT -->
                 <section>
 
                     <section>
-                        <h4>Stric mode (ou onde os "sobrinhos" não tem vez )</h4>
+                        <h4>Strict mode (ou onde os "sobrinhos" não tem vez )</h4>
 
                         <p>Neste modo o Javascript roda em um modo mais "rigoroso", neste modo a <i>engine</i> lança erros antes silenciados, efetua diversas verificações para que possam evitar <i>bugs</i> futuros e até mesmo nos probibe o uso de certas partes da linguagem consideradas problemáticas.</p>
 
@@ -1043,7 +1218,9 @@
                         <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=579119" target="_blank">Incidente com a Amazon por não usar strict mode</a></li>
                         <li><a href="http://dmitrysoshnikov.com/ecmascript/es5-chapter-2-strict-mode/" target="_blank">strict mode em mais detalhes por Dmitry Soshnikov</a></li>
                         <li><a href="http://www.html5rocks.com/en/tutorials/es6/promises/" target="_blank">Promises (HTML 5 Rocks)</a></li>
+                        <li><a href="https://developer.mozilla.org/en/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest" target="_blank">Using XMLHttpRequest ( MDN )</a> </li>
                         <li><a href="http://wtfjs.com/" target="_blank">WTF Javascript</a> </li>
+                        <li><a href="http://bocoup.com/weblog/javascript-is-object-oriented-programming/" target="_blank">Javascript is OOP ( Bocoup )</a> </li>
                     </ul>
                 </section>
 
