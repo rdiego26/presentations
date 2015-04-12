@@ -9,4 +9,7 @@ Introdução ao Javascript.
   * Estruturas de dados  
   * Assincronismo  
   * strict mode  
-  * Bugs, errors, exceções
+  * Bugs, errors, exceções 
+ 
+Apresentações:  
+- 11/04/2015 #1 Meetup Barra JS
