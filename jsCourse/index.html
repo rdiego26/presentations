@@ -1,0 +1,2149 @@
+<!doctype html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/html">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Javascript - um curso rápido</title>
+
+        <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+
+		<meta name="description" content="Curso sobre Javascript ministrado na Bematech.">
+		<meta name="author" content="Diego Ramos">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+        <link rel="stylesheet" href="css/custom.css">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+                <!-- <section data-state="soothe"> -->
+
+                    <h2>Javascript</h2>
+                    <img src="img/js-official-logo.png" height="250">
+                    <h2>Um curso rápido</h2>
+
+                    <small>Criado por <a href="http://github.com/rdiego26" target="_blank">Diego Ramos</a></small>
+
+				</section>
+
+                <!-- Ementa -->
+                <section>
+                <!-- <section data-state="soothe"> -->
+                    <section>
+                    <!--<section data-state="soothe"> -->
+                        <h2>Ementa</h2>
+
+                        <ul>
+
+                            <li>Linguagem</li>
+                            <ul>
+                                <li>Características</li>
+                                <li>Tipos Básicos</li>
+                                <li>Funções</li>
+                                <li>Estrutura de dados</li>
+                                <li>Assincronismo</li>
+                                <li>strict mode</li>
+                                <li>Bugs, errors, exceções</li>
+                            </ul>
+
+                            <li>HTTP</li>
+                            <ul>
+                                <li>callbacks</li>
+                                <li>promises</li>
+                            </ul>
+
+                        </ul>
+
+                    </section>
+
+                    <!-- Ementa ~ Continuação -->
+                    <section>
+
+                        <h2>Ementa ( Continuação )</h2>
+
+                        <ul>
+                            <li>HTML 5</li>
+                            <ul>
+                                <li>Inputs</li>
+                                <ul>
+                                    <li>password</li>
+                                    <li>email</li>
+                                    <li>tel</li>
+                                    <li>url</li>
+                                    <li>number</li>
+                                    <li>range</li>
+                                    <li>date, datetime, datetime-local, month, week, time</li>
+                                    <li>search</li>
+                                    <li>color</li>
+                                </ul>
+                            </ul>
+                        </ul>
+
+                    </section>
+
+                    <!-- Ementa ~ Continuação -->
+                    <section>
+
+                        <h2>Ementa ( Continuação )</h2>
+
+                        <ul>
+                            <li>CSS 3</li>
+                            <ul>
+                                <li>Animations</li>
+                            </ul>
+
+                            <li>JS para mobile</li>
+                            <ul>
+                                <li>Frameworks/plataformas</li>
+                            </ul>
+
+                            <li>Ferramentas</li>
+                            <ul>
+                                <li>Testes</li>
+                                <li>Template</li>
+                                <li>Debug</li>
+                            </ul>
+
+                        </ul>
+
+                    </section>
+
+                </section>
+
+
+                <!-- Características - INIT -->
+                <section>
+
+                    <section>
+                        <h1>Características</h1>
+
+                        <ol>
+                            <li>Tipificação dinâmica e fraca (<i>loose typing</i>)</li>
+                            <li>Objetos dinâmicos</li>
+                            <li>Funções de 1a. classe</li>
+                            <li>Escopo e <i>hoisting</i></li>
+                            <li>Orientada a objetos (utilizando protótipos)</li>
+                        </ol>
+                    </section>
+
+                    <!-- Tipificação dinâmica e fraca("loose typing") -->
+                    <section>
+                        <h3>Tipificação dinâmica e fraca("loose typing")</h3>
+
+                        <p>Tipos são associados com valores, não com variáveis:</p>
+                        <pre>
+                                <code data-trim contenteditable>
+                                    var _idade = 10;
+                                    typeof _idade
+                                    ~> "number"
+                                    _idade = '10';
+                                    typeof _idade
+                                    ~> "string"
+                                </code>
+                        </pre>
+                    </section>
+
+                    <!-- Objetos dinâmicos -->
+                    <section>
+                        <h3>Objetos dinâmicos</h3>
+
+                        <p>Objetos são totalmente <strong>mutáveis</strong>, <strong>entensíveis</strong> :</p>
+                        <pre>
+                                <code data-trim contenteditable>
+                                    var _company = {'name':'Bematech S/A', 'site':'http://bematech.com.br/'};
+                                    _company;
+                                    ~> Object {name: "Bematech S/A", site: "http://bematech.com.br/"}
+                                    _company.affiliates = ['Rio de Janeiro', 'Curitiba'];
+                                    _company;
+                                    ~> Object {name: "Bematech S/A", site: "http://bematech.com.br/", affiliates: Array[2]}
+                                </code>
+                        </pre>
+
+                        <small>Durante o curso iremos ver que <strong>praticamente</strong> tudo em Javascript são objetos.</small>
+                    </section>
+
+                    <!-- Funções de 1a. classe -->
+                    <section>
+                        <h3>Funções de 1a. classe</h3>
+
+                        <p>Como uma linguagem <a href="http://pt.wikipedia.org/wiki/Programa%C3%A7%C3%A3o_funcional" target="_blank">funcional</a> que javascript é as funções são tratadas como de 1a. classe.</p>
+
+                        <p>Podemos passar funções por parâmetros ou valores de entradas para outras funções, retornar funções como retorno de funções, resumindo uma função é tratada como um tipo básico.</p>
+
+                        <pre>
+                            <code data-trim contenteditable>
+                                var _digaOla = function(){ console.log('Olá!'); }
+                                var _outraFuncao = function(_param) { _param(); }
+                                _outraFuncao(_digaOla);
+                                ~> Olá!
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Escopo e <i>hoisting</i> -->
+                    <section>
+                        <h3>Escopo e <i>hoisting</i></h3>
+                        <p>Em Javascript temos dois tipos de escopo <strong>função</strong> e <strong>global</strong> porém <strong>somente funções geram escopo</strong>.</p>
+
+                        <ul>
+                            <li>Variável declarada dentro de função, com "var", é local</li>
+                            <li>Variável declarada dentro de função, sem "var", é global</li>
+                            <li>Função declarada dentro de função é local</li>
+                            <li>Variáveis declaradas dentro de bloco <i>if</i>, <i>while</i>, <i>for</i> etc <strong>não são locais ao bloco</strong>, e sim `a função. </li>
+                        </ul>
+                    </section>
+
+                    <!-- Continuação sobre escopo de função -->
+                    <section>
+                        <h3>Escopo de função</h3>
+
+                        <pre>
+                            <code data-trim contenteditable>
+                                var _nome = 'Fulano';
+                                if(true) {
+                                    var _nome = 'Ciclano';
+                                    console.log('_nome: ' + _nome);
+                                    ~> _nome: Ciclano
+                                }
+                                console.log('_nome: ' + _nome);
+                                ~> _nome: Ciclano
+                            </code>
+                        </pre>
+
+                        <img src="img/wtf-said-wtf-meme.jpg" height="180">
+
+                    </section>
+
+                    <!-- Continuação sobre escopo de função -->
+                    <section>
+                        <h3>Continuação sobre escopo de função</h3>
+
+                        <p>Isolando o escopo com <abbr title="Immediately-invoked function expression">IIFE</abbr>, para termos o resultado esperado.</p>
+
+                        <pre>
+                            <code data-trim contenteditable>
+                                var _nome = 'Fulano';
+                                if(true) {
+                                (function() {
+                                    var _nome = 'Ciclano';
+                                    console.log('_nome: ' + _nome);
+                                    })();
+                                ~> _nome: Ciclano
+                                }
+                                console.log('_nome: ' + _nome);
+                                ~> _nome: Fulano
+                            </code>
+                        </pre>
+
+                        <figure>
+                            <img src="img/happy-cute-meme-face-6.png" alt="Happy Meme" height="100">
+                            <!-- <img src="img/happy-cute-meme-face-6.png" alt="Happy Meme" width="304" height="228"> -->
+                            <figcaption>Agora sim. :)</figcaption>
+                        </figure>
+
+                    </section>
+
+                    <!-- Escopo global -->
+                    <section>
+                        <h3>Escopo global</i></h3>
+
+                         <p>Variáveis globais são sempre penduradas em <i>window</i>. Uma boa prática de programação é evitar ao máximo "sujar" o escopo global.</p>
+
+                        <p>Entre os mais fatais problemas com escopos globais é você ter a "sorte" de sobreescrever algum lib que você esteja usando no seu projeto. =(</p>
+
+                        <pre>
+                            <code data-trim contenteditable>
+                                var _nome = 'Fulano';
+                                if(true) {
+                                (function() {
+                                var _nome = 'Ciclano';
+                                console.log('_nome: ' + _nome);
+                                })();
+                                ~> _nome: Ciclano
+                                }
+                                console.log('_nome: ' + _nome);
+                                ~> _nome: Fulano
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Hoisting -->
+                    <section>
+                        <h4>"Variable Hoisting"</h4>
+
+                        <p>Toda vez que uma variável é criada ela é içada para o topo de seu escopo, mesmo ela sendo inicializada com algum valor quando ela é içada ela vai sem valor(<strong>undefined</strong>)</p>
+
+                        <pre>
+                            <code data-trim contenteditable>
+                                try {
+                                    console.log(nome);
+                                } catch (e) {
+                                    console.error('A variável `nome` não foi definida.')
+                                }
+                                ~> A variável `nome` não foi definida.
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Hoisting continuação -->
+                    <section>
+
+                        <h4>Continuação de "variable hoisting"</h4>
+
+                        <pre>
+                            <code data-trim contenteditable>
+                                try {
+                                    console.log(nome);
+                                    var nome = 'Fulano';
+                                } catch (e) {
+                                    console.error('A variável `nome` não foi definida.')
+                                }
+                                ~> undefined
+                            </code>
+                        </pre>
+
+                        <p>Conseguiu ver o <i>hoisting</i> ?</p>
+
+                    </section>
+
+                    <!-- Hoisting continuação -->
+                    <section>
+                        <h4>"Function Hoisting"</h4>
+
+                        <p>O <i>hoisting</i> com funções ocorrem de maneira diferente, todo o corpo da função é içado não apenas o nome</p>
+
+                        <pre>
+                            <code data-trim contenteditable>
+                                hey();
+                                function hey() {
+                                    console.log('Hey!')
+                                }
+                                ~> Hey!
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Orientada a objetos (utilizando protótipos) -->
+                    <section>
+                        <h3>Orientada a objetos (utilizando protótipos)</h3>
+
+                        <p>O Javascript não tem classes, mas podemos objetos podem conter outros objetos. Podemos criar construtores para fazermos o que as classes fazem, a herança em javascript é feita com protótipos ( iremos ver mais a frente ).</p>
+                        <p>Um simples objeto:</p>
+                        <pre>
+                            <code data-trim contenteditable>
+                               var _meuObjeto = {
+                                    dados: [],
+                                    funcao: function() {  },
+                                    campo: ''
+                                };
+                            </code>
+                        </pre>
+
+                        <p>Objetos serão melhores explorados mais a frente.</p>
+
+                    </section>
+
+                </section>
+                <!-- Características - END -->
+
+                <!-- Tipos Básicos - INIT -->
+                <section>
+
+                    <section>
+
+                        <h3>Tipos Básicos</h3>
+
+                        <p>Os tipos primitivos do Javascript são:</p>
+                        <ul>
+                            <li>Boolean</li>
+                            <li>Number</li>
+                            <li>String</li>
+                            <li>Null</li>
+                            <li>Undefined</li>
+                        </ul>
+
+                        <p> <strong>Todos os tipos primitivos - com exceção de <i>null</i> e <i>undefined</i> - são tratados como objetos. </strong> </p>
+
+                    </section>
+
+                    <!-- Boolean -->
+                    <section>
+                        <h3>Boolean</h3>
+
+                        <p><i>true</i> ou <i>false</i>.</p>
+                        <pre>
+                                <code data-trim contenteditable>
+                                    var _resposta = (1 < 2);
+                                    console.log(_resposta);
+                                    ~> true
+                                    typeof _resposta; //checando o tipo
+                                    ~> "boolean"
+                                </code>
+                        </pre>
+
+                        <img src="img/coruja-meme-e-memo.jpg" height="200">
+
+                    </section>
+
+                    <!-- Number -->
+                    <section>
+                        <h3>Number</h3>
+
+                        <p>Valores numéricos inteiros ou de ponto flutuante.</p>
+                        <pre>
+                                <code data-trim contenteditable>
+                                    var _idade = 12;
+                                    var _custo = 10.5;
+                                    typeof _idade;
+                                    ~> "number"
+                                    typeof _custo;
+                                    ~> "number"
+                                </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- String -->
+                    <section>
+                        <h3>String</h3>
+
+                        <p>Caracteres entre aspas simples ou duplas.</p>
+                        <pre>
+                                <code data-trim contenteditable>
+                                    var _nome = 'Ciclano';
+                                    typeof _nome;
+                                    ~> "string"
+                                </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Null -->
+                    <section>
+                        <h3>Null</h3>
+
+                        <p>Tipo primitivo com um único valor: <i>null</i>. É usado para representar ausência de um valor de objeto.</p>
+                        <p><i>Null</i> é um valor <i>falsey</i>, ou seja, é convertido para <i>false</i> quando forçado para booleano.</p>
+                        <pre>
+                                <code data-trim contenteditable>
+                                    !null === true;
+                                    ~> true
+                                    null == true;
+                                    ~> false
+                                </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Undefined -->
+                    <section>
+                        <h3>Undefined</h3>
+
+                        <p>Tipo primitivo com um único valor: <i>undefined</i>. É usado para representar valor não inicializado.</p>
+                        <p><i>Undefined</i> é um valor <i>falsey</i>, ou seja, é convertido para <i>false</i> quando forçado para booleano.</p>
+                        <pre>
+                                <code data-trim contenteditable>
+                                    var _obj = {'nome':'Fulano'};
+                                    console.log(_obj.sobreNome);
+                                    ~> undefined
+
+                                    undefined == false;
+                                    ~> false
+
+                                    !undefined === true;
+                                    ~> true
+                                </code>
+                        </pre>
+
+                    </section>
+
+                </section>
+                <!-- Tipos Básicos - END -->
+
+                <!-- Funções - INIT -->
+                <section>
+
+                    <section>
+                        <h3>Funções</h3>
+
+                        <p>Funções são objetos com a propriedade interna [[Call]], esta indica que um objeto pode ser executado. É esta propriedade que o operador typeof verifica.</p>
+
+                        <p>Vamos ver os seguintes tópicos abaixo:</p>
+
+                        <ol>
+                            <li>Declarações <i>versus</i> expressões</li>
+                            <li>Funções como valores</li>
+                            <li>Parâmetros</li>
+                        </ol>
+                    </section>
+
+                    <!-- Declarações versus expressões -->
+                    <section>
+                        <h4>Declarações <i>versus</i> expressões</h4>
+
+                        <p>Há duas formas literais para as funções. A primeira é a <i>declaração de função</i>, que começa com a palavra-chave <i>function</i> mais o nome da função: </p>
+
+                        <pre>
+                            <code>
+                                function soma(n1, n2) {
+                                    return n1 + n2;
+                                }
+                                soma(1, 3);
+                                ~> 4
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Declarações versus expressões - Continuação -->
+                    <section>
+                        <h4>Declarações <i>versus</i> expressões</h4>
+
+                        <p>A segunda forma é a <i>expressão de função</i>, que não exige um nome após a palavra-chave <i>function</i>, ou seja, esta fução é considerada anônima: </p>
+
+                        <pre>
+                            <code>
+                                var soma = function (n1, n2) {
+                                    return n1 + n2;
+                                }
+                                soma(1, 3);
+                                ~> 4
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Funções como valores -->
+                    <section>
+                        <h4>Funções como valores</h4>
+
+                        <p>Como já dito anteriormente, Javascript tem funções de primeira classe, funções como valores aplica justamente isso. Você pode usar uma função como usaria qualquer outro objeto.</p>
+                        <pre>
+                            <code>
+                                var funcao = function() {
+                                    console.log('Minha função');
+                                };
+                                funcao();
+                                ~> Minha função
+                            </code>
+                        </pre>
+                    </section>
+
+                    <!-- Parâmetros -->
+                    <section>
+                        <h4>Parâmetros</h4>
+
+                        <p>Um aspecto bem interessante de funções javascript é que podemos passar qualquer número de parâmetros para qualquer função sem causar erros. Isso é possível porque os parâmetros são armazenados em uma estrutura semelhante a um array chamada <i>arguments</i>.</p>
+
+                        <pre>
+                            <code>
+                                function adiciona() {
+                                    var _soma = 0,
+                                        _parametros = arguments || [];
+                                    console.log(_parametros.length + ' parâmetros recebidos ');
+                                    for(var i = 0, len = _parametros.length; i < len; i++)
+                                        _soma += _parametros[i];
+
+                                    return _soma;
+                                }
+                                adiciona(9,0,30,40,555,1);
+                                ~> 6 parâmetros recebidos
+                                ~> 635
+                            </code>
+                        </pre>
+                    </section>
+
+                </section>
+                <!-- Funções - END -->
+
+                <!-- Estrutura de dados - INIT -->
+                <section>
+
+                    <section>
+                        <h4>Estrutura de dados</h4>
+
+                        <ol>
+                            <li>Arrays</li>
+                            <li>Objetos</li>
+                        </ol>
+                    </section>
+
+
+                    <!-- Arrays -->
+                    <section>
+                        <h4>Arrays</h4>
+
+                        <p>Arrays são listas de valores indexada por zero.</p>
+                        <p>Existem basicamente duas maneiras de criar <i>arrays</i> em Javascript: </p>
+                        <ol>
+                            <li>var _dados = [];</li>
+                            <li>var _dados = new Array();</li>
+                        </ol>
+
+                    </section>
+
+
+                    <!-- Arrays - Continuação -->
+                    <section>
+                        <h4>Arrays - Continuação</h4>
+
+                        <pre>
+                            <code>
+                                var _dados = [];
+                            </code>
+                        </pre>
+
+                        <p>O código acima cria um objeto com a propriedade <i>length</i>, a qual é exclusiva de <i>Arrays</i>.</p>
+                    </section>
+
+
+                    <!-- Arrays - Continuação -->
+                    <section>
+                        <h4>Arrays - Continuação</h4>
+
+                        <pre>
+                            <code>
+                                var _dados = new Array();
+                            </code>
+                        </pre>
+
+                        <p>O código acima cria um objeto com a propriedade <i>length</i>, a qual é exclusiva de <i>Arrays</i>.</p>
+                    </section>
+
+
+                    <!-- Arrays - Continuação -->
+                    <section>
+                        <h4>Arrays - Continuação</h4>
+
+                        <img src="img/joao-kleber-para-ai.jpg" alt="João Kleber">
+
+                    </section>
+
+                    <!-- Arrays - Continuação -->
+                    <section>
+                        <h4>Arrays - Continuação</h4>
+
+                        <h5>Afinal qual a diferença em usar um e outro modo ?</h5>
+                        <p>Usar a maneira literal e o construtor não existem muita diferenças entre as duas maneiras, um ponto interessante a ser levantado é uma otimização específica no Chrome quando usamos o construtor.</p>
+                        <br><br>
+                        <small>Existem algumas nuances sobre Arrays que veremos mais a frente em bugs/pegadinhas.</small>
+
+                    </section>
+
+                    <!-- Objetos -->
+                    <section>
+                        <h3>Objetos</h3>
+
+                        <p>Objetos são usados constantemente durante o desenvolvimento com JS. Ele nos permite representar o mundo real.</p>
+                        <p>Um objeto tem propriedades associadas a ele, uma propriedade é uma variável associada ao objeto.</p>
+
+                    </section>
+
+                    <!-- Objetos - Continuação -->
+                    <section>
+                        <h3>Objetos - Continuação</h3>
+
+                        <p>As propriedades podem ser acessadas por <i>ponto</i> ou <i>conchetes</i>: </p>
+                        <pre>
+                            <code>
+                                var empresa = {'nome':'Bematech S/A', 'site':'http://bematech.com.br/'}
+                                empresa.nome
+                                ~> Bematech S/A
+                                empresa['nome']
+                                ~> Bematech S/A
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Objetos - Continuação -->
+                    <section>
+                        <h3>Objetos - Continuação</h3>
+
+                        <p>Os colchetes podem ser usados para acessar campos dinamicamente: </p>
+                        <pre>
+                            <code>
+                                var empresa = {'nome':'Bematech S/A', 'site':'http://bematech.com.br/'}
+                                var campo = 'nome'
+                                empresa[campo]
+                                ~> Bematech S/A
+                            </code>
+                        </pre>
+
+                    </section>
+
+                </section>
+                <!-- Estrutura de dados - END -->
+
+
+                <!-- Assincronismo - INIT -->
+                <section>
+
+                    <section>
+                        <h4>Assincronismo</h4>
+
+                        <p>Acredito que esse é um dos pontos principais da linguagem. O Javascript roda em uma única thread, por isso é preciso evitar ao máximo que um código Javascript bloqueie a thread.</p>
+                        <p>Por isso, operações demoradas como requisições HTTP e acesso de disco ou a um banco de dados normalmente são executadas de maneira assíncrona.</p>
+                    </section>
+
+                    <!-- Assincronismo - Continuação -->
+                    <section>
+                        <h4>Assincronismo - Continuação</h4>
+
+
+                        <p>
+                            Um ponto importante a ser dito é que o código Javascript sempre é processado por uma única thread, mas isso não quer dizer que o <i>engine</i>
+                            da linguagem e sua aplicação só usem uma thread.
+                        </p>
+
+                        <p> Um exemplo seria, uma aplicação JS solicitar um acesso a banco de dados, pode-se sem problemas usar outra thread para
+                            esse acesso. Mas o código que solicita o acesso e callback que trata o resultado executam na thread única dedicada ao código JS.
+                        </p>
+
+                        <p>
+                            Essa thread única é rodada em um <i>event loop</i>, esse assunto pode render bastante material por si só, um resumo está <a href="http://pt.stackoverflow.com/questions/16950/como-programa%C3%A7%C3%A3o-ass%C3%ADncrona-funciona-em-javascript" target="_blank"> nesse link</a>.
+                        </p>
+
+                    </section>
+
+                </section>
+                <!-- Assincronismo - END -->
+
+                <!-- Strict Mode - INIT -->
+                <section>
+
+                    <section>
+                        <h4>Stric mode (ou onde os "sobrinhos" não tem vez )</h4>
+
+                        <p>Neste modo o Javascript roda em um modo mais "rigoroso", neste modo a <i>engine</i> lança erros antes silenciados, efetua diversas verificações para que possam evitar <i>bugs</i> futuros e até mesmo nos probibe o uso de certas partes da linguagem consideradas problemáticas.</p>
+
+                        <p>O strict mode é largamente utilizado em uma infinidade e códigos desde bibliotecas `a frameworks, eles nos força a escrever uma código melhor e nos ajuda a pegar <i>bugs</i> mais rapidamente.</p>
+
+                        <p>A seguir vamos ver maneiras de ativar o modo <i>strict</i> . </p>
+                    </section>
+
+                    <!-- strict mode continuação ( Habilitando nível de arquvivo ) -->
+                    <section>
+                        <h4>Stric mode - Habilitando a nível de arquivo</h4>
+
+                        <p>Uma forma é a nível de arquivo, apenas colocando a string "use strict;" ou "use strict;" </p>
+
+                        <p>Nenhum código pode ser colocado antes da declaração (apenas whitespace e comentários são permitidos, do contrário o modo não é ativado). </p>
+
+                        <pre>
+                            <code>
+                                // código "strict"
+                                "use strict";
+                                var _pessoaDeBem = "Olá!";
+
+                                // código "não strict"
+                                var _flamenguista = "Tiro, porrada e bomba!";
+                                "use strict";
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- strict mode continuação ( Habilitando nível de função ) -->
+                    <section>
+                        <h4>Stric mode - Habilitando a nível de função</h4>
+
+                        <p>Você pode querer que apenas uma função rode em modo <i>strict</i> e todo código externo a ela rode normalmente.</p>
+
+                        <p></p>
+
+                        <pre>
+                            <code>
+                                function saudacao() {
+                                "use strict";
+                                var _saudacao = 'Olá!';
+                                with (_saudacao) { console.log(_saudacao); } //Gera erro pois with não é permitido em modo strict :)
+                                }
+
+                                function saudacaoDeSobrinho() {
+                                var _saudacao = 'E ae meRmão!';
+                                with (_saudacao) { console.log(_saudacao); }
+                                }
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- strict mode continuação -->
+                    <section>
+                        <h4>Strict mode -  Continuação</h4>
+
+                        <p> Ok, ok...mas o que muda ?</p>
+
+                        <ul>
+                            <li>Remoção do <i>with</i> </li>
+                            <li>Declaração implícita de variáveis globais ( variável sem <i>var</i> ) </li>
+                            <li>Restrição de nomes ( palavras reservadas )</li>
+                            <li>Parâmetros e propriedades duplicadas</li>
+                        </ul>
+
+                        Existem algumas outras mudanças que ocorreram e temos um <a href="http://dmitrysoshnikov.com/ecmascript/es5-chapter-2-strict-mode/" target="_blank"> ótimo post do Dmitry Soshnikov</a> .
+
+                    </section>
+
+                </section>
+                <!-- Strict Mode - INIT -->
+
+                <!-- "Bugs", erros, exceções - INIT -->
+               <section>
+
+                   <section>
+                        <h2>"Bugs", erros, exceções</h2>
+
+                        <p>Nessa parte veremos algumas coisas estranhas no design da linguagem, tratamento e handling de exceções.</p>
+
+                    </section>
+
+                   <!-- Arrays - usar construtor ou literal ? -->
+                   <section>
+                       <h5>Arrays - usar construtor ou literal ? </h5>
+
+                       <p>Essa parte gera muita dúvida tem uma coisa interessante a ser vista quando usamos o <strong>construtor</strong> do <i>Array</i>. </p>
+
+                       <pre>
+                           <code>
+                               var _data = []; //Isso cria um array vazio
+                               var _arr = new Array(); // Isso cria um array vazio
+                               var _arrInit = new Array(8); // Isso cria um array com 8 posições undefined
+                               var _arrWithValue = new Array(1, 2); // Isso cria um array com duas posições já setadas
+                           </code>
+                       </pre>
+
+                       <p> Isso pode gerar uma pequena confusão, por isso o uso da declaração literal é mais usada. </p>
+
+                       <img src="img/Antonio-Fagundes-É-Uma-Cilada-Bino-Stenio-Garcia.jpeg" height="150" class="fragment">
+                   </section>
+
+                   <!-- isfinite null is true -->
+                   <section>
+                        <h4>isfinite null is true</h4>
+
+                       <p>Temos uma função nativa para verificar se um número é finito que é a <i>isfinite</i>, abaixo alguns usos dela: </p>
+
+                       <pre>
+                           <code>
+                               isFinite(42); // true
+                               isFinite(1/0); // false
+                               isFinite(0/0); // NaN is not finite -> false
+                               isFinite('42'); // true
+                               isFinite('hi'); // false
+                               isFinite(); // false
+                               isFinite(undefined); // false
+
+                               isFinite(null); // true
+                           </code>
+                       </pre>
+
+                       <p>null is true?! oO</p>
+                   </section>
+
+                   <!-- Type casting de boolean -->
+                   <section>
+                       <h4>Type casting de boolean</h4>
+
+                       <pre>
+                           <code>
+                               'true' == true  // returns false
+                           </code>
+                       </pre>
+
+                       <img src="img/pauad-meme-generator-excuse-me-wtf-is-this-shit-8eddbc.jpg" height="230" class="fragment">
+
+                   </section>
+
+                   <!-- Try catch -->
+                   <section>
+                       <h4>Capturando exceções</h4>
+
+                       <p>Nada novo por aqui, usamos o <i>try catch</i>: </p>
+
+                       <pre>
+                           <code>
+                               try {
+                                    throw new Error('Erro!');
+                               } catch(e) {
+                                    console.log('Erro: ' + e.message);
+                               }
+                           </code>
+                       </pre>
+                   </section>
+
+                   <!-- Tipos de erros -->
+                   <section>
+                       <h2>Tipos de erros</h2>
+
+                       <p>Oficialmente ( pode-se criar customizadas ) temos os seguintes tipos de erros: </p>
+
+                       <ul>
+                           <li>
+                               <strong>EvalError</strong>: Usado quando a função eval() é usada incorretamente
+                           </li>
+                           <li>
+                               <strong>RangeError</strong>: Usado quando uma variável numérica exced uma faixa de valores permitida
+                           </li>
+                           <li>
+                               <strong>ReferenceError</strong>: Usado quando é feita uma referência inválida `a uma objeto
+                           </li>
+                           <li>
+                               <strong>SyntaxError</strong>: Usado quando um erro de sintaxe é encontrado
+                           </li>
+                           <li>
+                               <strong>URIError</strong>: Usada quando as funções encodeURI() e decodeURI() são usadas de uma maneira incorreta.
+                           </li>
+                       </ul>
+
+                   </section>
+
+                   <!-- Customizando erros -->
+                   <section>
+                       <h3>Customizando erros</h3>
+
+                       <p>Temos o construtor <i>Error</i>: </p>
+
+                       <pre>
+                           <code>
+                               var launchCustomError = function() {
+                                   var error = new Error('Babou!');
+                                   error.name = 'CustomError';
+                                   throw error;
+                               };
+
+                               try {
+                                launchCustomError();
+                               }
+                               catch(e) {
+                                console.log(e.name + ' - ' + e.message); //CustomError - Babou!
+                               }
+                           </code>
+                       </pre>
+
+                       <strong>Quando não definimos o name, o default é "Error".</strong>
+                   </section>
+
+               </section>
+                <!-- Bugs, erros, exceções - INIT -->
+
+
+                <!-- AJAX - INIT -->
+                <section>
+
+                    <section>
+                        <h5>Ajax</h5>
+
+                        <p>Ajax é o que dá vida as aplicações web / mobile. O conceito de ajax é amplamente divulgado e simples, em resumo são requisições a recursos externos `a aplicação.</p>
+                        <p>Um exemplo de ajax com javascript puro seria: </p>
+
+                        <pre>
+                            <code>
+                                var xhr = new XMLHttpRequest();
+                                xhr.open("GET", "https://api.github.com/users/rdiego26/repos", true);
+
+                                xhr.onload = function (e) {
+
+                                if (xhr.readyState === 4) {
+
+                                    if (xhr.status === 200) {
+                                        console.log(xhr.responseText);
+                                    } else {
+                                        console.error(xhr.statusText);
+                                    }
+
+                                }
+
+                                };
+                                xhr.onerror = function (e) {
+                                    console.error(xhr.statusText);
+                                };
+                                xhr.send();
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Ajax - Continuação -->
+                    <section>
+                        <h5>Ajax - Continuação</h5>
+
+                        <p>Existem diversas bibliotecas javascript que facilitam (deixam menos verboso) o uso de ajax, alguns exemplos: </p>
+
+                        <ul>
+                            <li> <a href="http://zeptojs.com/#ajax" target="_blank">Zepto</a> </li>
+                            <li> <a href="http://api.jquery.com/jquery.ajax/" target="_blank">Jquery</a> </li>
+                        </ul>
+
+                        <br><br><br>
+                        <small>Um site interessante para busca de bibliotecas especializadas é o <a href="http://microjs.com/" target="_blank">Micro.js</a>  </small>
+
+                    </section>
+
+                    <!-- Callbacks -->
+                    <section>
+                        <h4>Callbacks</h4>
+
+                        <p>Callbacks nada mais são do que funções onde são tratado os eventos de sucesso e erro de um processamento assíncrono.</p>
+
+                        <pre>
+                            <code>
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '/project',
+                                    data: { name: 'Super Volcano Lair' },
+                                    dataType: 'json',
+                                    success: function(data){
+                                        // Do some nice stuff here
+                                    },
+                                    error: function(xhr, type){
+                                        alert('Y U NO WORK?')
+                                    }
+                                });
+                            </code>
+                        </pre>
+                    </section>
+
+                    <!-- Promises -->
+                    <section>
+                        <h2>Promises</h2>
+
+                        <p><small>Promise é uma maneira onde se evitam diversos problemas de design de requisições ( um bastante difundido é o <a href="http://nodebr.com/como-evitar-o-inferno-de-callbacks/" target="_blank">"callback hell"</a> ) é uma outra maneira de se fazer ajax, só que o código fica de uma maneira mais limpa. </small></p>
+                        <small>Essa é uma feature ainda <strong>experimental</strong> da especificação ECMAScript 6.</small>
+
+                        <pre>
+                            <code>
+                                var promessa = new Promise(function(resolve, reject) {
+                                    // Do the usual XHR stuff
+                                    var req = new XMLHttpRequest();
+                                    req.open('GET', 'https://api.github.com/users/rdiego26/repos');
+
+                                    req.onload = function() {
+                                        // This is called even on 404 etc
+                                        // so check the status
+                                        if (req.status == 200) {
+                                            // Resolve the promise with the response text
+                                            resolve(req.response);
+                                        }
+                                        else {
+                                        // Otherwise reject with the status text
+                                        // which will hopefully be a meaningful error
+                                        reject(Error(req.statusText));
+                                        }
+                                    };
+
+                                    // Handle network errors
+                                    req.onerror = function() {
+                                        reject(Error("Network Error"));
+                                    };
+
+                                    // Make the request
+                                    req.send();
+
+                                });
+
+                                promessa.then(function(response) {
+                                    console.log('Success!' + response);
+                                }, function(error){
+                                    console.log('Error! ' + error );
+                                });
+
+
+
+                            </code>
+                        </pre>
+
+                    </section>
+
+                </section>
+                <!-- AJAX - END -->
+
+
+                <!-- HTML 5 - INIT -->
+                <section>
+
+                    <section>
+                        <h4>HTML 5</h4>
+
+                        <p>A nova versão do HTML 5 traz muitas novidades e melhorias, entre as mais importantes os tipos de inputs.</p>
+                        <p>Veremos alguns tipos mais usados e os novos.</p>
+
+                        <br><br>
+
+                        <picture>
+                            <img src="img/HTML5_Badge_512.png" alt="HTML 5 logo." width="230">
+                            <figcaption>HTML 5 logo</figcaption>
+                        </picture>
+
+                    </section>
+
+                    <!-- Password -->
+                    <section>
+                        <h4>Password</h4>
+
+                        <p>O nome já diz, esse tipo mascara o valor digitado.</p>
+                        <small>As tags foram removidas para a não renderização.</small>
+
+                        <br>
+
+                        <pre>
+                            <code>
+                               label for="senha" Senha
+                                input id="senha" name="senha" type="password" required="true" maxlength="10" pattern="[A-Za-z]{10}
+                               /label
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Email -->
+                    <section>
+                        <h4>Email</h4>
+
+                        <p>Esse input foi muito solicitado pela comunidade, com ele podemos validar um e-mail sem javascript e sem o uso do pattern.</p>
+
+                        <br>
+
+                        <pre>
+                            <code>
+                                label for="email" Email
+                                input id="email" name="email" type="email" autocomplete="on" required="true" maxlength="10"
+                                /label
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Tel -->
+                    <section>
+                        <h4>Tel</h4>
+
+                        <p>Esse input foi criado para trabalhar com telefones, porém, como existem diversos padrões de telefones não há uma validação, apenas através do atributo pattern.O uso dele é apenas para semântica.</p>
+
+                        <br>
+
+                        <pre>
+                            <code>
+                                label for="phone" Telefone
+                                input id="phone" name="phone" type="tel" autocomplete="on" required="true"
+                                /label
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Url -->
+                    <section>
+                        <h4>Url</h4>
+
+                        <p>Esse tipo valida URLs.</p>
+
+                        <br>
+
+                        <pre>
+                            <code>
+                                label for="url" URL
+                                input id="url" name="url" type="url" autocomplete="on"
+                                /label
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Number -->
+                    <section>
+                        <h4>Number</h4>
+
+                        <p>Esse tipo trabalha com strings que no envio serão transformados em números, o input também disponibilizará setas para incrementar e decrementar o valor do campo.</p>
+
+                        <br>
+
+                        <pre>
+                            <code>
+                                label for="num" Número
+                                input id="num" name="num" type="number" max="30" min="2" step="2"
+                                /label
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Range -->
+                    <section>
+                        <h4>Range</h4>
+
+                        <p>Esse tipo quanto ao valor retornado trabalha igualmente o <i>Number</i> mas visualmente é mostrado um slider.</p>
+
+                        <br>
+
+                        <pre>
+                            <code>
+                                label for="num" Número
+                                input id="num" name="num" type="range" max="30" min="2" step="2"
+                                /label
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Date -->
+                    <section>
+                        <h4>Date</h4>
+
+                        <p>Em alguns navegadores é disponibilizado um datepicker ( Chrome, Firefox ).</p>
+
+                        <br>
+
+                        <pre>
+                            <code>
+                                label for="data" Data
+                                input id="data" name="data" type="date"
+                                /label
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Datetime -->
+                    <section>
+                        <h4>Datetime / Datetime-local</h4>
+
+                        <p>Esses tipos não são suportados por todos os navegadores ainda, por isso são pouco utilizados, mas basicamente eles disponibilizam um date picker com data.</p>
+
+                        <br>
+
+                        <pre>
+                            <code>
+                                label for="data" Data
+                                input id="data" name="data" type="datetime-local"
+                                /label
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- month, week, time -->
+                    <section>
+                        <h4>month, week e time</h4>
+
+                        <p>Respectivamente mês, semana e tempo ( hora e data ). O suporte a esses tipos ainda está baixo, portanto não são muito usados.</p>
+
+                        <br>
+
+                        <pre>
+                            <code>
+                                label for="mes" Mês
+                                    input id="mes" name="mes" type="month"
+                                /label
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Search -->
+                    <section>
+                        <h4>Search</h4>
+
+                        <p>Bom suporte, inclusive alguns browsers estilizando o mesmo ( lupa dentro do input ) e também tem uma boa semântica.</p>
+
+                        <br>
+
+                        <pre>
+                            <code>
+                                label for="busca" Termo
+                                    input id="busca" name="busca" type="search"
+                                /label
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Color -->
+                    <section>
+                        <h4>Color</h4>
+
+                        <p>Ótimo suporte, implementa um colorpicker, o valor da cor retornado é em hexadecimal.</p>
+
+                        <br>
+
+                        <pre>
+                            <code>
+                                label for="cor" Cor
+                                    input id="cor" name="cor" type="color"
+                                /label
+                            </code>
+                        </pre>
+
+                    </section>
+
+                </section>
+                <!-- HTML 5 - END -->
+
+
+                <!-- CSS 3 - INIT -->
+                <section>
+
+                    <section>
+                        <h4>Animações com CSS</h4>
+
+                        <p>As animações com CSS disponibilizam maneiras de animar mudanças de valor CSS de elementos.</p>
+
+                        <img src="img/css3-markup.jpg" height="200">
+
+                    </section>
+
+                    <!--  Animações com CSS -->
+                    <section>
+                        <h4>Animações com CSS</h4>
+
+                        <p>Alguns pontos interessantes a serem vistos: </p>
+
+                        <ul>
+                            <li>São mais fáceis de usar para animações simples, você pode criar mesmo sem saber Javascript.</li>
+                            <li>As animações funcionam muito bem mesmo sob uma carga considerável do sistema. O motor de renderização pode usar frame-skipping e outras técnicas para manter o desempenho o melhor possível.</li>
+                            <li>Deixar que o navegador controle a animação permite otimizações em tempo de execução, como ajuste da frequência de atualização dos frames.</li>
+                        </ul>
+
+                    </section>
+
+                    <!--  Animações com CSS -->
+                    <section>
+                        <h4>Animações com CSS</h4>
+
+                        <span>A configuração de uma animação consistem nas seguintes sub-propriedades de <i>animation</i> :</span>
+                        <br><br>
+
+                        <small><strong>animation-delay</strong>: Configura o delay entre o tempo de carregamento e o início da animação</small>
+                        <small><strong>animation-direction</strong>: Indica se a animação irá recomeçar em uma direção alternativa ou não a cada rodada de execução</small>
+                        <small><strong>animation-duration</strong>: Configura a duração do tempo que deve ter uma animação para completar um ciclo.</small>
+                        <small><strong>animation-iteration-count</strong>: Configura o número de vezes que a animação irá se repetir; você pode definir <i>infinite</i> para a animação repetir-se indefinitamente.</small>
+                        <small><strong>animation-name</strong>: O nome definido aqui, é selecionado pela propriedade @keyframes .</small>
+                        <small><strong>animation-play-state</strong>: Essa propriedade serve para informar se a animação está rodando ou pausada.</small>
+                        <small><strong>animation-timing-function</strong>: Configura como as transições da animação irão ocorrer, através de keyframes.</small>
+                        <small><strong>animation-fill-mode</strong>: Configura que valores são aplicados pela animação antes e depois de se executar.</small>
+
+                    </section>
+
+                    <!--  Exemplos de Animações com CSS - Deslizando texto na tela -->
+                    <section>
+
+                        <h4>Exemplos de animações com CSS - Deslizando texto na tela</h4>
+
+                        <pre>
+                            <code>
+                                h1 {
+                                    animation-duration: 3s;
+                                    animation-name: slidein;
+                                }
+
+                                @keyframes slidein {
+                                    from {
+                                        margin-left: 100%;
+                                        width: 300%
+                                    }
+
+                                    to {
+                                        margin-left: 0%;
+                                        width: 100%;
+                                    }
+                                }
+                            </code>
+                        </pre>
+
+                        <a href="https://developer.mozilla.org/samples/cssref/animations/cssanim1.html" target="_blank">Exemplo on line</a>
+
+                    </section>
+
+                    <!--  Exemplos de Animações com CSS - Deslizando mais rápido o texto na tela -->
+                    <section>
+
+                        <h4>Exemplos de animações com CSS - Deslizando mais rápido texto na tela</h4>
+
+                        <p>Vamos colocar mais um efeito na animação</p>
+
+                        <pre>
+                            <code>
+                                75% {
+                                    font-size: 300%;
+                                    margin-left: 25%;
+                                    width: 150%;
+                                }
+                            </code>
+                        </pre>
+
+                        <a href="https://developer.mozilla.org/samples/cssref/animations/cssanim2.html" target="_blank">Exemplo on line</a>
+
+                    </section>
+
+                    <!--  Exemplos de Animações com CSS - Loop infinito -->
+                    <section>
+
+                        <h4>Exemplos de animações com CSS - Looping infinito</h4>
+
+                        <pre>
+                            <code>
+                                h1 {
+                                    animation-duration: 3s;
+                                    animation-name: slidein;
+                                    animation-iteration-count: infinite;
+                                }
+                            </code>
+                        </pre>
+
+                        <a href="https://developer.mozilla.org/samples/cssref/animations/cssanim3.html" target="_blank">Exemplo on line</a>
+
+                    </section>
+
+
+                </section>
+                <!-- CSS 3 - END -->
+
+
+                <!-- Apache Cordova - INIT -->
+                <section>
+
+                    <section>
+                        <h4>Apache Cordova</h4>
+
+                        <p>Existe uma grande confusão quanto ao Cordova, ele não é um framework e sim uma plataforma para nossos builds. Ele é um set de APIs para acesso nativo as funcionalidades dos dispositivos.</p>
+
+                        <p>O cordova internamente é utilizado por diversos frameworks de mercado, como phonegap e ionic.</p>
+
+                        <p>Com o Apache Cordova podemos fazer diversas coisas entre: </p>
+
+                        <ul>
+                            <li>Gerenciar as plataformas ( Android, IOS ... ) de um projeto</li>
+                            <li>Adicionar plugins de terceiros ou oficiais para os mais diversos fins</li>
+                            <li>Uso de sua <a href="http://cordova.apache.org/docs/en/4.0.0/cordova_plugins_pluginapis.md.html#Plugin%20APIs" target="_blank">API</a> para acessar recursos nativos do aparelho</li>
+                        </ul>
+
+                        <img src="img/Apache_Cordova1.png" alt="Apache Cordova Logo" height="130">
+
+                    </section>
+
+                    <!-- Instalação -->
+                    <section>
+                        <h4>Apache Cordova - Instalação</h4>
+
+                        <p>Você precisa apenas do nodeJS instalado com isso você pode instalar o mesmo com o comando:</p>
+
+                        <pre>
+                            <code>
+                                npm install -g cordova
+                            </code>
+                        </pre>
+
+                        <small>O "-g" é para instalar o cordova de maneira global em sua máquina.</small>
+
+                    </section>
+
+                    <!-- Criando um projeto -->
+                    <section>
+                        <h4>Apache Cordova - Criando um projeto</h4>
+
+                        <p>Para criar um projeto no cordova use o comando abaixo: </p>
+
+                        <pre>
+                            <code>
+                                $ cordova create hello br.com.bematech.hello HelloWorld
+                            </code>
+                        </pre>
+
+                        <p>Onde: </p>
+
+                        <ul>
+                            <li><strong>hello</strong>: Nome do diretório que será gerado para conter o projeto</li>
+                            <li><strong>br.com.bematech.hello</strong>: Identificador do projeto, "pacote"</li>
+                            <li><strong>HelloWorld</strong>: Nome com o qual a aplicação será instalado, este é opcional</li>
+                        </ul>
+
+                    </section>
+
+                    <!-- Gerenciamento plataformas -->
+                    <section>
+                        <h4>Apache Cordova - Gerenciando plataformas</h4>
+
+                        <p>Para o uso das plataformas você deve ter o ambiente da mesma instalado ( normalmente o SDK da plataforma ), feito isso, para adicionar a plataforma ao projeto:</p>
+
+                        <pre>
+                            <code>
+                                $ cd pasta-projeto
+                                $ cordova platform add NOME-PLATAFORMA
+                                $ cordova platforms ls //lista plataformas utilizadas no projeto
+                            </code>
+                        </pre>
+
+                        <p>Onde: </p>
+
+                        <ul>
+                            <li>NOME-PLATAFORMA: pode ser ios, firefoxos, android, blackberry10, wp8, windows ...</li>
+                        </ul>
+
+                    </section>
+
+                    <!-- Build -->
+                    <section>
+                        <h4>Apache Cordova - Build</h4>
+
+                        <p>O processo de build é muito simples:</p>
+
+                        <pre>
+                            <code>
+                                $ cd pasta-projeto
+                                $ cordova build // fará build para todas plataformas instaladas
+                                $ cordova build android // limitando o build
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Rodando o projeto - Emulador -->
+                    <section>
+                        <h4>Apache Cordova - Testando o projeto no emulador</h4>
+
+                        <p>Para rodarmos o projeto criado no emulador:</p>
+
+                        <pre>
+                            <code>
+                                $ cd pasta-projeto
+                                $ cordova emulate android //Invoca o emulador do android e executa o app
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Rodando o projeto - Device -->
+                    <section>
+                        <h4>Apache Cordova - Testando o projeto no device</h4>
+
+                        <p>Para rodarmos o projeto criado diretamente no device:</p>
+
+                        <pre>
+                            <code>
+                                $ cd pasta-projeto
+                                $ cordova run android //Não esqueça de colocar o device em modo debug
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Adicionando plugins no projeto -->
+                    <section>
+                        <h4>Apache Cordova - Adicionando plugins ao projeto</h4>
+
+                        <p>Podemos adicionar plugins diretamente do <a href="http://plugins.cordova.io/#/" target="_blank">repositório</a> do Cordova: </p>
+
+                        <pre>
+                            <code>
+                                $ cd pasta-projeto
+                                $ cordova plugin search bar code
+                                $ cordova plugin add com.phonegap.plugins.barcodescanner //Adicionando ao projeto
+                                $ cordova plugin ls //Lista plugins instalados no projeto
+                            </code>
+                        </pre>
+
+                    </section>
+
+                </section>
+                <!-- Apache Cordova - END -->
+
+                <!-- Phonegap - INIT -->
+                <section>
+
+                    <section>
+                        <h4>Phonegap</h4>
+
+                        <p>O phonegap inicialmente foi criado e mantido até outubro de 2012 pela Apache Software Foundation sob o nome de Apache Cordova quando foi liberado sob a licença Apache 2.</p>
+                        <p>Tem uma ótima comunidade, diversos plugins de alta qualidade ( outros nem tanto ) e sua utilização é bem simples.</p>
+
+                        <img src="img/phonegap.png" alt="Phonegap Logo" height="200">
+                    </section>
+
+                    <!-- Instalação -->
+                    <section>
+                        <h4>Phonegap - Instalação</h4>
+
+                        <p>Você precisa apenas do nodeJS instalado com isso você pode instalar o mesmo com o comando:</p>
+
+                        <pre>
+                            <code>
+                                npm install -g phonegap
+                            </code>
+                        </pre>
+
+                        <small>O "-g" é para instalar o phonegap de maneira global em sua máquina.</small>
+
+                    </section>
+
+                    <!-- Criando um projeto -->
+                    <section>
+                        <h4>Phonegap - Criando um projeto</h4>
+
+                        <p>Para criar um projeto no phonegap use o comando abaixo: </p>
+
+                        <pre>
+                            <code>
+                                $ phonegap create my-app
+                                $ cd my-app
+                            </code>
+                        </pre>
+
+                        <p>O comando acima cria um projeto chamado "Hello World" com o id com.phonegap.helloworld .</p>
+
+                    </section>
+
+                    <!-- Gerenciamento plataformas -->
+                    <section>
+                        <h4>Phonegap - Gerenciando plataformas</h4>
+
+                        <p>Intermanente o cordova é usado, basicamente é um wrapper, muitos devs usam diretamente o cordova para tal mas para conhecimento, segue abaixo: </p>
+
+                        <pre>
+                            <code>
+                                $ phonegap platform add NOME-PLATAFORMA
+                            </code>
+                        </pre>
+
+                        <p>Onde: </p>
+
+                        <ul>
+                            <li>NOME-PLATAFORMA: pode ser ios, firefoxos, android, blackberry10, wp8, windows ...</li>
+                        </ul>
+
+                    </section>
+
+                    <!-- Build -->
+                    <section>
+                        <h4>Phonegap - Build</h4>
+
+                        <p>O processo de build é muito simples:</p>
+
+                        <pre>
+                            <code>
+                                $ cd pasta-projeto
+                                $ phonegap build // fará build para todas plataformas instaladas
+                                $ phonegap build android // limitando o build
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Rodando o projeto - Emulador -->
+                    <section>
+                        <h4>Phonegap - Testando o projeto no emulador</h4>
+
+                        <p>Para rodarmos o projeto criado no emulador:</p>
+
+                        <pre>
+                            <code>
+                                $ cd pasta-projeto
+                                $ phonegap emulate android //Invoca o emulador do android e executa o app
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Rodando o projeto - Device -->
+                    <section>
+                        <h4>Apache Cordova - Testando o projeto no device</h4>
+
+                        <p>Para rodarmos o projeto criado diretamente no device:</p>
+
+                        <pre>
+                            <code>
+                                $ cd pasta-projeto
+                                $ cordova run android //Não esqueça de colocar o device em modo debug
+                            </code>
+                        </pre>
+
+                    </section>
+
+                </section>
+                <!-- Phonegap - END -->
+
+                <!-- Ionic - INIT -->
+                <section>
+
+                    <section>
+                        <h4>Ionic</h4>
+
+                        <p>O inonic revolucionou de maneira significativa o desenvolvimento híbrido pois já trouxe alguns elementos do HTML 5, um ótimo exemplo são os elementos javascript.</p>
+                        <p>Ele utiliza o AngularJS como framework para o JS, isso já lhe força a usar as convenções do framework mas lógico que existem muitas vantagens nisso também, como o MVC, por exemplo.</p>
+                        <p>Ele é focado em performance, não usa jQuery, manipulação mínima de DOM entre outros.</p>
+
+                        <img src="img/ionic-html5-native-framework.jpg" alt="Ionic Framework Logo" height="200">
+                    </section>
+
+                    <!-- Instalação -->
+                    <section>
+                        <h4>Ionic - Instalação</h4>
+
+                        <p>Você precisa apenas do nodeJS e o cordova instalado com isso você pode instalar o mesmo com o comando:</p>
+
+                        <pre>
+                            <code>
+                                npm install -g cordova ionic
+                            </code>
+                        </pre>
+
+                        <small>O "-g" é para instalar o cordova e o ionic de maneira global em sua máquina.</small>
+
+                    </section>
+
+                    <!-- Criando um projeto -->
+                    <section>
+                        <h4>Ionic - Criando um projeto</h4>
+
+                        <p>O ionic disponibiliza diversos templates de projeto, alguns dos mais usados são <i>blank</i>, <i>tabs</i> e <i>sidemenu</i> : </p>
+
+                        <pre>
+                            <code>
+                                $ ionic start myApp sidemenu
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Gerenciamento plataformas -->
+                    <section>
+                        <h4>Ionic - Gerenciando plataformas</h4>
+
+                        <p>Para o uso das plataformas você deve ter o ambiente da mesma instalado ( normalmente o SDK da plataforma ), feito isso, para adicionar a plataforma ao projeto:</p>
+
+                        <pre>
+                            <code>
+                                $ cd pasta-projeto
+                                $ ionic platform add NOME-PLATAFORMA
+                                $ ionic platforms ls //lista plataformas utilizadas no projeto
+                            </code>
+                        </pre>
+
+                        <p>Onde: </p>
+
+                        <ul>
+                            <li>NOME-PLATAFORMA: pode ser ios, firefoxos, android, blackberry10, wp8, windows ...</li>
+                        </ul>
+
+                    </section>
+
+                    <!-- Build -->
+                    <section>
+                        <h4>Ionic - Build</h4>
+
+                        <p>O processo de build é muito simples:</p>
+
+                        <pre>
+                            <code>
+                                $ cd pasta-projeto
+                                $ ionic build // fará build para todas plataformas instaladas
+                                $ ionic build android // limitando o build
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Rodando o projeto - Emulador -->
+                    <section>
+                        <h4>Ionic - Testando o projeto no emulador</h4>
+
+                        <p>Para rodarmos o projeto criado no emulador:</p>
+
+                        <pre>
+                            <code>
+                                $ cd pasta-projeto
+                                $ ionic emulate android //Invoca o emulador do android e executa o app
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Rodando o projeto - Device -->
+                    <section>
+                        <h4>Ionic - Testando o projeto no device</h4>
+
+                        <p>Para rodarmos o projeto criado diretamente no device:</p>
+
+                        <pre>
+                            <code>
+                                $ cd pasta-projeto
+                                $ ionic run android //Não esqueça de colocar o device em modo debug
+                            </code>
+                        </pre>
+
+                    </section>
+
+                </section>
+                <!-- Ionic - END -->
+
+
+                <!-- Testes - INIT -->
+                <section>
+
+                    <section>
+                        <h4>Testes</h4>
+
+                        <p>Sabemos que testes são uma etapa importante e constante de nosso trabalho, separei dois frameworks de testes para vermos:</p>
+
+                        <ul>
+                            <li> <a href="http://mochajs.org/" alt="Mocha JS" target="_blank">Mocha</a> </li>
+                            <li> <a href="http://qunitjs.com/" alt="QUnit JS" target="_blank">QUnit</a> </li>
+                        </ul>
+
+                    </section>
+
+                    <!-- Mocha -->
+                    <section>
+
+                        <h4>Mocha</h4>
+
+                        <p>Projeto open source que visa tornar os testes simples de serem executados e criados. Ele pode ser usado com o NodeJS e /ou browser</p>
+                        <p>Você pode ter testes síncronos e assíncronos.</p>
+
+                        <img src="img/mocha-logo.png" alt="Logo Mocha">
+
+                    </section>
+
+                    <!-- Mocha - Instalação -->
+                    <section>
+                        <h4>Mocha - Instalação</h4>
+
+                        <p>Ele utiliza como convenção pasta <i>test</i> como container dos testes mas você pode indicar outro path / arquivo sem problemas no momento de execução.</p>
+                        <p>Para instalar o mesmo, você pode usar o npm sem problemas: </p>
+
+                        <pre>
+                            <code>
+                                $ npm install -g mocha
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Mocha - 1, 2, 3... mocha! -->
+                    <section>
+                        <h4>1, 2, 3...Mocha!</h4>
+
+                        <pre>
+                            <code>
+                                $ $EDITOR test/test.js
+
+                                var assert = require("assert");
+
+                                describe('Array', function(){
+                                    describe('Comparing two arrays', function() {
+                                        it('should return false when values is not equals', function() {
+                                            var _arr1 = [1, 2, 3],
+                                                _arr2 = [2, 2];
+
+                                            assert.equal(true, _arr1[1] === _arr2[1] );
+                                        });
+                                    });
+                                });
+
+                                $ mocha //roda testes
+                                ✔ 1 test complete (6ms)
+                            </code>
+                        </pre>
+
+                        <img src="img/happy-guy-thumbs-up.gif" alt="Happy meme" height="120">
+                    </section>
+
+                    <!-- Mocha - Testes assíncronos! -->
+                    <section>
+                        <h4>Mocha - Testes assíncronos</h4>
+
+                        <pre>
+                            <code>
+                                $ $EDITOR test/test.js
+
+                                describe('Github API', function() {
+                                    describe('#getRepos()', function() {
+                                        it('should list repos without error', function(done) {
+                                            var _gitHub = new GitHubAPI();
+                                            _github.getRepos(function(err) {
+                                                if (err) throw err;
+                                                done();
+                                            });
+                                        });
+                                    });
+                                });
+
+                                $ mocha // roda os testes
+                                ✔ 1 test complete (56ms)
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Mocha - Hooks -->
+                    <section>
+                        <h4>Mocha - Hooks</h4>
+
+                        <p>Hooks são métodos onde você pode setar pré-condições e resetar seus testes.</p>
+
+                        <pre>
+                            <code>
+                                describe('hooks', function() {
+                                    before(function() {
+                                        // runs before all tests in this block
+                                    })
+                                    after(function(){
+                                        // runs after all tests in this block
+                                    })
+                                    beforeEach(function(){
+                                        // runs before each test in this block
+                                    })
+                                    afterEach(function(){
+                                        // runs after each test in this block
+                                    })
+                                    // test cases
+                                })
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- QUnit -->
+                    <section>
+                        <h4>QUnit</h4>
+
+                        <p>O QUnit é uma lib criada pelo pessoal do Jquery, os testes rodam direto no browser.</p>
+                        <p>O projeto atualmente não tem tido muita manutenção mas é bem estável.</p>
+
+                        <img src="img/qunit-logo.png" height="200">
+
+                    </section>
+
+                    <!-- QUnit - Let's go! -->
+                    <section>
+                        <h4>QUnit - Let's go!</h4>
+
+                        <p>Para testes com o QUnit você irá precisar criar um HTML e CSS bem básicos, incluir seus JSs e incluir a lib em si.</p>
+                        <a href="qunitTest/qunitTest.html" target="_blank">Exemplo</a>
+
+                    </section>
+
+                </section>
+                <!-- Testes - END -->
+
+                <!-- Templates - INIT -->
+                <section>
+                    <h4>Templates</h4>
+
+                    <p>Ferramentas de template nos ajudam a montar views de maneira organizada, concisa e dinâmica.</p>
+
+                    <p>Veremos algumas ferramentas que nos ajudam nesse processo.</p>
+
+                </section>
+
+                <!-- Handlebars -->
+                <section>
+
+                    <!-- Handlebars -->
+                    <section>
+                        <h4>Handlebars</h4>
+
+                        <p>Lhe ajuda a ter layouts semânticos sem estresse. Utiliza {{  }} como operador.</p>
+
+                        <img src="img/handlebars-logo.png" alt="Handlebars Logo" height="200">
+                    </section>
+
+                    <!-- Handlebars - Análise de exemplo -->
+                    <section>
+                        <h4>Handlebars - Análise de exemplo</h4>
+
+                        <a href="templating/handlebars/handlebars.html" target="_blank">Followers do github</a>
+
+                    </section>
+
+                </section>
+
+                <!-- EJS -->
+                <section>
+
+                    <!-- EJS -->
+                    <section>
+                        <h4>Embedded Javascript</h4>
+
+                        <p>Se assemelha a sintaxe de um JSP. Código entre <% %> é executado e entre  <%= %> o resultado é adicionado ao HTML.</p>
+
+                        <img src="img/ejs-logo.png" height="150">
+                    </section>
+
+                    <!-- EJS - Análise de exemplo -->
+                    <section>
+                        <h4>EJS - Análise de exemplo</h4>
+
+                        <a href="templating/ejs/ejs.html" target="_blank">Followers do github</a>
+
+                    </section>
+
+                </section>
+
+                <!-- Templates - END -->
+
+
+                <!-- Debug - INIT -->
+                <section>
+
+                    <section>
+                        <h4>Debug ( is on the table ) </h4>
+
+                        <p>E chegamos a uma parte muito importante: debugar nosso código!</p>
+
+                        <p>Debugar nos ajudar em muitas coisas desde criar testes realmente efetivos a consequentemente cobrir todas situações de negócio.</p>
+                    </section>
+
+                    <!-- O browser é seu amigo! -->
+                    <section>
+                        <h4>O browser é seu amigo!</h4>
+
+                        <p>Os browsers sempre disponibilizaram o "console do desenvolvedor" e este vem sendo sempre aprimorado conforme a web cresce e toma força.</p>
+
+                        <p>Escolhi o console do Chrome pelo fato de ser o que eu mais uso. :)</p>
+
+
+                        <img src="img/Google_Chrome_icon_(2011).svg.png" alt="Google Chrome Logo" height="230">
+                    </section>
+
+                    <!-- Google Chrome -->
+                    <section>
+                        <h4>Google Chrome</h4>
+
+                        <p>O developer tools do Chrome se divide nas seguintes abas: </p>
+
+
+                        <p>
+                            <small>Elements: Disponibiliza todo o DOM para manipulação em tempo real.</small>
+                        </p>
+
+                        <p>
+                            <small>Network: Informações sobre todos recursos usados para renderizar a página.</small>
+                        </p>
+
+                        <p>
+                            <small>Sources: Organiza os domínios envolvidos no carregamento da página.</small>
+                        </p>
+
+                        <p>
+                            <small>Timeline: Permite a gravação de diversos dados para análise de performance. Ideal para encontrar gargalos que só acontecem "em produção".</small>
+                        </p>
+
+                        <p>
+                            <small>Profiles: Profiling para o JS. Isso valida se otimizações de código foram de fato efetivas.</small>
+                        </p>
+
+                        <p>
+                            <small>Resources: Disponibiliza de maneira organizada e objetiva dados sobre sessão, imagens, fontes, scripts, cookies, etc.</small>
+                        </p>
+
+                        <p>
+                            <small>Audits: Ferramenta incrível que pode lhe dar diversas dicas sobre melhoria pensando em performance e qualidade de código de sua página.</small>
+                        </p>
+
+                        <p>
+                            <small>Console: Playground! :)</small>
+                        </p>
+
+                    </section>
+
+                </section>
+                <!-- Debug - END -->
+
+                <!-- The end ? -->
+                <section>
+                    <h1>THE END</h1>
+                    <h3>Questions or let's code ? :)</h3>
+                </section>
+
+                <!-- Links Úteis -->
+                <section>
+                    <h2>Links Úteis</h2>
+                    <ul>
+                        <li><a href="http://esprima.org/demo/validate.html/" target="_blank">Syntax Validor ( inclusive para strict mode )</a></li>
+                        <li><a href="https://github.com/hakimel/reveal.js" target="_blank">Reveal JS ( Utilizado para a apresentação )</a></li>
+                        <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=579119" target="_blank">Incidente com a Amazon por não usar strict mode</a></li>
+                        <li><a href="http://dmitrysoshnikov.com/ecmascript/es5-chapter-2-strict-mode/" target="_blank">strict mode em mais detalhes por Dmitry Soshnikov</a></li>
+                        <li><a href="http://www.html5rocks.com/en/tutorials/es6/promises/" target="_blank">Promises (HTML 5 Rocks)</a></li>
+                        <li><a href="http://www.uxdesign.blog.br/front-end/entendo-a-estrutura-e-a-semantica-do-html5/" target="_blank">Estrutura Semântica HTML 5</a> </li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_CSS_animations" target="_blank">Usando animações</a> </li>
+                        <li><a href="https://github.com/rdiego26/presentations/tree/master/jsCourse" target="_blank">Link do curso</a> </li>
+                        <li><a href="http://garann.github.io/template-chooser/" target="_blank">Template Chooser</a> </li>
+                        <li><a href="http://www.embeddedjs.com/" target="_blank">EJS</a></li>
+                        <li><a href="https://developer.chrome.com/devtools">Google Developer Tools Overview</a> </li>
+                    </ul>
+                </section>
+
+
+                <section id="page13">
+                    <h1>Obrigado!</h1>
+                </section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+                //autoSlide: 5000, //in miliseconds
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

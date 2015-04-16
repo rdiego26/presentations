@@ -1,0 +1,1269 @@
+<!doctype html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/html">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Javascript - um curso rápido</title>
+
+        <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+
+		<meta name="description" content="Curso sobre Javascript ministrado na Bematech.">
+		<meta name="author" content="Diego Ramos">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+        <link rel="stylesheet" href="css/custom.css">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+
+                    <img src="img/js-official-logo.png" height="250">
+                    <h2>Prazer, Javascript</h2>
+
+                    <br>
+                    <small>Por <a href="http://github.com/rdiego26" target="_blank">Diego Ramos</a></small>
+
+				</section>
+
+                <!-- About me -->
+                <section>
+                    <section>
+                        <h2>About me</h2>
+
+                        <ul>
+                            <li>Desenvolvedor web e mobile ( se vier desktop estamos ae )</li>
+                            <li>Entusiasta open-source</li>
+                            <li>CTO e Co-Founder na <a href="http://encomendainteligente.com.br" target="_blank">Encomenda Inteligente</a> e <a href="http://wiseweb.solutions/" target="_blank">Wise Web Solutions</a> </li>
+                            <li>Atualmente trabalho na <a href="http://bematech.com.br" alt="Bematech" target="_blank">Bematech</a> </li>
+                        </ul>
+
+                    </section>
+
+                </section>
+
+                <!-- O que veremos -->
+                <section>
+                    <section>
+
+                        <h2>O que veremos</h2>
+
+                        <ul>
+                            <li>Características</li>
+                            <li>Tipos Básicos</li>
+                            <li>Funções</li>
+                            <li>Estrutura de dados</li>
+                            <li>Padrões de Objeto</li>
+                            <li>strict mode</li>
+                            <li>WTF Javascript</li>
+                        </ul>
+
+                    </section>
+
+                </section>
+
+
+                <!-- Características - INIT -->
+                <section>
+
+                    <section>
+                        <h1>Características</h1>
+
+                        <ol>
+                            <li>Tipificação dinâmica e fraca (<i>loose typing</i>)</li>
+                            <li>Objetos dinâmicos</li>
+                            <li>Assíncrona ( e um pouco de Ajax )</li>
+                            <li>Funções de 1a. classe</li>
+                            <li>Escopo e <i>hoisting</i></li>
+                            <li>Orientada a objetos (utilizando protótipos)</li>
+                        </ol>
+                    </section>
+
+                    <!-- Tipificação dinâmica e fraca("loose typing") -->
+                    <section>
+                        <h3>Tipificação dinâmica e fraca("loose typing")</h3>
+
+                        <p>Tipos são associados com valores, não com variáveis:</p>
+                        <pre>
+                                <code data-trim contenteditable>
+                                    var _idade = 10;
+                                    typeof _idade
+                                    ~> "number"
+                                    _idade = '10';
+                                    typeof _idade
+                                    ~> "string"
+                                </code>
+                        </pre>
+                    </section>
+
+                    <!-- Objetos dinâmicos -->
+                    <section>
+                        <h3>Objetos dinâmicos</h3>
+
+                        <p>Objetos são totalmente <strong>mutáveis</strong>, <strong>entensíveis</strong> :</p>
+                        <pre>
+                                <code data-trim contenteditable>
+                                var _company = {'name':'Bematech S/A', 'site':'http://bematech.com.br/'};
+                                _company;
+                                ~> Object {name: "Bematech S/A", site: "http://bematech.com.br/"}
+                                _company.affiliates = ['Rio de Janeiro', 'Curitiba'];
+                                _company;
+                                ~> Object {name: "Bematech S/A", site: "http://bematech.com.br/", affiliates: Array[2]}
+                                </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Assíncrona -->
+                    <section>
+
+                        <h3>Assíncrona</h3>
+
+                        <p>Javascript por natureza é assíncrona:</p>
+
+                        <pre>
+                            <code>
+                                var _funcaoRapida = function() {  for(var i = 0, len = 5; i < len; i++) { console.log('i: ' + i);  }  }
+                                var _funcaoDemorada = function() {  setTimeout(function() { console.log('Função demorada terminou!'); }, 3000);  }
+                                _funcaoDemorada();
+                                _funcaoRapida();
+                                i: 0
+                                i: 1
+                                i: 2
+                                i: 3
+                                i: 4
+                                Função demorada terminou!
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Ajax -->
+                    <section>
+
+                        <h3>Ajax</h3>
+
+                        <p>Ajax dá vida as aplicações e limpeza as roupas atuais, não tem como negar. Temos necessidades cada vez mais interativas e dinâmicas.</p>
+                        <p>Hoje temos basicamente duas formas de fazermos Ajax:</p>
+
+                        <ol>
+                            <li>Callback</li>
+                            <li>Promise</li>
+                        </ol>
+
+                    </section>
+
+                    <!-- Callback -->
+                    <section>
+
+                        <h3>Callback</h3>
+
+                        <p>Callbacks são basicamente funções passadas como parâmetro para outra. :)</p>
+
+                        <pre>
+                            <code>
+                                var pegaRepos = function(cb) {
+
+                                    var xhr = new XMLHttpRequest();
+                                    xhr.open("GET", "https://api.github.com/users/rdiego26/repos", true);
+
+                                    xhr.onload = function (e) {
+
+                                        if (xhr.readyState === 4) {
+
+                                            if (xhr.status === 200) {
+                                                if (cb && typeof(cb) === "function") { cb(xhr.responseText); }
+                                                else throw("cb is not a function");
+
+                                            } else {
+                                                throw(xhr.statusText);
+                                            }
+
+                                        }
+
+                                    };
+                                    xhr.onerror = function (e) {
+                                        throw(e);
+                                    };
+                                    xhr.send();
+                                    console.log('Obtendo repositórios públicos...');
+
+                                }
+
+                                var printaRepos = function(_repos) {
+                                    _repos = JSON.parse(_repos);
+
+                                    for(var i = 0, len = _repos.length || 0; i < len; i++) {
+                                        console.log('Repo: ' + _repos[i].html_url );
+                                    }
+
+                                }
+
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Promise -->
+                    <section>
+                        <h3>Promise</h3>
+
+                        <p>"Uma forma mais bonita de se escrever callbacks". Ele tem um design de implementação que evitar alguns problemas que temos com <i>callback</i> o mais difundido é o <a href="http://nodebr.com/como-evitar-o-inferno-de-callbacks/" target="_blank">"callback hell"</a>. </p>
+                        <pre>
+                            <code>
+                                var promessa = new Promise(function(resolve, reject) {
+                                // Do the usual XHR stuff
+                                var req = new XMLHttpRequest();
+                                req.open('GET', 'https://api.github.com/users/rdiego26/repos');
+
+                                req.onload = function() {
+                                // This is called even on 404 etc
+                                // so check the status
+                                if (req.status == 200) {
+                                // Resolve the promise with the response text
+                                resolve(req.response);
+                                }
+                                else {
+                                // Otherwise reject with the status text
+                                // which will hopefully be a meaningful error
+                                reject(Error(req.statusText));
+                                }
+                                };
+
+                                // Handle network errors
+                                req.onerror = function() {
+                                reject(Error("Network Error"));
+                                };
+
+                                // Make the request
+                                req.send();
+
+                                });
+
+                                promessa.then(function(response) {
+                                console.log('Success!' + response);
+                                }, function(error){
+                                console.log('Error! ' + error );
+                                });
+                            </code>
+                        </pre>
+                    </section>
+
+                    <!-- Funções de 1a. classe -->
+                    <section>
+                        <h3>Funções de 1a. classe</h3>
+
+                        <p>Como uma linguagem <a href="http://pt.wikipedia.org/wiki/Programa%C3%A7%C3%A3o_funcional" target="_blank">funcional</a> que javascript é as funções são tratadas como de 1a. classe.</p>
+
+                        <p>Podemos passar funções por parâmetros ou valores de entradas para outras funções, retornar funções como retorno de funções, resumindo uma função é tratada como um tipo básico.</p>
+
+                        <pre>
+                            <code data-trim contenteditable>
+                            var _digaOla = function(){ console.log('Olá!'); }
+                            var _outraFuncao = function(_param) { _param(); }
+                            _outraFuncao(_digaOla);
+                            ~> Olá!
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Escopo e <i>hoisting</i> -->
+                    <section>
+                        <h3>Escopo e <i>hoisting</i></h3>
+                        <p>Em Javascript temos dois tipos de escopo <strong>função</strong> e <strong>global</strong> porém <strong>somente funções geram escopo</strong>.</p>
+
+                        <ul>
+                            <li>Variável declarada dentro de função, com "var", é local</li>
+                            <li>Variável declarada dentro de função, sem "var", é global</li>
+                            <li>Função declarada dentro de função é local</li>
+                            <li>Variáveis declaradas dentro de bloco <i>if</i>, <i>while</i>, <i>for</i> etc <strong>não são locais ao bloco</strong>, e sim `a função. </li>
+                        </ul>
+                    </section>
+
+                    <!-- Continuação sobre escopo de função -->
+                    <section>
+                        <h3>Escopo de função</h3>
+
+                        <pre>
+                            <code data-trim contenteditable>
+                                var _nome = 'Fulano';
+                                if(true) {
+                                    var _nome = 'Ciclano';
+                                    console.log('_nome: ' + _nome);
+                                    ~> _nome: Ciclano
+                                }
+                                console.log('_nome: ' + _nome);
+                                ~> _nome: Ciclano
+                            </code>
+                        </pre>
+
+                        <img src="img/wtf-said-wtf-meme.jpg" height="180">
+
+                    </section>
+
+                    <!-- Continuação sobre escopo de função -->
+                    <section>
+                        <h3>Continuação sobre escopo de função</h3>
+
+                        <p>Isolando o escopo com <abbr title="Immediately-invoked function expression">IIFE</abbr>, para termos o resultado esperado.</p>
+
+                        <pre>
+                            <code data-trim contenteditable>
+                                var _nome = 'Fulano';
+                                if(true) {
+                                (function() {
+                                    var _nome = 'Ciclano';
+                                    console.log('_nome: ' + _nome);
+                                    })();
+                                ~> _nome: Ciclano
+                                }
+                                console.log('_nome: ' + _nome);
+                                ~> _nome: Fulano
+                            </code>
+                        </pre>
+
+                        <figure>
+                            <img src="img/happy-cute-meme-face-6.png" alt="Happy Meme" height="100">
+                            <!-- <img src="img/happy-cute-meme-face-6.png" alt="Happy Meme" width="304" height="228"> -->
+                            <figcaption>Agora sim. :)</figcaption>
+                        </figure>
+
+                    </section>
+
+                    <!-- Escopo global -->
+                    <section>
+                        <h3>Escopo global</i></h3>
+
+                         <p>Variáveis globais são sempre penduradas em <i>window</i>. Uma boa prática de programação é evitar ao máximo "sujar" o escopo global.</p>
+
+                        <p>Entre os mais fatais problemas com escopos globais é você ter a "sorte" de sobreescrever algum lib que você esteja usando no seu projeto. =(</p>
+
+                        <pre>
+                            <code data-trim contenteditable>
+                                var _nome = 'Fulano';
+                                if(true) {
+                                (function() {
+                                var _nome = 'Ciclano';
+                                console.log('_nome: ' + _nome);
+                                })();
+                                ~> _nome: Ciclano
+                                }
+                                console.log('_nome: ' + _nome);
+                                ~> _nome: Fulano
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Hoisting -->
+                    <section>
+                        <h4>"Variable Hoisting"</h4>
+
+                        <p>Toda vez que uma variável é criada ela é içada para o topo de seu escopo, mesmo ela sendo inicializada com algum valor quando ela é içada ela vai sem valor(<strong>undefined</strong>)</p>
+
+                        <pre>
+                            <code data-trim contenteditable>
+                                try {
+                                    console.log(nome);
+                                } catch (e) {
+                                    console.error('A variável `nome` não foi definida.')
+                                }
+                                ~> A variável `nome` não foi definida.
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Hoisting continuação -->
+                    <section>
+
+                        <h4>Continuação de "variable hoisting"</h4>
+
+                        <pre>
+                            <code data-trim contenteditable>
+                                try {
+                                    console.log(nome);
+                                    var nome = 'Fulano';
+                                } catch (e) {
+                                    console.error('A variável `nome` não foi definida.')
+                                }
+                                ~> undefined
+                            </code>
+                        </pre>
+
+                        <p>Conseguiu ver o <i>hoisting</i> ?</p>
+
+                    </section>
+
+                    <!-- Hoisting continuação -->
+                    <section>
+                        <h4>"Function Hoisting"</h4>
+
+                        <p>O <i>hoisting</i> com funções ocorrem de maneira diferente, todo o corpo da função é içado não apenas o nome</p>
+
+                        <pre>
+                            <code data-trim contenteditable>
+                                hey();
+                                function hey() {
+                                    console.log('Hey!')
+                                }
+                                ~> Hey!
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Orientada a objetos (utilizando protótipos) -->
+                    <section>
+                        <h3>Orientada a objetos (utilizando protótipos)</h3>
+
+                        <p>O Javascript não tem classes, mas objetos podem conter outros objetos. Podemos criar construtores para fazermos o que as classes fazem, a herança em javascript é feita com protótipos ( iremos ver mais a frente ).</p>
+                        <p>Um simples objeto:</p>
+                        <pre>
+                            <code data-trim contenteditable>
+                               var _meuObjeto = {
+                                    dados: [],
+                                    funcao: function() {  },
+                                    campo: ''
+                                };
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Orientada a objetos (herança) -->
+                    <section>
+                        <h3>Orientada a objetos (herança)</h3>
+
+                        <p>Tudo é objeto em Javascript certo ? Logo tudo extende de <i>Object</i>. </p>
+                        <pre>
+                            <code>
+                                var Pessoa = function(_nome) { this.nome = _nome; }
+                                var pessoa = new Pessoa('Fulano');
+                                pessoa; //Pessoa {nome: "Fulano"}
+
+                                Object.prototype.novaPropriedade = 'valor';
+                                pessoa; //Pessoa {nome: "Fulano", novaPropriedade: "valor"}
+
+                                Number.novaPropriedade; //"valor"
+                            </code>
+                        </pre>
+
+                        <p>Bom, parece que é verdade então. :)</p>
+
+                    </section>
+
+                    <!-- Orientada a objetos (herança por protótipo) -->
+                    <section>
+                        <h3>Orientada a objetos (herança por protótipo)</h3>
+
+                        <p>Vamos ver com objetos customizados:</p>
+                        <pre>
+                            <code>
+                                var Linguagem = function(nome, versao, data) {
+                                    this.nome = nome;
+                                    this.versao = versao;
+                                    this.dataCriacao = data;
+                                };
+
+                                var javascript = new Linguagem("Javascript", "1.5", "1980-01-01");
+                                console.log(javascript);        // Linguagem
+                                console.log(javascript.dataCriacao); //"1980-01-01"
+
+                                var Framework = function(nomeFramework, nome, versao) {
+                                    this.nome = nome;
+                                    this.versao = versao;
+                                    this.nomeFramework = nomeFramework;
+                                };
+
+                                // Cria herança com Linguagem
+                                Framework.prototype = new Linguagem();
+
+                                // Corrige o ponteiro do constructor para Framework (está apontando para Linguagem)
+                                Framework.prototype.constructor = Framework;
+
+                                Framework.prototype.feitoEm = function() {
+                                    return this.nomeFramework + " é feito em " + this.nome;
+                                };
+
+                                var django = new Framework("Django", "Python", "2.7");
+                                django.dataCriacao = "2005-01-01";
+
+                                console.log(django);                      // Framework
+                                console.log(django.feitoEm());            // Django é feito em Python
+                                console.log(django.dataCriacao);            // Herdado de Linguagem
+
+                                var angularJS = new Framework("AngularJS", "Javascript", "2.0");
+
+                                console.log(angularJS);                      // Framework
+                                console.log(angularJS.feitoEm());            // AngularJS é feito em Javascript
+
+                            </code>
+                        </pre>
+
+                        <p>A preferência sempre é do objeto e depois o protótipo em casos de propriedades com mesmo nome.</p>
+
+                    </section>
+
+                </section>
+                <!-- Características - END -->
+
+                <!-- Tipos Básicos - INIT -->
+                <section>
+
+                    <section>
+
+                        <h3>Tipos Básicos</h3>
+
+                        <p>Os tipos primitivos do Javascript são:</p>
+                        <ul>
+                            <li>Boolean</li>
+                            <li>Number</li>
+                            <li>String</li>
+                            <li>Null</li>
+                            <li>Undefined</li>
+                        </ul>
+
+                        <p> <strong>Todos os tipos primitivos - com exceção de <i>null</i> e <i>undefined</i> - são tratados como objetos. </strong> </p>
+
+                    </section>
+
+                    <!-- Boolean -->
+                    <section>
+                        <h3>Boolean</h3>
+
+                        <p><i>true</i> ou <i>false</i>.</p>
+                        <pre>
+                                <code data-trim contenteditable>
+                                    var _resposta = (1 < 2);
+                                    console.log(_resposta);
+                                    ~> true
+                                    typeof _resposta; //checando o tipo
+                                    ~> "boolean"
+                                </code>
+                        </pre>
+
+                        <img src="img/coruja-meme-e-memo.jpg" height="200">
+
+                    </section>
+
+                    <!-- Number -->
+                    <section>
+                        <h3>Number</h3>
+
+                        <p>Valores numéricos inteiros ou de ponto flutuante.</p>
+                        <pre>
+                                <code data-trim contenteditable>
+                                    var _idade = 12;
+                                    var _custo = 10.5;
+                                    typeof _idade;
+                                    ~> "number"
+                                    typeof _custo;
+                                    ~> "number"
+                                </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- String -->
+                    <section>
+                        <h3>String</h3>
+
+                        <p>Caracteres entre aspas simples ou duplas.</p>
+                        <pre>
+                                <code data-trim contenteditable>
+                                    var _nome = 'Ciclano';
+                                    typeof _nome;
+                                    ~> "string"
+                                </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Null -->
+                    <section>
+                        <h3>Null</h3>
+
+                        <p>Tipo primitivo com um único valor: <i>null</i>. É usado para representar ausência de um valor de objeto.</p>
+                        <p><i>Null</i> é um valor <i>falsey</i>, ou seja, é convertido para <i>false</i> quando forçado para booleano.</p>
+                        <pre>
+                                <code data-trim contenteditable>
+                                    !null === true;
+                                    ~> true
+                                    null == true;
+                                    ~> false
+                                </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Undefined -->
+                    <section>
+                        <h3>Undefined</h3>
+
+                        <p>Tipo primitivo com um único valor: <i>undefined</i>. É usado para representar valor não inicializado.</p>
+                        <p><i>Undefined</i> é um valor <i>falsey</i>, ou seja, é convertido para <i>false</i> quando forçado para booleano.</p>
+                        <pre>
+                                <code data-trim contenteditable>
+                                    var _obj = {'nome':'Fulano'};
+                                    console.log(_obj.sobreNome);
+                                    ~> undefined
+
+                                    undefined == false;
+                                    ~> false
+
+                                    !undefined === true;
+                                    ~> true
+                                </code>
+                        </pre>
+
+                    </section>
+
+                </section>
+                <!-- Tipos Básicos - END -->
+
+                <!-- Funções - INIT -->
+                <section>
+
+                    <section>
+                        <h3>Funções</h3>
+
+                        <p>Funções são objetos com a propriedade interna [[Call]], esta indica que um objeto pode ser executado. É esta propriedade que o operador typeof verifica.</p>
+
+                        <p>Vamos ver os seguintes tópicos abaixo:</p>
+
+                        <ol>
+                            <li>Declarações <i>versus</i> expressões</li>
+                            <li>Funções como valores</li>
+                            <li>Parâmetros</li>
+                        </ol>
+                    </section>
+
+                    <!-- Declarações versus expressões -->
+                    <section>
+                        <h4>Declarações <i>versus</i> expressões</h4>
+
+                        <p>Há duas formas literais para as funções. A primeira é a <i>declaração de função</i>, que começa com a palavra-chave <i>function</i> mais o nome da função: </p>
+
+                        <pre>
+                            <code>
+                                function soma(n1, n2) {
+                                    return n1 + n2;
+                                }
+                                soma(1, 3);
+                                ~> 4
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Declarações versus expressões - Continuação -->
+                    <section>
+                        <h4>Declarações <i>versus</i> expressões</h4>
+
+                        <p>A segunda forma é a <i>expressão de função</i>, que não exige um nome após a palavra-chave <i>function</i>, ou seja, esta fução é considerada anônima: </p>
+
+                        <pre>
+                            <code>
+                                var soma = function (n1, n2) {
+                                    return n1 + n2;
+                                }
+                                soma(1, 3);
+                                ~> 4
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Funções como valores -->
+                    <section>
+                        <h4>Funções como valores</h4>
+
+                        <p>Como já dito anteriormente, Javascript tem funções de primeira classe, funções como valores aplica justamente isso. Você pode usar uma função como usaria qualquer outro objeto.</p>
+                        <pre>
+                            <code>
+                                var funcao = function() {
+                                    console.log('Minha função');
+                                };
+                                funcao();
+                                ~> Minha função
+                            </code>
+                        </pre>
+                    </section>
+
+                    <!-- Parâmetros -->
+                    <section>
+                        <h4>Parâmetros</h4>
+
+                        <p>Um aspecto bem interessante de funções javascript é que podemos passar qualquer número de parâmetros para qualquer função sem causar erros. Isso é possível porque os parâmetros são armazenados em uma estrutura semelhante a um array chamada <i>arguments</i>.</p>
+
+                        <pre>
+                            <code>
+                                function adiciona() {
+                                    var _soma = 0,
+                                        _parametros = arguments || [];
+                                    console.log(_parametros.length + ' parâmetros recebidos ');
+                                    for(var i = 0, len = _parametros.length; i < len; i++)
+                                        _soma += _parametros[i];
+
+                                    return _soma;
+                                }
+                                adiciona(9,0,30,40,555,1);
+                                ~> 6 parâmetros recebidos
+                                ~> 635
+                            </code>
+                        </pre>
+                    </section>
+
+                </section>
+                <!-- Funções - END -->
+
+                <!-- Estrutura de dados - INIT -->
+                <section>
+
+                    <section>
+                        <h4>Estrutura de dados</h4>
+
+                        <ol>
+                            <li>Arrays</li>
+                            <li>Objetos</li>
+                        </ol>
+                    </section>
+
+
+                    <!-- Arrays -->
+                    <section>
+                        <h4>Arrays</h4>
+
+                        <p>Arrays são listas de valores indexada por zero.</p>
+                        <p>Existem basicamente duas maneiras de criar <i>arrays</i> em Javascript: </p>
+                        <ol>
+                            <li>var _dados = [];</li>
+                            <li>var _dados = new Array();</li>
+                        </ol>
+
+                    </section>
+
+
+                    <!-- Arrays - Continuação -->
+                    <section>
+                        <h4>Arrays - Continuação</h4>
+
+                        <pre>
+                            <code>
+                                var _dados = [];
+                            </code>
+                        </pre>
+
+                        <p>O código acima cria um objeto com a propriedade <i>length</i>, a qual é exclusiva de <i>Arrays</i>.</p>
+                    </section>
+
+
+                    <!-- Arrays - Continuação -->
+                    <section>
+                        <h4>Arrays - Continuação</h4>
+
+                        <pre>
+                            <code>
+                                var _dados = new Array();
+                            </code>
+                        </pre>
+
+                        <p>O código acima cria um objeto com a propriedade <i>length</i>, a qual é exclusiva de <i>Arrays</i>.</p>
+                    </section>
+
+
+                    <!-- Arrays - Continuação -->
+                    <section>
+                        <h4>Arrays - Continuação</h4>
+
+                        <img src="img/joao-kleber-para-ai.jpg" alt="João Kleber">
+
+                    </section>
+
+                    <!-- Arrays - Continuação -->
+                    <section>
+                        <h4>Arrays - Continuação</h4>
+
+                        <h5>Afinal qual a diferença em usar um e outro modo ?</h5>
+                        <p>Usar tanto a maneira literal como o construtor lhe permite obter o mesmo resultado, reza a lenda que existe uma otimização específica no Chrome quando usamos o construtor(vi referências a isso mas não encontrei o link, ainda).</p>
+                        <br><br>
+                        <small>Existem algumas nuances sobre Arrays que veremos mais a frente em WTF Javascript.</small>
+                    </section>
+
+                    <!-- Arrays - Enumeração -->
+                    <section>
+                        <h4>Arrays - Enumeração</h4>
+
+                        <p>Arrays são objetos portanto podemos usar <i>for in</i> para iterar os seus elementos. </p>
+                        <p>O <i>for in</i> tem duas coisas interessantes a serem lembradas, ele não retorna os elementos em nenhuma ordem garantida e ele também considera propriedades do protótipo. Por isso normalmente usa-se o velho <i>for</i>: </p>
+                        <pre>
+                            <code>
+                                var arr = [1, 2, 3, 4];
+                                for(var i = 0, len = arr.length; i < len; i++) {
+                                    console.log('Value: ' +  arr[i]);
+                                }
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Objetos -->
+                    <section>
+                        <h3>Objetos</h3>
+
+                        <p>Objetos são usados constantemente durante o desenvolvimento com JS. Ele nos permite representar o mundo real.</p>
+                        <p>Um objeto tem propriedades associadas a ele, uma propriedade é uma variável associada ao objeto.</p>
+
+                    </section>
+
+                    <!-- Objetos - Continuação -->
+                    <section>
+                        <h3>Objetos - Continuação</h3>
+
+                        <p>As propriedades podem ser acessadas por <i>ponto</i> ou <i>colchetes</i>: </p>
+                        <pre>
+                            <code data-trim>
+                                var empresa = {'nome':'Bematech S/A', 'site':'http://bematech.com.br/'}
+                                empresa.nome
+                                ~> Bematech S/A
+                                empresa['nome']
+                                ~> Bematech S/A
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Objetos - Continuação -->
+                    <section>
+                        <h3>Objetos - Continuação</h3>
+
+                        <p>Os colchetes podem ser usados para acessar campos dinamicamente: </p>
+                        <pre>
+                            <code data-trim>
+                                var empresa = {'nome':'Bematech S/A', 'site':'http://bematech.com.br/'}
+                                var campo = 'nome'
+                                empresa[campo]
+                                ~> Bematech S/A
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Objetos - Evitando modificações -->
+                    <section>
+                        <h3>Evitando modificações em objetos</h3>
+
+                        <p>Assim como em <strong>Java</strong> também temos <i>Object</i> e ele nos disponibiliza três métodos bem bacanas: </p>
+
+                        <ul>
+                            <li>Object.preventExtensions(_obj):  _obj não pode receber novas propriedades. </li>
+                            <li>Object.seal(_obj):  _obj não pode receber novas propriedades e suas propriedades atuais não podem ser alteradas.</li>
+                            <li>Object.freeze(_obj):  _obj não pode receber novas propriedades e suas propriedades atuais não podem ser alteradas ou removidas.</li>
+                        </ul>
+                        <br><br>
+                    </section>
+
+                </section>
+                <!-- Estrutura de dados - END -->
+
+
+                <!-- Padrões de Objeto - INIT -->
+                <section>
+
+                    <section>
+                        <h4>Padrões de Objeto</h4>
+                        <p>Como objetos são o cerne do Javascript nada mais justo que vermos alguns padrões de objeto.</p>
+
+                    </section>
+
+                    <!-- Namespace -->
+                    <section>
+                        <h4>Namespace</h4>
+
+                        <pre>
+                            <code>
+                                var _app = _app ||  {
+                                    firstMethod: function() {},
+                                    secondMethod: function() {}
+                                };
+
+                                _app.firstMethod();
+                            </code>
+                        </pre>
+                        <br>
+                        <small>O trecho "_app ||" foi colocado para garantir caso algum outro objeto esteja com esse nome não acabar sobrescrevendo.</small>
+
+                        <ol>
+                            <li>Reduz o número de globais expostas</li>
+                            <li>Evita colisões de nomeação</li>
+                        </ol>
+                    </section>
+
+                    <!-- Propriedades e métodos privados -->
+                    <section>
+                        <h5>Propriedades e métodos privados</h5>
+
+                        <p>Em Javascript não operadores de acesso como em Java e outras linguagens mas temos <i>closuje</i> :) </p>
+
+                        <pre>
+                            <code>
+                                function Person() {
+                                    var _name = 'Diego Ramos'; //privado
+
+                                    this.getName = function() {
+                                        return _name;
+                                    }
+                                }
+
+                                var person = new Person();
+                                person._name; //undefined
+                                person.getName(); // "Diego Ramos"
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- Chaining -->
+                    <section>
+                        <h5>Chaining ( encadeamento )</h5>
+
+                        <p>Permite chamar métodos em um objeto, um após o outro.</p>
+                        <p>Fazemos isso retornando sempre a instância do objeto no qual estamos trabalhando ( this ).</p>
+                        <pre>
+                            <code>
+                                var calc = {
+                                    value: 0,
+                                    add: function(_num) {
+                                        this.value += _num;
+                                        return this;
+                                    },
+                                    minus: function(_num) {
+                                        this.value -= _num;
+                                        return this;
+                                    },
+                                    result: function() {
+                                        return this.value;
+                                    }
+                                };
+
+                                calc.add(1).minus(1).result(); //0
+                            </code>
+                        </pre>
+                    </section>
+
+                </section>
+                <!-- Padrões de Objeto - END -->
+
+
+                <!-- Strict Mode - INIT -->
+                <section>
+
+                    <section>
+                        <h4>Strict mode (ou onde os "sobrinhos" não tem vez )</h4>
+
+                        <p>Neste modo o Javascript roda em um modo mais "rigoroso", neste modo a <i>engine</i> lança erros antes silenciados, efetua diversas verificações para que possam evitar <i>bugs</i> futuros e até mesmo nos probibe o uso de certas partes da linguagem consideradas problemáticas.</p>
+
+                        <p>O strict mode é largamente utilizado em uma infinidade e códigos desde bibliotecas `a frameworks, eles nos força a escrever uma código melhor e nos ajuda a pegar <i>bugs</i> mais rapidamente.</p>
+
+                        <p>A seguir vamos ver maneiras de ativar o modo <i>strict</i> . </p>
+                    </section>
+
+                    <!-- strict mode continuação ( Habilitando nível de arquvivo ) -->
+                    <section>
+                        <h4>Stric mode - Habilitando a nível de arquivo</h4>
+
+                        <p>Uma forma é a nível de arquivo, apenas colocando a string "use strict;" ou "use strict;" </p>
+
+                        <p>Nenhum código pode ser colocado antes da declaração (apenas whitespace e comentários são permitidos, do contrário o modo não é ativado). </p>
+
+                        <pre>
+                            <code>
+                                // código "strict"
+                                "use strict";
+                                var _pessoaDeBem = "Olá!";
+
+                                // código "não strict"
+                                var _flamenguista = "Tiro, porrada e bomba!";
+                                "use strict";
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- strict mode continuação ( Habilitando nível de função ) -->
+                    <section>
+                        <h4>Stric mode - Habilitando a nível de função</h4>
+
+                        <p>Você pode querer que apenas uma função rode em modo <i>strict</i> e todo código externo a ela rode normalmente.</p>
+
+                        <p></p>
+
+                        <pre>
+                            <code>
+                                function saudacao() {
+                                "use strict";
+                                var _saudacao = 'Olá!';
+                                with (_saudacao) { console.log(_saudacao); } //Gera erro pois with não é permitido em modo strict :)
+                                }
+
+                                function saudacaoDeSobrinho() {
+                                var _saudacao = 'E ae meRmão!';
+                                with (_saudacao) { console.log(_saudacao); }
+                                }
+                            </code>
+                        </pre>
+
+                    </section>
+
+                    <!-- strict mode continuação -->
+                    <section>
+                        <h4>Strict mode -  Continuação</h4>
+
+                        <p> Ok, ok...mas o que muda ?</p>
+
+                        <ul>
+                            <li>Remoção do <i>with</i> </li>
+                            <li>Declaração implícita de variáveis globais ( variável sem <i>var</i> ) </li>
+                            <li>Restrição de nomes ( palavras reservadas )</li>
+                            <li>Parâmetros e propriedades duplicadas</li>
+                        </ul>
+
+                        Existem algumas outras mudanças que ocorreram e temos um <a href="http://dmitrysoshnikov.com/ecmascript/es5-chapter-2-strict-mode/" target="_blank"> ótimo post do Dmitry Soshnikov</a> .
+
+                    </section>
+
+                </section>
+                <!-- Strict Mode - INIT -->
+
+                <!-- WTF Javascript - INIT -->
+               <section>
+
+                   <section>
+                        <h2>WTF Javascript</h2>
+
+                        <p>Nessa parte veremos algumas coisas estranhas no design da linguagem, tratamento e handling de exceções.</p>
+
+                    </section>
+
+                   <!-- Arrays - usar construtor ou literal ? -->
+                   <section>
+                       <h5>Arrays - usar construtor ou literal ? </h5>
+
+                       <p>Essa parte gera muita dúvida tem uma coisa interessante a ser vista quando usamos o <strong>construtor</strong> do <i>Array</i>. </p>
+
+                       <pre>
+                           <code>
+                               var _data = []; //Isso cria um array vazio
+                               var _arr = new Array(); // Isso cria um array vazio
+                               var _arrInit = new Array(8); // Isso cria um array com 8 posições undefined
+                               var _arrWithValue = new Array(1, 2); // Isso cria um array com duas posições já setadas
+                           </code>
+                       </pre>
+
+                       <p> Isso pode gerar uma pequena confusão, por isso o uso da declaração literal é mais usada. Ah! O <a href="http://jslinterrors.com/the-array-literal-notation-is-preferrable" target="_blank">lint também prefere literal</a>. ;) </p>
+
+                       <img src="img/Antonio-Fagundes-É-Uma-Cilada-Bino-Stenio-Garcia.jpeg" height="130" class="fragment">
+                   </section>
+
+                   <!-- isfinite null is true -->
+                   <section>
+                        <h4>isfinite null is true</h4>
+
+                       <p>Temos uma função nativa para verificar se um número é finito que é a <i>isfinite</i>, abaixo alguns usos dela: </p>
+
+                       <pre>
+                           <code>
+                               isFinite(42); // true
+                               isFinite(1/0); // false
+                               isFinite(0/0); // NaN is not finite -> false
+                               isFinite('42'); // true
+                               isFinite('hi'); // false
+                               isFinite(); // false
+                               isFinite(undefined); // false
+
+                               isFinite(null); // true
+                           </code>
+                       </pre>
+
+                       <p>null is true?! oO</p>
+                   </section>
+
+                   <!-- Type casting de boolean -->
+                   <section>
+                       <h4>Type casting de boolean</h4>
+
+                       <pre>
+                           <code>
+                               'true' == true  // returns false
+                           </code>
+                       </pre>
+
+                       <img src="img/pauad-meme-generator-excuse-me-wtf-is-this-shit-8eddbc.jpg" height="230" class="fragment">
+
+                   </section>
+
+                   <!-- Try catch -->
+                   <section>
+                       <h4>Capturando exceções</h4>
+
+                       <p>Nada novo por aqui, usamos o <i>try catch</i>: </p>
+
+                       <pre>
+                           <code>
+                               try {
+                                    throw new Error('Erro!');
+                               } catch(e) {
+                                    console.log('Erro: ' + e.message);
+                               }
+                           </code>
+                       </pre>
+                   </section>
+
+                   <!-- Tipos de erros -->
+                   <section>
+                       <h2>Tipos de erros</h2>
+
+                       <p>Oficialmente ( pode-se criar customizadas ) temos os seguintes tipos de erros: </p>
+
+                       <ul>
+                           <li>
+                               <strong>EvalError</strong>: Usado quando a função eval() é usada incorretamente
+                           </li>
+                           <li>
+                               <strong>RangeError</strong>: Usado quando uma variável numérica exced uma faixa de valores permitida
+                           </li>
+                           <li>
+                               <strong>ReferenceError</strong>: Usado quando é feita uma referência inválida `a uma objeto
+                           </li>
+                           <li>
+                               <strong>SyntaxError</strong>: Usado quando um erro de sintaxe é encontrado
+                           </li>
+                           <li>
+                               <strong>URIError</strong>: Usada quando as funções encodeURI() e decodeURI() são usadas de uma maneira incorreta.
+                           </li>
+                       </ul>
+
+                   </section>
+
+                   <!-- Customizando erros -->
+                   <section>
+                       <h3>Customizando erros</h3>
+
+                       <p>Temos o construtor <i>Error</i>: </p>
+
+                       <pre>
+                           <code>
+                               var launchCustomError = function() {
+                                   var error = new Error('Babou!');
+                                   error.name = 'CustomError';
+                                   throw error;
+                               };
+
+                               try {
+                                launchCustomError();
+                               }
+                               catch(e) {
+                                console.log(e.name + ' - ' + e.message); //CustomError - Babou!
+                               }
+                           </code>
+                       </pre>
+
+                       <strong>Quando não definimos o name, o default é "Error".</strong>
+                   </section>
+
+               </section>
+                <!-- WTF Javascript - END -->
+
+                <!-- The end ? -->
+                <section>
+                    <h1>THE END</h1>
+                    <h3>Questions ? :)</h3>
+                </section>
+
+                <!-- Links Úteis -->
+                <section>
+                    <h2>Links Úteis</h2>
+                    <ul>
+                        <li><a href="https://github.com/rdiego26/presentations/tree/master/jsBasico" target="_blank">Link palestra</a> </li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank">Arrays</a></li>
+                        <li><a href="http://www.slideshare.net/periclesmiranda/4-introduo-ao-paradigma-funcional" target="_blank">Introdução a programação funcional</a></li>
+                        <li><a href="http://esprima.org/demo/validate.html/" target="_blank">Syntax Validor ( inclusive para strict mode )</a></li>
+                        <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=579119" target="_blank">Incidente com a Amazon por não usar strict mode</a></li>
+                        <li><a href="http://dmitrysoshnikov.com/ecmascript/es5-chapter-2-strict-mode/" target="_blank">strict mode em mais detalhes por Dmitry Soshnikov</a></li>
+                        <li><a href="http://www.html5rocks.com/en/tutorials/es6/promises/" target="_blank">Promises (HTML 5 Rocks)</a></li>
+                        <li><a href="https://developer.mozilla.org/en/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest" target="_blank">Using XMLHttpRequest ( MDN )</a> </li>
+                        <li><a href="http://wtfjs.com/" target="_blank">WTF Javascript</a> </li>
+                        <li><a href="http://micro.js/" target="_blank">Micro.js</a> </li>
+                        <li><a href="http://bocoup.com/weblog/javascript-is-object-oriented-programming/" target="_blank">Javascript is OOP ( Bocoup )</a> </li>
+                    </ul>
+                </section>
+
+                <section id="page13">
+                    <h1>Obrigado!</h1>
+                </section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+                //autoSlide: 5000, //in miliseconds
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

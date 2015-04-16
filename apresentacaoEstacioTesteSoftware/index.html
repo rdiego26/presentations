@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="pt-br">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Teste de Software</title>
+
+		<meta name="description" content="Apresentação sobre Teste de Software - Estácio de Sá.">
+		<meta name="author" content="Diego Ramos">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section data-state="soothe" id="page1">
+
+                    <h3>Teste de Software</h3>
+                    <br />
+                    <img src="img/estacio.jpg">
+
+				</section>
+
+
+                <section data-state="soothe" id="page2">
+
+                    <h3>Definindo o teste de software</h3>
+                    <br />
+                    <ul>
+                        <li class="fragment">Teste de software é o processo de execução de um produto para determinar se ele atingiu suas especificações e se funcionou corretamente no ambiente para o qual foi projetado. </li>
+                        <li class="fragment">O seu objetivo é revelar falhas em um produto, para que as causas dessas falhas sejam identificadas e possam ser corrigidas pela equipe de desenvolvimento antes da entrega final.</li>
+                    </ul>
+
+                </section>
+
+
+				<section data-state="soothe" id="page3">
+					
+
+                    <section id="page3-1">
+
+                        <h3>A importância do teste</h3>
+
+                        <p> A atividade de teste de software é uma área da TI que vêm crescendo ao longo 
+                            dos anos e que está diretamente relacionada à necessidade de se produzir produtos de qualidade que atendam a exigências cada vez maiores. Segundo Myers <span class="fragment highlight-red">“Testar um programa é analisar um programa com a intenção de descobrir erros e defeitos”</span>. Percebemos que as empresas que produzem software vêm sofrendo cada dia mais pressões de mercado/clientes/usuário que sempre exigem produtos de alta qualidade, são pouco tolerantes com atrasos nas entregas.</p> 
+
+                        <p> Tendo em vista atender estas necessidades, existem muitos sistemas em que uma falha ocorrida pode causar prejuízos diretos ou mensuráveis. </p>    
+
+                    </section>
+
+                    <section id="page3-2">
+
+                        <h4>A importância do teste - Exemplo de falha no sistema</h4>
+                        <img src="img/symantec.png">
+
+                    </section>
+
+                    
+
+
+
+                    <section id="page3-3">
+                        <h4>A importância do teste - Exemplo de falha no sistema</h4>
+
+                        <p>A empresa Symantec proprietária do software antivírus Norton em junho de 2007 teve de compensar 50 mil vítimas de uma atualização que retirava arquivos de sistema de uso, dando a elas uma extensão de 12 meses da licença do Norton e uma cópia da ferramenta Norton Save & Restore 2.0.
+                        </p>
+
+                    </section>
+
+
+                    <section id="page3-4">
+
+                        <h4>A importância do teste - Exemplo de falha no sistema</h4>
+                        <br /><br />
+                        <h2>O ataque ao Airbus A-300</h2>
+
+                    </section>
+
+
+                    <section id="page3-5">
+
+                        <h4>A importância do teste - Exemplo de falha no sistema</h4>
+
+                        <p>No ano de 1988, ocorreram prejuízos imensuráveis quando o navio de guerra americano Vincennes derrubou um Airbus A-300 da Iran Air no Golfo Pérsico causando a morte de 290 pessoas incluindo 66 crianças, a falha foi atribuída ao software de reconhecimento do navio que confundiu o avião com um F-14. </p>
+
+                        <p>
+                            <figure style="float:right;">
+                                <img src="img/airBusA300.png" height="200">
+                                <figcaption>Airbus A-300</figcaption>
+                            </figure>
+
+                            <figure style="float:right;">
+                                <img src="img/f14.png" height="200">
+                                <figcaption>F-14</figcaption>
+                            </figure>
+                        </p>
+
+                    </section>
+
+				</section>
+
+
+                <section data-state="soothe" id="page4">
+
+
+                    <section id="page4-1">
+                         
+                        <h3>O processo de teste</h3>
+
+                        <p style="font-size:0.55em;">O Processo de Testes de Software representa uma estruturação de etapas, atividades, artefatos, papéis e responsabilidades que buscam a padronização dos trabalhos e ampliar a organização e controle dos projetos de testes.</p>
+                        <p style="font-size:0.55em;">O Processo de Teste, como qualquer outro processo deve ser revisto continuamente, de forma a ampliar sua atuação e possibilitar aos profissionais uma maior visibilidade e organização dos seus trabalhos, o que resulta numa maior agilidade e controle operacional dos projetos de testes.</p>
+
+                        <img src="img/processoTesteSoftware.png">
+
+
+                     </section>   
+
+                     <section id="page4-2">
+
+                        <h4>O Ciclo de Vida dos Testes é composto de 5 fases: </h4>
+
+                        <ol>
+                            <li class="fragment">Planejamento</li>
+                            <li class="fragment">Preparação</li>
+                            <li class="fragment">Especificação</li>
+                            <li class="fragment">Execução</li>
+                            <li class="fragment">Entrega</li>
+                        </ol>
+
+
+                     </section>
+
+                     <section id="page4-3">
+
+                            <h2>Planejamento</h2>
+
+                            <p>Nesta fase é elaborada a Estratégia de Teste e o Plano de Teste.</p>
+
+                     </section>
+
+                     <section id="page4-4">
+
+                            <h2>Preparação</h2>
+
+                            <p>O objetivo desta fase é preparar o Ambiente de Teste (equipamentos, pessoal, ferramentas de automação, massa de testes) para que os testes sejam executados conforme planejados.</p>
+
+                     </section>
+
+                     <section id="page4-5">
+
+                            <h2>Especificação</h2>
+
+                            <p>Nesta fase temos as seguintes atividades: Elaborar/ Revisar casos de testes e Elaborar/ Revisar roteiros de testes.</p>
+
+                     </section>
+
+                     <section id="page4-6">
+
+                            <h2>Execução</h2>
+
+                            <p>Os testes são executados e registrado os resultados obtidos.</p>
+
+                     </section>
+
+                     <section id="page4-7">
+
+                            <h2>Entrega</h2>
+
+                            <p>Esta é a última fase do ciclo de vida de testes, onde o projeto é finalizado e toda documentação é arquivada.</p>
+
+                     </section>
+
+
+
+                </section>
+
+                <section data-state="soothe" id="page5">
+
+                    <section id="page5-1">
+
+                            <h3>Tipos de teste</h3>
+                            <img src="img/caixaBrancaCaixaPreta.png">
+
+                            <br />    
+                            <ol>
+                                <li>Caixa Preta</li>
+                                <li>Caixa Branca</li>
+                            </ol>
+                            
+                    </section>   
+
+                    <section id="page5-2">
+
+                            <h3>Teste caixa preta</h3>
+                            <br />
+
+                            <ul>
+                                <li>Teste de caixa branca baseia-se num minucioso exame dos detalhes procedimentais, <strong>através da definição de todos os caminhos lógicos possíveis</strong>.</li>
+                                <li>Infelizmente estes testes apresentam problemas logísticos, uma vez que o número destes possíveis caminhos lógicos pode ser muito grande, o que levaria a um tempo infinito.</li>
+                                <li>Entretanto este tipo de teste não pode ser desprezado como pouco prático, podendo-se optar por um número limitado de opções.</li>
+                            </ul>
+                        
+                    </section> 
+
+                    <section id="page5-3">
+
+                            <h3>O teste caixa Branca deve</h3>
+                            <br />
+
+                            <ul>
+                                <li class="fragment">Garantir que todos os caminhos independentes de um módulo <br />tenham sido exercitados  pelo menos uma vez</li>
+                                <li class="fragment">Exercitem todas as decisões lógicas em seus lados verdadeiro e falso</li>
+                                <li class="fragment">Executem todos os ciclos nos seus limites e dentro <br />de seus intervalos operacionais</li>
+                                <li class="fragment">Exercitem as estruturas de dados internas</li>
+                            </ul>
+                        
+                    </section>
+
+
+                     <section id="page5-4">
+
+                            <h3>Tipos de Teste Caixa Branca: </h3>
+
+                            <ul>
+                                <li>Teste de Caminho Básico</li>
+                                <li>Teste de Condição</li>
+                                <li>Teste de Fluxo de Dados</li>
+                                <li>Teste de Ciclo</li>
+                            </ul>
+                        
+                    </section>
+
+
+                    <section id="page5-5">
+
+                            <h4>Teste Caixa Branca -  Teste do caminho básico </h4>
+
+                            <p>É uma técnica de caixa branca, onde calcula se a complexidade lógica do software e utiliza esta medida como base para descobrir os caminhos básicos do software e exercendo o teste de modo que todos os caminhos sejam efetuados (PRESSMAN, 2006; MCCABE, 1976).</p>
+
+                            <p>Os casos de teste projetados para exercitarem este conjunto básico têm garantia de executar cada instrução do programa pelo menos uma vez durante a atividade de teste.</p>
+                        
+                    </section>
+
+
+                    <section id="page5-6">
+
+                            <h4>Teste Caixa Branca - Teste do caminho básico </h4>
+
+                            Os seguintes passos devem ser aplicados: <br/ >
+                            <ol>
+                                <li>Usando o projeto ou o código como base, desenhar o grafo de fluxo correspondente;</li>
+                                <li>Determinar a complexidade ciclomática do diagrama de fluxo resultante;</li>
+                                <li>Determinar um conjunto base de caminhos linearmente independentes;</li>
+                                <li>Preparar casos de teste que vão forçar a execução de cada caminho do conjunto base;</li>
+                            </ol>
+                        
+                    </section>
+
+
+                    <section id="page5-7">
+
+                            <h4>Teste caixa branca - Notação de grafo de fluxo</h4>
+                            <br />
+
+                            <p style="font-size:0.55em;">Antes que o método de caminho básico possa ser introduzido, uma notação simples para a representação do fluxo de controle, chamada de grafo de fluxo (ou grafo de programa) deve ser introduzida. O grafo de fluxo mostra o fluxo de controle lógico usando a notação ilustrada na Figura abaixo.</p> 
+                            <p style="font-size:0.55em;">Cada construção estruturada tem um símbolo correspondente de grafo de fluxo.</p>
+
+                            <img src="img/grafoFluxo.png">
+                        
+                    </section> 
+
+                    <section id="page5-8">
+
+                            <h4>Teste caixa branca - Notação de grafo de fluxo</h4>
+                            <br />
+
+                            <img src="img/graficoFluxoFluxograma.png">
+                        
+                    </section> 
+
+
+                    <section id="page5-9">
+
+                            <h4>Teste caixa branca - Notação de grafo de fluxo - Complexidade Ciclomática</h4>
+                            <br />
+
+                            <ul>
+                                <li>É uma métrica de software que proporciona uma medida quantitativa da complexidade lógica de um programa</li>
+                                <li>Quando usado no contexto do método de teste de caminho básico, o valor computado da complexidade ciclomática define o número de <i>caminhos independentes</i> do conjunto básico de um programa e oferece um limite máximo para o número de testes que deve ser realizado para garantir que todas as instruções sejam executadas pelo menos uma vez</li>
+                            </ul>
+
+                            <p>A complexidade ciclomática é computada em uma das 3 formas seguintes:</p>
+
+                        
+                    </section> 
+
+
+                    <section id="page5-10">
+
+                            <h4>Teste caixa branca - Notação de grafo de fluxo - Complexidade Ciclomática</h4>
+                            <br />
+
+                             <p>A complexidade ciclomática é computada em uma das 3 formas seguintes:</p>
+
+                            <ol>
+                                <li>O número de regiões do gráfico de fluxo</li>
+                                <li>V(G) = E-N+2, onde E é o número de ramos do grafo e N o número de nós do grafo de fluxo G</li>
+                                <li>V(G) = P+1, onde P é o número de nós predicativos (nós que contém uma condição) contidos no grafo de fluxo G</li>
+                            </ol>
+                        
+                    </section> 
+
+
+                    <section id="page5-11">
+
+                            <h4>Teste caixa branca - Notação de grafo de fluxo  - Complexidade Ciclomática</h4>
+                            <br />
+
+                             <p>A complexidade ciclomática é computada em uma das 3 formas seguintes:</p>
+
+                            <ol>
+                                <li>O grafo de fluxo tem 4 regiões</li>
+                                <li>V(G) = 11 ramos - 9 nós + 2 = 4</li>
+                                <li>V(G) = 3 nós predicativos + 1 = 4</li>
+                            </ol>
+
+                            <p>A Complexidade Ciclomática do grafo de fluxo é <strong>4</strong></p>
+                            
+                            <figure>
+                                <img src="img/gradeFluxo.png" height="200">
+                                <figcaption>Grade de fluxo</figcaption>
+                            </figure>
+                       
+                    </section> 
+
+                    <section id="page5-12">
+
+                            <h4>Teste caixa branca - Notação de grafo de fluxo - Complexidade Ciclomática</h4>
+                            <br />
+
+                             <p>Um <strong>caminho independente</strong> é um caminho no grafo de fluxo que inclui pelo menos uma aresta nova (que não tenha sido ainda atravessada)</p>
+                            
+                            <img src="img/caminhoIndependente.png" height="350">
+                       
+                    </section> 
+
+                    <section id="page5-13">
+
+                            <h4>Teste caixa branca - Notação de grafo de fluxo - Complexidade Ciclomática</h4>
+                            <br />
+
+                             <p>O caminho independete nos fornece um limite superior para a 
+                                quantidade de testes que deve ser conduzida para garantir que todos os comandos tenham sido executados pelo menos uma vez e cada condição terá sido executada no seu lado verdadeiro e no seu lado falso.</p>
+                       
+                    </section> 
+
+                    <section id="page5-14">
+
+                            <h4>Teste caixa branca - Teste de Condição</h4>
+                            <br />
+
+                             <p>É um método de projeto de casos de teste que põe à prova as condições lógicas contidas num módulo de programa. Concentra-se em testar cada condição do programa. </p>
+                            <p>As estratégias de teste de condição tem duas vantagens: </p>
+                            <ol>
+                                <li>a medição da cobertura do teste de uma condição é simples.</li>
+                                <li>a cobertura de teste das condições de um programa oferece orientação para a geração de testes adicionais ao programa.</li>
+                            </ol> 
+                            <br />
+                            <p>O propósito do teste de condição é detectar não somente erros nas condições de um programa, mas também outros erros no programa.</p>
+                       
+                    </section> 
+
+                    <section id="page5-15">
+
+                            <h4>Teste caixa branca - Teste de Fluxo de Dados</h4>
+                            <br />
+
+                            <p>O método de teste de fluxo de dados seleciona caminhos de teste de um programa de acordo com as localizações das definições e usos de variáveis no programa. São úteis para selecionar caminhos de teste de um programa que contenha instruções de laços e if aninhadas.</p>
+                            <p>Uma vez que as instruções de um programa relacionam-se entre si de acordo com as definições e usos de variáveis, a abordagem de teste de fluxo de dados é eficiente para a proteção contra erros. Porém, os problemas de medir a cobertura de teste e a seleção de caminhos de teste de fluxo de dados são mais complexos do que os correspondentes problemas para o teste de condição.</p>
+                    </section>     
+
+                    <section id="page5-16">
+
+                            <h4>Teste caixa branca - Teste de Ciclo</h4>
+                            <br />
+
+                            <p>Teste de ciclo é uma técnica de teste caixa-branca que focaliza exclusivamente a validade de construções de ciclo. Quatro diferentes classes de ciclos podem ser definidas: </p>
+                            <br />
+                            <ul>
+                                <li>Ciclos Simples</li>
+                                <li>Ciclos Concatenados</li>
+                                <li>Ciclos Aninhados</li>
+                                <li>Ciclos Desestruturados</li>
+                            </ul>
+                    </section>  
+
+                     <section id="page5-17">
+
+                            <h3>Teste caixa preta</h3>
+                            <br />
+                            <h5>O teste de caixa preta tenta encontrar erros nas seguintes categorias:</h5>
+
+                            <ul>
+                                <li>Funções incorretas ou faltando;</li>
+                                <li>Erros de interface;</li>
+                                <li>Erros em estruturas de dados ou acesso a bases de dados externas;</li>
+                                <li>Erros de comportamento ou de desempenho;</li>
+                                <li>Erros de inicialização e término;</li>
+                            </ul>
+                        
+                    </section> 
+
+                    <section id="page5-18">
+
+                            <h3>Teste caixa preta</h3>
+                            <br />
+
+                            O Teste de Caixa Preta não é uma alternativa às técnicas Caixa Branca, mas ao contrário, é uma abordagem complementar, que mais provavelmente descobrirá uma classe diferente de erros.
+                        
+                    </section> 
+                 
+                
+                </section>
+
+                <section data-state="soothe" id="page6">
+                        
+                        <section id="page6-1">
+                            <h4>Testes Unitários - Princípio de TDD</h4>
+
+                            Test Driven Development (TDD) ou em português Desenvolvimento orientado a testes é uma técnica de desenvolvimento de software que baseia em um ciclo curto de repetições: Primeiramente o desenvolvedor escreve um caso de teste automatizado que define uma melhoria desejada ou uma nova funcionalidade.
+                            <br /> <br />
+                            
+                            <figure>
+                                <img src="img/happyCodder.png">
+                                <figcaption>Resumindo: Crie os testes antes de codificar e seja feliz.</figcaption>
+                            </figure>
+                             <br />       
+
+                        </section>
+
+                        <section id="page6-2">
+                            <h3>Testes Unitários - Porque fazer ?</h3>
+
+                            A adoção de testes unitários em sua produção permite solucionar dois problemas bem recorrentes que prejudicam no bom desempenho de um software. Eles são: <br /><br />
+
+                            <ul>
+                                <li class="fragment">a alta taxa de defeitos: resultado de erros frequentes no funcionamento, este índice faz com que, muitas vezes, o software deixe de ser utilizado.</li>
+                                <li class="fragment">deterioração do sistema: quando executado, o produto pode até ter um bom desempenho. Entretanto, ao longo do tempo, ele pode    apresentar complicações que exigem a substituição de todo o sistema.</li>
+                            </ul>
+                            
+                        </section>
+
+                        <section id="page6-3">
+                            <h3>Testes Unitários - Solução na hora certa</h3>
+
+                            Entre os princípios do TDD, está aquele de resolver os principais problemas no momento mais adequado. E como não acreditar que o tempo mais apropriado é durante a criação de um software? Ao escrever e executar os testes unitários, a equipe consegue evitar que futuros erros danifiquem o funcionamento daquele produto, permitindo assim uma economia de tempo e de gastos com manutenções e readaptações de todo o sistema. Por isso, se você acredita que uma boa estratégia se baseia na prevenção, você deve, sim, adotar os testes unitários em sua empresa. <br /><br />
+                            
+                        </section>
+
+                        <section id="page6-4">
+                            <h4>Testes Unitários - Exemplo real</h4>
+
+
+                            <img src="img/bytePayTesteCielo.png">
+                            <br />
+                            É inevitável: você só consegue descobrir seus erros se você testar. Por isso, não hesite em adotar métodos que podem avaliar o seu produto, identificar seus problemas, corrigi-los e trazer mais qualidade a ele. E, com os testes unitários, essas medidas podem se tornar mais rápidas e, também, mais baratas.
+                            
+                        </section>
+
+
+                </section>
+
+                <section id="page7">
+                    <h2>Lições aprendidas</h2>
+                    Teste de software é uma parte que integra o desenvolvimento de software. A importância dos testes de software no ciclo de vida do desenvolvimento é melhorar a performance, consistência e outros fatores importantes. Ele tem um papel principal a desempenhar na depuração do erro. O teste é uma etapa que ajuda a saber a diferença entre o resultado real e o resultado esperado, isso pode ajudar a melhorar a qualidade de produto. Qualquer software que é produzido sem qualquer teste pode ser perigoso para seus usuários. No ciclo de vida de desenvolvimento de software, o teste é importante do ponto de vista técnico. É muito importante para testar o software e evitar situações perigosas. 
+                </section>
+
+
+                <section id="page8">
+                    <h3>Dificuldades Encontradas</h3>
+
+                    Normalmente os erros acontecem, pois somos passíveis de falha, além de:
+                    <br />
+
+                    <ol>
+                        <li class="fragment">Existir pressão no prazo no desenvolvimento do software</li>
+                        <li class="fragment">Tecnologia e códigos complexos</li>
+                        <li class="fragment">Sistema com muita iterações</li>
+                    </ol>
+                </section>
+
+                <section id="page9">
+                    <h3>Fontes</h3>
+
+                    <ol>
+                        <li>Pressman, R. S. Engenharia de Sofware, 6a. ed. McGraw Hill, 2006</li>
+                        <li>Barbosa, E.; Maldonado, J.C.; Vincenzi, A.; Delamaro, M.;<br /> Souza, S.; Jino, M.. Introdução ao teste de Software.
+                         Curso ministrado no XIV congresso da SBES, 2000</li>
+                        <li><a href="http://testdrivendeveloper.com/2008/04/02/AcceptanceTestDrivenDevelopmentExplained.aspx" target="_blank">Acceptance Test Driven Development, Explained</a></li>
+                        <li><a href="http://pt.wikipedia.org/wiki/Test_Driven_Development" target="_blank">Wikipedia - TDD</a></li>
+                    </ol>
+                </section>
+
+                <section id="page10">
+                    <h1>Obrigado!</h1>
+                </section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
