@@ -159,7 +159,7 @@
 
                         <p>
                             Esse "banner" de identificação é usado por muitos bots e ferramentas de auditoria você omitindo
-                            essa informação voce está <strong>dificultando</strong> o reconhecimento de seu ambiente .
+                            essa informação você está <strong>dificultando</strong> o reconhecimento de seu ambiente .
                             <span class="fragment">
                                 Você pode também alterar esse valor, caso queira zuar com alguns bots:
                                 <pre class="fragment">
@@ -171,8 +171,33 @@
                         </p>
 
                     </section>
-
                     <!-- 1. Hide Powered By - END -->
+
+                    <!-- 2. XSS Filter - INIT -->
+                    <section>
+                        <h4>2. XSS Filter</h4>
+
+                        <span>
+                            Velho conhecido, o <a href="http://www.redesegura.com.br/2012/01/saiba-mais-sobre-o-cross-site-scripting-xss/">cross site scripting</a>
+                            é um tipo de ataque que nos permite injetar HTMl em uma aplicação e assim rodar código não legítimo .
+                        </span>
+
+                        <br>
+
+                        <span class="fragment">Como ativo ? Ele já vem default :) .
+                        <pre class="fragment">
+                            <code>
+                                // Sets "X-XSS-Protection: 1; mode=block".
+                                app.use(helmet.xssFilter());
+                            </code>
+                        </pre>
+                        </span>
+                    </section>
+                    <!-- 2. XSS Filter - END -->
+
+
+
+
 
                 </section>
                 <!-- Entendo as configurações de segurança - END -->
