@@ -44,7 +44,7 @@
 
 				<section>
 
-                    <img src="img/logo-helmet.png" height="150">
+                    <img src="img/logo-helmet.png" height="130">
                     <h2>Helmet explanation</h2>
 
                     <br>
@@ -58,7 +58,7 @@
                         <h2>About me</h2>
 
                         <ul>
-                            <li>Desenvolvedor generalista <span class="fragment">(aka full-stack)</span> </li>
+                            <li>Desenvolvedor generalista <span class="fragment">(aka full-stack, também viro laje)</span> </li>
                             <li class="fragment">Entusiasta open-source <span class="fragment">(solto uns PRs sempre que posso)</span></li>
                             <li class="fragment">Atualmente trabalho na <a href="https://www.linkedin.com/company/2635078/" alt="99" target="_blank">99</a> \w/, </li>
                         </ul>
@@ -75,9 +75,8 @@
 
                         <ul>
                             <li class="fragment">O que é o helmet</li>
-                            <li class="fragment">Como ele funciona</li>
                             <li class="fragment">Como ele torna minha aplicação mais segura</li>
-                            <li class="fragment">Entendendo as configurações de segurança (12)</li>
+                            <li class="fragment">Entendendo as configurações de segurança</li>
                             <li class="fragment">Links úteis</li>
                         </ul>
 
@@ -90,21 +89,12 @@
                     <h2>O que é o helmet ?</h2>
 
                     <p class="fragment">
-                        É um dos poucos módulos para NodeJS focados em segurança web.
-                    </p>
-                </section>
-                <!-- O que é o helmet - END -->
-
-                <!-- Como ele funciona - INIT -->
-                <section>
-                    <h2>Como ele funciona ?</h2>
-
-                    <p class="fragment">
-                        Ele protege sua aplicação de algumas vulnerabilidades da web bastante conhecidas
+                        É um dos poucos módulos para NodeJS focados em segurança web, ele protege sua aplicação
+                        de algumas vulnerabilidades da web bastante conhecidas
                         configurando os cabeçalhos HTTP <strong>adequadamente</strong> .
                     </p>
                 </section>
-                <!-- Como ele funciona - END -->
+                <!-- O que é o helmet - END -->
 
                 <!-- Como ele torna minha aplicação mais segura - INIT -->
                 <section>
@@ -124,7 +114,7 @@
                         <p>
                             O helmet disponibiliza na versão atual
                             <a href="https://github.com/helmetjs/helmet/releases/" target="_self">3.9.0</a>,
-                            12 opções para melhorar a segurança da sua aplicação, vamos passar por cada uma delas.
+                            12 opções para melhorar a segurança da sua aplicação, vamos passar por algumas delas.
                         </p>
                     </section>
 
@@ -226,26 +216,51 @@
                     </section>
                     <!-- 3. No Cache - END -->
 
-                    <!-- 4. hpkp - INIT -->
+                    <!-- 4. HSTS - INIT -->
                     <section>
-                        <h4>4. hpkp ( HTTP Public Key Pinning )</h4>
+                        <h4>4. HSTS ( Strict Transport Security )</h4>
 
                         <figure class="fragment">
-                            <img src="img/img-cdn-cache-meme.jpg" alt="Cache" height="200">
-                            <figcaption>Ah, o cache...</figcaption>
+                            <img src="img/img-https-meme.jpg" alt="https-meme" height="200">
+                            <figcaption>:)</figcaption>
                         </figure>
 
                         <br>
 
-                        <span class="fragment">Como ativo ?
+                        <span class="fragment">Como ativo ? Ele já vem default :) .
                         <pre class="fragment">
                             <code>
-                                app.use(helmet.noCache());
+                                // Sets "Strict-Transport-Security: max-age=5184000; includeSubDomains".
+                                let sixtyDaysInSeconds = 5184000;
+                                app.use(helmet.hsts({
+                                  maxAge: sixtyDaysInSeconds
+                                }));
                             </code>
                         </pre>
                         </span>
                     </section>
-                    <!-- 4. hpkp - END -->
+
+                    <section>
+                        <h4>4. HSTS ( Strict Transport Security )</h4>
+
+                        <span>
+                            Essa opção, força a comunicação por HTTPS sempre que possível. (com o lets encrypt não tem desculpa ) <br>
+                            O maxAge é o tempo em segundos que o browser terá para lembrar que o domínio somente trabalha com HTTPS.
+                        </span>
+                    </section>
+
+                    <section>
+                        <h4>4. HSTS ( Strict Transport Security )</h4>
+
+                        <span>Só reforçando...</span>
+                        <br>
+                        <figure class="fragment">
+                            <img src="img/img-fagundes-cilada-bino.jpeg" alt="https-meme" height="200">
+                            <figcaption>Trabalhar somente com HTTP</figcaption>
+                        </figure>
+
+                    </section>
+                    <!-- 4. HSTS - END -->
 
 
                 </section>
@@ -265,6 +280,7 @@
                         <li><a href="https://requiresafe.com/">require safe</a></li>
                         <li><a href="https:/snyk.io/">Snyk.io</a></li>
                         <li><a href="https://nodesecurity.io/">Node Security</a></li>
+                        <li><a href="https://letsencrypt.org/">Let's encrypt</a></li>
                         <li><a href="http://expressjs.com/pt-br/advanced/best-practice-security.html">Express Security practices</a></li>
                         <li><a href="https://speakerdeck.com/ckarande/top-overlooked-security-threats-to-node-dot-js-web-applications" target="_blank">Top Overlooked SeK - Chetan Karande</a> </li>
                     </ul>
