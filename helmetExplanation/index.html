@@ -195,8 +195,36 @@
                     </section>
                     <!-- 2. XSS Filter - END -->
 
+                    <!-- 3. No Cache - INIT -->
+                    <section>
+                        <h4>3. No Cache</h4>
 
+                        <figure class="fragment">
+                            <img src="img/img-cdn-cache-meme.jpg" alt="Cache" height="200">
+                            <figcaption>Ah, o cache...</figcaption>
+                        </figure>
 
+                        <br>
+
+                        <span class="fragment">Como ativo ?
+                        <pre class="fragment">
+                            <code>
+                                app.use(helmet.noCache());
+                            </code>
+                        </pre>
+                        </span>
+                    </section>
+
+                    <section>
+                        <h4>3. No Cache</h4>
+
+                        <span>
+                            Isso é útil quando por algum motivo você tem alguma vulnerabilidade em algum JS seu por exemplo,
+                            com isso você evita de algum novo usuário obter esse código .
+                        </span>
+
+                    </section>
+                    <!-- 3. No Cache - END -->
 
 
                 </section>
