@@ -74,11 +74,11 @@
                         <h2>Agenda</h2>
 
                         <ul>
-                            <li>O que é o helmet</li>
-                            <li>Como ele funciona</li>
-                            <li>Como ele torna minha aplicação mais segura</li>
-                            <li>Entendendo as configurações de segurança (12)</li>
-                            <li>Links úteis</li>
+                            <li class="fragment">O que é o helmet</li>
+                            <li class="fragment">Como ele funciona</li>
+                            <li class="fragment">Como ele torna minha aplicação mais segura</li>
+                            <li class="fragment">Entendendo as configurações de segurança (12)</li>
+                            <li class="fragment">Links úteis</li>
                         </ul>
 
                     </section>
@@ -123,7 +123,7 @@
 
                         <p>
                             O helmet disponibiliza na versão atual
-                            <a href="https://github.com/helmetjs/helmet/releases/" target="_self">3.9.0</a>
+                            <a href="https://github.com/helmetjs/helmet/releases/" target="_self">3.9.0</a>,
                             12 opções para melhorar a segurança da sua aplicação, vamos passar por cada uma delas.
                         </p>
                     </section>
@@ -134,24 +134,45 @@
                 <!-- Entendendo as configurações de segurança - INIT -->
                 <section>
 
+                    <!-- 1. Hide Powered By - INIT -->
                     <section>
-                        <h4>1. hidePoweredBy</h4>
+                        <h4>1. Hide Powered By</h4>
 
                         <figure class="fragment">
-                            <img src="img/magic-meme.gif" alt="Magic" height="200">
+                            <img src="img/img-x-powered-by.png" alt="Magic" height="200">
                             <figcaption>Talvez isso seja familiar...</figcaption>
                         </figure>
+
+                        <br>
+
+                        <span class="fragment">Como ativo ? Ele já vem default :) .
+                        <pre class="fragment">
+                            <code>
+                                app.use(helmet.hidePoweredBy());
+                            </code>
+                        </pre>
+                        </span>
                     </section>
 
                     <section>
-                        <h4>Como ele torna minha aplicação mais segura ?</h4>
+                        <h4>1. Hide Powered By</h4>
 
                         <p>
-                            O helmet disponibiliza na versão atual
-                            <a href="https://github.com/helmetjs/helmet/releases/" target="_self">3.9.0</a>
-                            12 opções para melhorar a segurança da sua aplicação, vamos passar por cada uma delas.
+                            Esse "banner" de identificação é usado por muitos bots e ferramentas de auditoria você omitindo
+                            essa informação voce está <strong>dificultando</strong> o reconhecimento de seu ambiente .
+                            <span class="fragment">
+                                Você pode também alterar esse valor, caso queira zuar com alguns bots:
+                                <pre class="fragment">
+                                    <code>
+                                        app.use(helmet.hidePoweredBy({ setTo: 'PHP 4.0.0' }));
+                                    </code>
+                                </pre>
+                            </span>
                         </p>
+
                     </section>
+
+                    <!-- 1. Hide Powered By - END -->
 
                 </section>
                 <!-- Entendo as configurações de segurança - END -->
