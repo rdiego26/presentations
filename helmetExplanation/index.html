@@ -226,6 +226,27 @@
                     </section>
                     <!-- 3. No Cache - END -->
 
+                    <!-- 4. hpkp - INIT -->
+                    <section>
+                        <h4>4. hpkp ( HTTP Public Key Pinning )</h4>
+
+                        <figure class="fragment">
+                            <img src="img/img-cdn-cache-meme.jpg" alt="Cache" height="200">
+                            <figcaption>Ah, o cache...</figcaption>
+                        </figure>
+
+                        <br>
+
+                        <span class="fragment">Como ativo ?
+                        <pre class="fragment">
+                            <code>
+                                app.use(helmet.noCache());
+                            </code>
+                        </pre>
+                        </span>
+                    </section>
+                    <!-- 4. hpkp - END -->
+
 
                 </section>
                 <!-- Entendo as configurações de segurança - END -->
