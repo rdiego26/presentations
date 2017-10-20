@@ -262,6 +262,29 @@
                     </section>
                     <!-- 4. HSTS - END -->
 
+                    <!-- 5. IE NO OPEN - INIT -->
+                    <section>
+                        <h4>5. IE NO OPEN</h4>
+
+                        <figure class="fragment">
+                            <img src="img/img-cdn-cache-meme.jpg" alt="Cache" height="200">
+                            <figcaption>Ah, o cache...</figcaption>
+                        </figure>
+
+                        <br>
+
+                        <span class="fragment">Como ativo ?
+                        <pre class="fragment">
+                            <code>
+                                // Sets "X-Download-Options: noopen".
+                                app.use(helmet.ieNoOpen());
+                            </code>
+                        </pre>
+                        </span>
+                    </section>
+
+                    <!-- 5. IE NO OPEN - END -->
+
 
                 </section>
                 <!-- Entendo as configurações de segurança - END -->
@@ -281,6 +304,8 @@
                         <li><a href="https:/snyk.io/">Snyk.io</a></li>
                         <li><a href="https://nodesecurity.io/">Node Security</a></li>
                         <li><a href="https://letsencrypt.org/">Let's encrypt</a></li>
+                        <li><a href="https://msdn.microsoft.com/en-us/library/jj542450(v=vs.85).aspx">The NoOpen Directive</a> </li>
+                        <li><a href="https://miki.it/blog/2014/7/8/abusing-jsonp-with-rosetta-flash/">Abusing JSONP with Rosetta Flash</a> </li>
                         <li><a href="http://expressjs.com/pt-br/advanced/best-practice-security.html">Express Security practices</a></li>
                         <li><a href="https://speakerdeck.com/ckarande/top-overlooked-security-threats-to-node-dot-js-web-applications" target="_blank">Top Overlooked SeK - Chetan Karande</a> </li>
                     </ul>
