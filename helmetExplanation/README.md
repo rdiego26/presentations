@@ -1,15 +1,11 @@
-Introdução ao Javascript.
+Visão a respeito do módulo de segurança para Node, Helmet .
 
 # Ementa
-
-# Linguagem
-  * Características  
-  * Tipos básicos e operadores  
-  * Funções  
-  * Estruturas de dados  
-  * Assincronismo  
-  * strict mode  
-  * Bugs, errors, exceções 
+  * O que é o helmet 
+  * Como ele funciona 
+  * Como ele torna minha aplicação mais segura  
+  * Entendendo as configurações de segurança
+  * Links úteis  
  
 Apresentações:  
-- 11/04/2015 #1 Meetup Barra JS
+- 21/10/2017 #1 GDG NE
