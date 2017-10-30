@@ -44,7 +44,7 @@
 
 				<section>
 
-                    <img src="img/logo-helmet.png" height="150">
+                    <img src="img/logo-helmet.png" height="130">
                     <h2>Helmet explanation</h2>
 
                     <br>
@@ -58,9 +58,10 @@
                         <h2>About me</h2>
 
                         <ul>
-                            <li>Desenvolvedor generalista <span class="fragment">(aka full-stack)</span> </li>
+                            <li>Carioca</li>
+                            <li class="fragment">Desenvolvedor generalista <span class="fragment">(aka full-stack, também viro laje)</span> </li>
                             <li class="fragment">Entusiasta open-source <span class="fragment">(solto uns PRs sempre que posso)</span></li>
-                            <li class="fragment">Atualmente trabalho na <a href="https://www.linkedin.com/company/2635078/" alt="99" target="_blank">99</a> \w/, </li>
+                            <li class="fragment">Atualmente trabalho na <a href="https://www.linkedin.com/company/2635078/" target="_blank">99</a>, na equipe de anti-fraude</li>
                         </ul>
 
                     </section>
@@ -75,9 +76,8 @@
 
                         <ul>
                             <li class="fragment">O que é o helmet</li>
-                            <li class="fragment">Como ele funciona</li>
                             <li class="fragment">Como ele torna minha aplicação mais segura</li>
-                            <li class="fragment">Entendendo as configurações de segurança (12)</li>
+                            <li class="fragment">Entendendo as configurações de segurança</li>
                             <li class="fragment">Links úteis</li>
                         </ul>
 
@@ -90,21 +90,12 @@
                     <h2>O que é o helmet ?</h2>
 
                     <p class="fragment">
-                        É um dos poucos módulos para NodeJS focados em segurança web.
-                    </p>
-                </section>
-                <!-- O que é o helmet - END -->
-
-                <!-- Como ele funciona - INIT -->
-                <section>
-                    <h2>Como ele funciona ?</h2>
-
-                    <p class="fragment">
-                        Ele protege sua aplicação de algumas vulnerabilidades da web bastante conhecidas
+                        É um dos poucos módulos para NodeJS focados em segurança web, ele protege sua aplicação
+                        de algumas vulnerabilidades da web bastante conhecidas
                         configurando os cabeçalhos HTTP <strong>adequadamente</strong> .
                     </p>
                 </section>
-                <!-- Como ele funciona - END -->
+                <!-- O que é o helmet - END -->
 
                 <!-- Como ele torna minha aplicação mais segura - INIT -->
                 <section>
@@ -124,7 +115,7 @@
                         <p>
                             O helmet disponibiliza na versão atual
                             <a href="https://github.com/helmetjs/helmet/releases/" target="_self">3.9.0</a>,
-                            12 opções para melhorar a segurança da sua aplicação, vamos passar por cada uma delas.
+                            12 opções para melhorar a segurança da sua aplicação, vamos passar por algumas delas.
                         </p>
                     </section>
 
@@ -158,7 +149,8 @@
                         <h4>1. Hide Powered By</h4>
 
                         <p>
-                            Esse "banner" de identificação é usado por muitos bots e ferramentas de auditoria você omitindo
+                            Esse "banner" de identificação é usado por muitos bots e ferramentas de auditoria
+                            para verificar vulnerabilidades conhecidas, você omitindo
                             essa informação você está <strong>dificultando</strong> o reconhecimento de seu ambiente .
                             <span class="fragment">
                                 Você pode também alterar esse valor, caso queira zuar com alguns bots:
@@ -179,7 +171,7 @@
 
                         <span>
                             Velho conhecido, o <a href="http://www.redesegura.com.br/2012/01/saiba-mais-sobre-o-cross-site-scripting-xss/">cross site scripting</a>
-                            é um tipo de ataque que nos permite injetar HTMl em uma aplicação e assim rodar código não legítimo .
+                            é um tipo de ataque que nos permite injetar HTML em uma aplicação e assim rodar código não legítimo .
                         </span>
 
                         <br>
@@ -226,26 +218,95 @@
                     </section>
                     <!-- 3. No Cache - END -->
 
-                    <!-- 4. hpkp - INIT -->
+                    <!-- 4. HSTS - INIT -->
                     <section>
-                        <h4>4. hpkp ( HTTP Public Key Pinning )</h4>
+                        <h4>4. HSTS ( Strict Transport Security )</h4>
 
                         <figure class="fragment">
-                            <img src="img/img-cdn-cache-meme.jpg" alt="Cache" height="200">
-                            <figcaption>Ah, o cache...</figcaption>
+                            <img src="img/img-https-meme.jpg" alt="https-meme" height="200">
+                            <figcaption>:)</figcaption>
                         </figure>
+
+                        <br>
+
+                        <span class="fragment">Como ativo ? Ele já vem default :) .
+                        <pre class="fragment">
+                            <code>
+                                // Sets "Strict-Transport-Security: max-age=5184000; includeSubDomains".
+                                let sixtyDaysInSeconds = 5184000;
+                                app.use(helmet.hsts({
+                                  maxAge: sixtyDaysInSeconds
+                                }));
+                            </code>
+                        </pre>
+                        </span>
+                    </section>
+
+                    <section>
+                        <h4>4. HSTS ( Strict Transport Security )</h4>
+
+                        <span>
+                            Essa opção, força a comunicação por HTTPS sempre que possível. (com o lets encrypt não tem desculpa ) <br>
+                            O maxAge é o tempo em segundos que o browser terá para lembrar que o domínio somente trabalha com HTTPS.
+                        </span>
+                    </section>
+
+                    <section>
+                        <h4>4. HSTS ( Strict Transport Security )</h4>
+
+                        <span>Só reforçando...</span>
+                        <br>
+                        <figure class="fragment">
+                            <img src="img/img-fagundes-cilada-bino.jpeg" alt="https-meme" height="280">
+                            <figcaption>Trabalhar somente com HTTP</figcaption>
+                        </figure>
+
+                    </section>
+                    <!-- 4. HSTS - END -->
+
+                    <!-- 5. IE NO OPEN - INIT -->
+                    <section>
+                        <h4>5. IE NO OPEN</h4>
+
+                        Por padrão, algumas versões do IE(< 10) permitirão que você abra esses arquivos HTML no contexto do
+                        seu site, o que significa que uma página HTML não confiável pode começar a fazer coisas
+                        "não supimpas" no contexto de suas páginas.
 
                         <br>
 
                         <span class="fragment">Como ativo ?
                         <pre class="fragment">
                             <code>
-                                app.use(helmet.noCache());
+                                // Sets "X-Download-Options: noopen".
+                                app.use(helmet.ieNoOpen());
                             </code>
                         </pre>
                         </span>
                     </section>
-                    <!-- 4. hpkp - END -->
+                    <!-- 5. IE NO OPEN - END -->
+
+                    <!-- 6. DNS Prefetch Control - INIT -->
+                    <section>
+                        <h4>6. DNS Prefetch Control</h4>
+
+                        <span>
+                            Os navegadores por motivos de otimização, resolvem prematuramente o DNS dos links de uma página por exemplo,
+                            mas isso acaba implicando em alguns pontos
+                            <a href="https://www.keycdn.com/support/prefetching/">sensíveis em privacidade</a> dos usuários. <br>
+                            Não são todos browsers que interpretam esse cabeçalho.
+                        </span>
+                        <br>
+
+                        <span class="fragment">Como ativo ?
+                        <pre class="fragment">
+                            <code>
+                            // Sets "X-DNS-Prefetch-Control: off".
+                            app.use(helmet.dnsPrefetchControl())
+                            </code>
+                        </pre>
+                        </span>
+                    </section>
+                    <!-- 6. DNS Prefetch Control - END -->
 
 
                 </section>
@@ -253,8 +314,12 @@
 
                 <!-- The end ? -->
                 <section>
-                    <h1>THE END</h1>
-                    <h3>Questions ? :)</h3>
+                    <h1>THE END!</h1>
+                    <p>Meus contatos</p>
+                    <ul>
+                        <li><a href="https://github.com/rdiego26/">Github</a></li>
+                        <li><a href="https://twitter.com/m4ndev">@m4ndev</a></li>
+                    </ul>
                 </section>
 
                 <!-- Links Úteis -->
@@ -265,6 +330,9 @@
                         <li><a href="https://requiresafe.com/">require safe</a></li>
                         <li><a href="https:/snyk.io/">Snyk.io</a></li>
                         <li><a href="https://nodesecurity.io/">Node Security</a></li>
+                        <li><a href="https://letsencrypt.org/">Let's encrypt</a></li>
+                        <li><a href="https://msdn.microsoft.com/en-us/library/jj542450(v=vs.85).aspx">The NoOpen Directive</a> </li>
+                        <li><a href="https://miki.it/blog/2014/7/8/abusing-jsonp-with-rosetta-flash/">Abusing JSONP with Rosetta Flash</a> </li>
                         <li><a href="http://expressjs.com/pt-br/advanced/best-practice-security.html">Express Security practices</a></li>
                         <li><a href="https://speakerdeck.com/ckarande/top-overlooked-security-threats-to-node-dot-js-web-applications" target="_blank">Top Overlooked SeK - Chetan Karande</a> </li>
                     </ul>
